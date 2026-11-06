@@ -1,3 +1,4 @@
+use crate::sourcemap::SourceMap;
 use crate::types::*;
 use indexmap::IndexMap;
 use regex::Regex;
@@ -64,9 +65,24 @@ const SENTINEL_CLOSE: char = '\u{E001}';
 ///    in the rewritten string verbatim (the inline `{% $var %}` form, for
 ///    example, is handled separately by `replace_variables`).
 pub fn segment_with_tags(content: &str) -> (String, Vec<ParsedTag>) {
+    let (rewritten, tags, _) = segment_with_tags_mapped(content);
+    (rewritten, tags)
+}
+
+/// As `segment_with_tags`, and it also reports what it moved.
+///
+/// This is the fourth rewrite `parse()` performs and it was the one with no
+/// map. A sentinel is three to five bytes where the tag it replaced may be
+/// eighty, so every markdown position **after the first tag in a document**
+/// referred to a buffer that nothing else had ever seen. Nothing used those
+/// positions, so nothing was visibly wrong — which is exactly the shape of
+/// the bug `sourcemap` exists to prevent, and it was hiding one rewrite
+/// further down than the three that were fixed.
+pub fn segment_with_tags_mapped(content: &str) -> (String, Vec<ParsedTag>, SourceMap) {
     let re = tag_regex();
     let mut rewritten = String::with_capacity(content.len());
     let mut tags: Vec<ParsedTag> = Vec::new();
+    let mut map = SourceMap::identity();
     let mut last = 0usize;
 
     for m in re.find_iter(content) {
@@ -74,9 +90,11 @@ pub fn segment_with_tags(content: &str) -> (String, Vec<ParsedTag>) {
         if let Some(parsed) = parse_one_tag(m.as_str(), m.start()..m.end()) {
             let idx = tags.len();
             tags.push(parsed);
+            let out_start = rewritten.len();
             rewritten.push(SENTINEL_OPEN);
             rewritten.push_str(&idx.to_string());
             rewritten.push(SENTINEL_CLOSE);
+            map.replace(out_start..rewritten.len(), m.start()..m.end());
         } else {
             // Not a recognisable structural tag — leave verbatim so that
             // `replace_variables` (or just text rendering) can pick it up.
@@ -85,7 +103,7 @@ pub fn segment_with_tags(content: &str) -> (String, Vec<ParsedTag>) {
         last = m.end();
     }
     rewritten.push_str(&content[last..]);
-    (rewritten, tags)
+    (rewritten, tags, map)
 }
 
 fn tag_regex() -> Regex {
@@ -195,7 +213,7 @@ fn is_valid_name(s: &str) -> bool {
 ///   - `key=funcname(arg1, arg2)`
 ///   - bare leading expression (no key=): becomes `primary`. This is
 ///     needed for `{% if $cfg.foo %}` and similar.
-fn parse_attrs(src: &str) -> TagAttrs {
+pub(crate) fn parse_attrs(src: &str) -> TagAttrs {
     let mut attrs = TagAttrs::default();
     let bytes = src.as_bytes();
     let mut cursor = 0usize;
@@ -223,22 +241,26 @@ fn parse_attrs(src: &str) -> TagAttrs {
         let has_eq = identifier_end < bytes.len() && bytes[identifier_end] == b'=';
 
         if identifier_end == key_start || !has_eq {
-            // The rest of `src` is the primary expression. Route it
-            // through `consume_value` so quoted-string primaries like
-            // `{% tag "X" /%}` are unwrapped the same way keyed values
-            // are — without this, the surrounding quotes leak into the
-            // attribute and downstream consumers see `"X"` instead of `X`.
+            // Unkeyed value → `primary`. Quoted primaries
+            // (`{% tag "X" numbered="false" /%}`) consume only the string
+            // so trailing keyed attributes still parse. Unquoted forms
+            // (`{% if $cfg.foo %}` / function calls) take one value token
+            // the same way; anything left is parsed as further attrs.
             let remainder = &src[key_start..];
             let trimmed_start = remainder
                 .bytes()
                 .take_while(|b| b.is_ascii_whitespace())
                 .count();
             let trimmed = &remainder[trimmed_start..];
-            if !trimmed.is_empty() {
-                let (value, _) = consume_value(remainder);
+            if trimmed.is_empty() {
+                break;
+            }
+            let (value, consumed) = consume_value(remainder);
+            if attrs.primary.is_none() {
                 attrs.primary = Some(value);
             }
-            break;
+            cursor = key_start + consumed;
+            continue;
         }
 
         let key = &src[key_start..identifier_end];
@@ -453,6 +475,25 @@ mod tests {
         match &tags[0].kind {
             TagKind::HeadingId { id } => assert_eq!(id, "my-id"),
             _ => panic!("expected heading id"),
+        }
+    }
+
+    #[test]
+    fn parses_primary_shorthand_with_trailing_attrs() {
+        let (_, tags) = segment_with_tags(r#"{% tag "intro" numbered="false" /%}"#);
+        assert_eq!(tags.len(), 1);
+        if let TagKind::SelfClose { name, attrs } = &tags[0].kind {
+            assert_eq!(name, "tag");
+            match attrs.primary.as_ref().unwrap() {
+                AttrValue::Literal(Scalar::String(s)) => assert_eq!(s, "intro"),
+                v => panic!("expected string primary, got {v:?}"),
+            }
+            match attrs.named.get("numbered").unwrap() {
+                AttrValue::Literal(Scalar::String(s)) => assert_eq!(s, "false"),
+                v => panic!("expected numbered=false, got {v:?}"),
+            }
+        } else {
+            panic!("expected self-closing tag");
         }
     }
 

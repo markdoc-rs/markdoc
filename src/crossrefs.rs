@@ -9,9 +9,9 @@
 //!      `errors` field (the Node otherwise survives so renderers can still
 //!      show "[broken ref: x]" or similar).
 //!
-//! Both forms accept the id under either an `id` or `tag` attribute — the
-//! Flux spec README uses `id=` while real docs in the wild use `tag=`,
-//! so we honour both.
+//! Both forms accept the id under `id=`, `tag=`, or the Markdoc primary
+//! shorthand (`{% tag "x" /%}` / `{% tagref "x" /%}`). The Flux spec
+//! README uses `id=` while real docs often use the primary form.
 //!
 //! Note on naming: `{% tag %}` is the user-facing Flux tag name for an
 //! anchor declaration. It is unrelated to the internal `NodeType::Tag`
@@ -89,7 +89,7 @@ fn annotate_refs(node: &Node, anchors: &HashMap<String, AnchorInfo>) -> Node {
                 new_node.errors.push(ValidationError {
                     id: "tagref/missing-id".to_string(),
                     level: ValidationLevel::Error,
-                    message: "{% tagref %} requires an `id` (or `tag`) attribute".into(),
+                    message: "{% tagref %} requires an `id`, `tag`, or primary attribute".into(),
                     location: new_node.location.clone(),
                 });
             }
@@ -112,10 +112,13 @@ fn is_tag_node(node: &Node, tag_name: &str) -> bool {
     matches!(node.node_type, NodeType::Tag) && node.tag.as_deref() == Some(tag_name)
 }
 
-/// Return the anchor id from either `id` or `tag` attribute (in that order).
+/// Return the anchor id from `id`, `tag`, or Markdoc primary shorthand
+/// (`{% tag "x" /%}` / `{% tagref "x" /%}`), in that order.
 fn anchor_id(node: &Node) -> Option<String> {
-    for key in ["id", "tag"] {
-        if let Some(Scalar::String(s)) = node.attributes.get(key) {
+    for key in ["id", "tag", "primary"] {
+        if let Some(Scalar::String(s)) = node.attributes.get(key)
+            && !s.is_empty()
+        {
             return Some(s.clone());
         }
     }
@@ -196,6 +199,24 @@ See {% tagref id="x" /%}"#;
         let resolved = resolve_crossrefs(&doc);
         let tagref = find_first_tag(&resolved, "tagref").unwrap();
         assert!(tagref.errors.is_empty(), "should resolve via `tag=`");
+    }
+
+    #[test]
+    fn supports_primary_shorthand_for_tag_and_tagref() {
+        // Content manuals use `{% tag "x" /%}` / `{% tagref "x" /%}`.
+        let src = r#"# Title {% tag "x" /%}
+
+See {% tagref "x" /%}"#;
+        let doc = parse(src, None).unwrap();
+        let resolved = resolve_crossrefs(&doc);
+        let tagref = find_first_tag(&resolved, "tagref").unwrap();
+        assert!(
+            tagref.errors.is_empty(),
+            "should resolve via primary shorthand, got {:?}",
+            tagref.errors
+        );
+        let anchors = collect_anchors(&doc);
+        assert!(anchors.contains_key("x"));
     }
 
     #[test]

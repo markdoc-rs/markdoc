@@ -291,9 +291,9 @@ fn push_text_with_tags(
                 event: TokenEvent::Text(s),
                 position,
             }),
-            SentinelPiece::Tag(kind) => tokens.push(Token {
+            SentinelPiece::Tag(kind, span) => tokens.push(Token {
                 event: TokenEvent::Tag(kind),
-                position,
+                position: Some((span.start, span.end)),
             }),
             SentinelPiece::Text(_) => {} // empty
         }
@@ -325,9 +325,9 @@ fn push_text_with_tags_as_html(
                 event: TokenEvent::Html(s),
                 position,
             }),
-            SentinelPiece::Tag(kind) => tokens.push(Token {
+            SentinelPiece::Tag(kind, span) => tokens.push(Token {
                 event: TokenEvent::Tag(kind),
-                position,
+                position: Some((span.start, span.end)),
             }),
             SentinelPiece::Text(_) => {}
         }
@@ -336,7 +336,11 @@ fn push_text_with_tags_as_html(
 
 enum SentinelPiece {
     Text(String),
-    Tag(TagKind),
+    /// A tag, and **its own** span in the source -- not the span of the
+    /// cmark event it was found inside. A paragraph is one Text event; the
+    /// three tags in it are three different places, and a diagnostic that
+    /// points at the paragraph points at none of them.
+    Tag(TagKind, std::ops::Range<usize>),
 }
 
 fn scan_sentinels(text: &str, tags: &[ParsedTag]) -> Vec<SentinelPiece> {
@@ -357,7 +361,10 @@ fn scan_sentinels(text: &str, tags: &[ParsedTag]) -> Vec<SentinelPiece> {
                 if let Ok(idx) = idx_str.parse::<usize>()
                     && let Some(tag) = tags.get(idx)
                 {
-                    out.push(SentinelPiece::Tag(tag.kind.clone()));
+                    out.push(SentinelPiece::Tag(
+                        tag.kind.clone(),
+                        tag.source_range.clone(),
+                    ));
                 }
                 // If idx is out of range, the sentinel is silently dropped.
                 last = next;

@@ -12,6 +12,11 @@
 //! parsed recursively as Markdown so cells may hold rich content (paragraphs,
 //! code, lists). The first row is the header unless the table starts with
 //! `---`.
+//!
+//! `{% if %}` / `{% else %}` / `{% /if %}` at row boundaries are preserved as
+//! Tag nodes wrapping the enclosed `Tr`s so [`crate::evaluate_conditionals`]
+//! can splice or drop them after parse (the same path as conditionals outside
+//! tables). Without this, `---` inside an `if` would always emit rows.
 
 use std::collections::HashMap;
 use std::sync::OnceLock;
@@ -19,6 +24,8 @@ use std::sync::OnceLock;
 use regex::Regex;
 
 use crate::ast::Node;
+use crate::sourcemap::SourceMap;
+use crate::tag_parser::{self, AttrValue, TagAttrs};
 use crate::types::{NodeType, Scalar};
 
 /// Placeholder sentinels for an extracted table, distinct from the tag
@@ -35,15 +42,46 @@ struct Cell {
 /// One row: its cells, in column order.
 type Row = Vec<Cell>;
 
+/// A structural unit inside a list-table body: a raw row block, an `if`
+/// group, or an `else` branch marker.
+enum TableItem {
+    /// Raw text of one row (the `* cell` list between `---` separators).
+    Row(String),
+    /// `{% if … %}` … `{% /if %}` wrapping further items (rows / else / nested if).
+    If {
+        attrs: TagAttrs,
+        children: Vec<TableItem>,
+    },
+    /// Self-closing `{% else … /%}` branch marker inside an `if`.
+    Else { attrs: TagAttrs },
+}
+
 fn open_re() -> &'static Regex {
     static RE: OnceLock<Regex> = OnceLock::new();
     // `{% table %}` / `{% table attrs %}` — an opening tag (not `/table`).
-    RE.get_or_init(|| Regex::new(r"\{%\s*table\b[^%]*%\}").unwrap())
+    // Capture group 1 is the attribute body (may be empty / whitespace).
+    RE.get_or_init(|| Regex::new(r"\{%\s*table\b([^%]*)%\}").unwrap())
 }
 
 fn close_re() -> &'static Regex {
     static RE: OnceLock<Regex> = OnceLock::new();
     RE.get_or_init(|| Regex::new(r"\{%\s*/\s*table\s*%\}").unwrap())
+}
+
+fn if_open_re() -> &'static Regex {
+    static RE: OnceLock<Regex> = OnceLock::new();
+    RE.get_or_init(|| Regex::new(r"^\{%\s*if\b([^%]*)%\}$").unwrap())
+}
+
+fn if_close_re() -> &'static Regex {
+    static RE: OnceLock<Regex> = OnceLock::new();
+    RE.get_or_init(|| Regex::new(r"^\{%\s*/\s*if\s*%\}$").unwrap())
+}
+
+fn else_re() -> &'static Regex {
+    static RE: OnceLock<Regex> = OnceLock::new();
+    // Self-closing `{% else /%}` or `{% else $cond /%}`.
+    RE.get_or_init(|| Regex::new(r"^\{%\s*else\b([^%]*)/\s*%\}$").unwrap())
 }
 
 /// Does a `{% table %}` block use the Markdoc list-syntax (its first
@@ -64,24 +102,37 @@ fn is_list_syntax(inner: &str) -> bool {
 /// Replace each `{% table %}…{% /table %}` block with a placeholder sentinel
 /// and return the parsed `Table` nodes (indexed by the sentinel). The inner
 /// text is parsed before pulldown-cmark sees it, so `---`/`*` survive.
-pub fn extract_list_tables(content: &str) -> (String, Vec<Node>) {
+/// Opening-tag attributes (e.g. `column_weights="1 2"`) are copied onto the
+/// resulting `Table` node so the PDF renderer can honour them.
+/// Lift `{% table %}` list-syntax blocks out, recording where each went.
+///
+/// The map is what lets a diagnostic inside -- or after -- a table still point
+/// at the right byte: a whole block collapses to a three-character
+/// placeholder, so everything downstream of one is displaced by however long
+/// the table was.
+pub fn extract_list_tables_mapped(content: &str) -> (String, Vec<Node>, SourceMap) {
     let mut out = String::with_capacity(content.len());
     let mut tables: Vec<Node> = Vec::new();
+    let mut map = SourceMap::identity();
     let mut pos = 0;
-    while let Some(m) = open_re().find(&content[pos..]) {
-        let open_start = pos + m.start();
-        let open_end = pos + m.end();
+    while let Some(m) = open_re().captures(&content[pos..]) {
+        let full = m.get(0).unwrap();
+        let open_start = pos + full.start();
+        let open_end = pos + full.end();
+        let open_attrs = m.get(1).map(|g| g.as_str()).unwrap_or("");
         match close_re().find(&content[open_end..]) {
             Some(c) => {
                 let close_end = open_end + c.end();
                 let inner = &content[open_end..open_end + c.start()];
                 if is_list_syntax(inner) {
                     out.push_str(&content[pos..open_start]);
+                    let placeholder_start = out.len();
                     let idx = tables.len();
-                    tables.push(parse_list_table(inner));
+                    tables.push(parse_list_table(inner, open_attrs));
                     out.push(TABLE_OPEN);
                     out.push_str(&idx.to_string());
                     out.push(TABLE_CLOSE);
+                    map.replace(placeholder_start..out.len(), open_start..close_end);
                 } else {
                     // Not list-syntax (e.g. a pipe table wrapped in
                     // `{% table … %}` for styling) — leave it verbatim for
@@ -98,6 +149,12 @@ pub fn extract_list_tables(content: &str) -> (String, Vec<Node>) {
         }
     }
     out.push_str(&content[pos..]);
+    (out, tables, map)
+}
+
+/// Without the map, for callers that do not need positions.
+pub fn extract_list_tables(content: &str) -> (String, Vec<Node>) {
+    let (out, tables, _) = extract_list_tables_mapped(content);
     (out, tables)
 }
 
@@ -108,12 +165,37 @@ pub fn splice_list_tables(node: &mut Node, tables: &[Node]) {
     while i < node.children.len() {
         if let Some(idx) = placeholder_index(&node.children[i]) {
             if let Some(table) = tables.get(idx) {
-                node.children[i] = table.clone();
+                // The placeholder stands exactly where the `{% table %}`
+                // block is in the file, so the table inherits its position.
+                let at = node.children[i].location.clone();
+                let lines = node.children[i].lines.clone();
+                let mut table = table.clone();
+                table.location = at;
+                table.lines = lines;
+                // The interior is a different matter. Cells are parsed from
+                // an extracted copy of the block, one non-contiguous piece
+                // at a time, so a cell's offsets are relative to that copy
+                // and index the file at some unrelated place -- which is
+                // worse than having none, because an editor would highlight
+                // the wrong text with perfect confidence. Until `parse_row`
+                // tracks where each cell began, they have none.
+                for child in &mut table.children {
+                    clear_locations(child);
+                }
+                node.children[i] = table;
             }
         } else {
             splice_list_tables(&mut node.children[i], tables);
         }
         i += 1;
+    }
+}
+
+fn clear_locations(node: &mut Node) {
+    node.location = None;
+    node.lines.clear();
+    for child in &mut node.children {
+        clear_locations(child);
     }
 }
 
@@ -141,48 +223,188 @@ fn text_content(node: &Node) -> Option<&str> {
 }
 
 /// Parse a `{% table %}` block's inner text into a `Table` node.
-fn parse_list_table(inner: &str) -> Node {
-    let raw_blocks = split_top_level_rows(inner);
-    let leading_blank = raw_blocks
-        .first()
-        .map(|b| b.trim().is_empty())
-        .unwrap_or(true);
-    let rows: Vec<Row> = raw_blocks
-        .iter()
-        .filter(|b| !b.trim().is_empty())
-        .map(|b| parse_row(b))
-        .collect();
-
-    let mut children = Vec::new();
-    // The first non-blank row is the header unless the table began with `---`.
-    let body_start = if leading_blank || rows.is_empty() {
+/// `open_attrs` is the attribute body from the opening tag (e.g.
+/// ` column_weights="1 2"`); literals are merged onto the table node so
+/// PDF styling overrides survive list-syntax extraction.
+fn parse_list_table(inner: &str, open_attrs: &str) -> Node {
+    let items = parse_table_items(inner);
+    // Header-less when the table begins with `---` (first item is an empty
+    // row produced by that leading separator) or when there are no items.
+    let leading_sep = matches!(items.first(), Some(TableItem::Row(s)) if s.trim().is_empty());
+    let body_start = if leading_sep || items.is_empty() {
         0
     } else {
-        1
-    };
-    // Column alignment comes from `{% align %}` on the header cells; it feeds
-    // the table's `align` attribute, which the renderer already honours.
-    let mut table_attrs = HashMap::new();
-    if body_start == 1 {
-        if let Some(aligns) = column_aligns(&rows[0]) {
-            table_attrs.insert("align".to_string(), aligns);
+        // First item must be a plain row to act as the header.
+        match items.first() {
+            Some(TableItem::Row(_)) => 1,
+            _ => 0,
         }
-        let head_cells = make_cells(&rows[0], true);
-        let tr = Node::new(NodeType::Tr, HashMap::new(), head_cells, None);
-        children.push(Node::new(NodeType::Thead, HashMap::new(), vec![tr], None));
+    };
+
+    let mut children = Vec::new();
+    let mut table_attrs = HashMap::new();
+    // Opening-tag attrs first so header-derived `align` can still override
+    // if an author ever sets both (align from cells is the source of truth
+    // for column alignment).
+    merge_open_attrs(&mut table_attrs, open_attrs);
+    if body_start == 1
+        && let TableItem::Row(block) = &items[0]
+    {
+        {
+            let header = parse_row(block);
+            if let Some(aligns) = column_aligns(&header) {
+                table_attrs.insert("align".to_string(), aligns);
+            }
+            let head_cells = make_cells(&header, true);
+            let tr = Node::new(NodeType::Tr, HashMap::new(), head_cells, None);
+            children.push(Node::new(NodeType::Thead, HashMap::new(), vec![tr], None));
+        }
     }
-    let body_rows: Vec<Node> = rows[body_start..]
-        .iter()
-        .map(|cells| {
-            let tds = make_cells(cells, false);
-            Node::new(NodeType::Tr, HashMap::new(), tds, None)
-        })
-        .collect();
-    if !body_rows.is_empty() {
-        children.push(Node::new(NodeType::Tbody, HashMap::new(), body_rows, None));
+
+    let body_nodes = table_items_to_nodes(&items[body_start..]);
+    if !body_nodes.is_empty() {
+        children.push(Node::new(NodeType::Tbody, HashMap::new(), body_nodes, None));
     }
 
     Node::new(NodeType::Table, table_attrs, children, None)
+}
+
+/// Copy literal attributes from a `{% table … %}` opening tag onto
+/// `attrs`. Expression-valued attrs are ignored here (list-table
+/// extraction runs before an evaluation context exists); authors should
+/// use literals such as `column_weights="1 2"`.
+fn merge_open_attrs(attrs: &mut HashMap<String, Scalar>, open_attrs: &str) {
+    let parsed = tag_parser::parse_attrs(open_attrs);
+    for (key, value) in parsed.named {
+        if let AttrValue::Literal(s) = value {
+            attrs.insert(key, s);
+        }
+    }
+}
+
+/// Convert structural table items into `Tr` / `if` / `else` nodes for the
+/// tbody (or nested inside an `if`).
+fn table_items_to_nodes(items: &[TableItem]) -> Vec<Node> {
+    let mut out = Vec::new();
+    for item in items {
+        match item {
+            TableItem::Row(block) => {
+                if block.trim().is_empty() {
+                    continue;
+                }
+                let cells = parse_row(block);
+                if cells.is_empty() {
+                    continue;
+                }
+                let tds = make_cells(&cells, false);
+                out.push(Node::new(NodeType::Tr, HashMap::new(), tds, None));
+            }
+            TableItem::If { attrs, children } => {
+                out.push(make_conditional_tag(
+                    "if",
+                    attrs,
+                    table_items_to_nodes(children),
+                ));
+            }
+            TableItem::Else { attrs } => {
+                out.push(make_conditional_tag("else", attrs, Vec::new()));
+            }
+        }
+    }
+    out
+}
+
+fn make_conditional_tag(name: &str, attrs: &TagAttrs, children: Vec<Node>) -> Node {
+    let mut attributes: HashMap<String, Scalar> = HashMap::new();
+    let mut expressions: HashMap<String, String> = HashMap::new();
+    if let Some(primary) = &attrs.primary {
+        match primary {
+            AttrValue::Literal(s) => {
+                attributes.insert("primary".to_string(), s.clone());
+            }
+            AttrValue::Expression(src) => {
+                expressions.insert("primary".to_string(), src.clone());
+            }
+        }
+    }
+    for (key, value) in &attrs.named {
+        match value {
+            AttrValue::Literal(s) => {
+                attributes.insert(key.clone(), s.clone());
+            }
+            AttrValue::Expression(src) => {
+                expressions.insert(key.clone(), src.clone());
+            }
+        }
+    }
+    let mut node = Node::new(NodeType::Tag, attributes, children, Some(name.to_string()));
+    node.expressions = expressions;
+    node
+}
+
+/// Split a table's inner text into [`TableItem`]s, honouring row `---`
+/// separators and row-boundary `{% if %}` / `{% else %}` / `{% /if %}`.
+fn parse_table_items(inner: &str) -> Vec<TableItem> {
+    let lines: Vec<&str> = inner.lines().collect();
+    let (items, _) = parse_table_items_from(&lines, 0, false);
+    items
+}
+
+/// Parse items starting at `start`. When `inside_if` is true, a top-level
+/// `{% /if %}` ends the current group and returns. Returns `(items, next_index)`.
+fn parse_table_items_from(
+    lines: &[&str],
+    start: usize,
+    inside_if: bool,
+) -> (Vec<TableItem>, usize) {
+    let mut items = Vec::new();
+    let mut cur = String::new();
+    let mut in_fence = false;
+    let mut i = start;
+
+    let flush_row = |cur: &mut String, items: &mut Vec<TableItem>| {
+        items.push(TableItem::Row(std::mem::take(cur)));
+    };
+
+    while i < lines.len() {
+        let line = lines[i];
+        let t = line.trim_start();
+        if t.starts_with("```") || t.starts_with("~~~") {
+            in_fence = !in_fence;
+        }
+        let trimmed = line.trim();
+        if !in_fence {
+            if let Some(caps) = if_open_re().captures(trimmed) {
+                flush_row(&mut cur, &mut items);
+                let attrs = tag_parser::parse_attrs(caps.get(1).map(|m| m.as_str()).unwrap_or(""));
+                let (children, next) = parse_table_items_from(lines, i + 1, true);
+                items.push(TableItem::If { attrs, children });
+                i = next;
+                continue;
+            }
+            if inside_if && if_close_re().is_match(trimmed) {
+                flush_row(&mut cur, &mut items);
+                return (items, i + 1);
+            }
+            if inside_if && let Some(caps) = else_re().captures(trimmed) {
+                flush_row(&mut cur, &mut items);
+                let attrs = tag_parser::parse_attrs(caps.get(1).map(|m| m.as_str()).unwrap_or(""));
+                items.push(TableItem::Else { attrs });
+                i += 1;
+                continue;
+            }
+            if trimmed == "---" {
+                flush_row(&mut cur, &mut items);
+                i += 1;
+                continue;
+            }
+        }
+        cur.push_str(line);
+        cur.push('\n');
+        i += 1;
+    }
+    flush_row(&mut cur, &mut items);
+    (items, i)
 }
 
 /// Build the table `align` attribute (an array of `left`/`center`/`right`/``)
@@ -310,31 +532,11 @@ fn find_list(node: &Node) -> Option<&Node> {
     node.children.iter().find_map(find_list)
 }
 
-/// Split a table's inner text into row blocks on top-level `---` lines
-/// (ignoring `---` inside fenced code blocks).
-fn split_top_level_rows(inner: &str) -> Vec<String> {
-    let mut blocks = Vec::new();
-    let mut cur = String::new();
-    let mut in_fence = false;
-    for line in inner.lines() {
-        let t = line.trim_start();
-        if t.starts_with("```") || t.starts_with("~~~") {
-            in_fence = !in_fence;
-        }
-        if !in_fence && line.trim() == "---" {
-            blocks.push(std::mem::take(&mut cur));
-            continue;
-        }
-        cur.push_str(line);
-        cur.push('\n');
-    }
-    blocks.push(cur);
-    blocks
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::conditionals::evaluate_conditionals;
+    use crate::types::Context;
 
     fn find_node<'a>(node: &'a Node, nt: &NodeType) -> Option<&'a Node> {
         if &node.node_type == nt {
@@ -350,6 +552,35 @@ mod tests {
             .iter()
             .map(|c| count_nodes(c, nt))
             .sum::<usize>()
+    }
+
+    fn count_text(node: &Node, needle: &str) -> usize {
+        let mut n = 0;
+        if matches!(node.node_type, NodeType::Text)
+            && let Some(Scalar::String(s)) = node.attributes.get("content")
+            && s.contains(needle)
+        {
+            n += 1;
+        }
+        for c in &node.children {
+            n += count_text(c, needle);
+        }
+        n
+    }
+
+    fn has_tag(node: &Node, name: &str) -> bool {
+        if matches!(node.node_type, NodeType::Tag) && node.tag.as_deref() == Some(name) {
+            return true;
+        }
+        node.children.iter().any(|c| has_tag(c, name))
+    }
+
+    fn ctx_with(pairs: &[(&str, Scalar)]) -> Context {
+        let mut c = Context::new();
+        for (k, v) in pairs {
+            c = c.with_variable(*k, v.clone());
+        }
+        c
     }
 
     #[test]
@@ -460,5 +691,141 @@ mod tests {
             2,
             "both cells survive (annotation didn't swallow the next cell)"
         );
+    }
+
+    #[test]
+    fn if_inside_list_table_is_preserved_until_evaluate() {
+        let src = r#"{% table %}
+* Task
+* Pass
+---
+* Always
+*
+{% if equals($model, $shelf) %}
+---
+* Shelf only
+*
+{% /if %}
+{% /table %}
+"#;
+        let doc = crate::parse(src, None).unwrap();
+        let table = find_node(&doc, &NodeType::Table).expect("table");
+        assert!(
+            has_tag(table, "if"),
+            "if wrapping conditional rows must survive parse, tree was {table:#?}"
+        );
+        assert!(count_text(table, "Shelf only") > 0);
+        assert!(count_text(table, "Always") > 0);
+    }
+
+    #[test]
+    fn falsy_if_inside_list_table_drops_rows() {
+        let src = r#"{% table %}
+* Task
+* Pass
+---
+* Always
+*
+{% if equals($model, $shelf) %}
+---
+* Shelf only
+*
+{% /if %}
+* After
+*
+{% /table %}
+"#;
+        let doc = crate::parse(src, None).unwrap();
+        let ctx = ctx_with(&[
+            ("model", Scalar::String("mir250".into())),
+            ("shelf", Scalar::String("mir250_shelf_carrier".into())),
+        ]);
+        let result = evaluate_conditionals(&doc, &ctx).unwrap();
+        let table = find_node(&result, &NodeType::Table).expect("table");
+        assert!(!has_tag(table, "if"), "if must be resolved");
+        assert_eq!(count_text(table, "Shelf only"), 0);
+        assert!(count_text(table, "Always") > 0);
+        assert!(count_text(table, "After") > 0);
+        assert_eq!(count_nodes(table, &NodeType::Tr), 3); // header + 2 body
+    }
+
+    #[test]
+    fn truthy_if_inside_list_table_keeps_rows() {
+        let src = r#"{% table %}
+* Task
+* Pass
+---
+* Always
+*
+{% if equals($model, $shelf) %}
+---
+* Shelf only
+*
+{% /if %}
+{% /table %}
+"#;
+        let doc = crate::parse(src, None).unwrap();
+        let ctx = ctx_with(&[
+            ("model", Scalar::String("mir250_shelf_carrier".into())),
+            ("shelf", Scalar::String("mir250_shelf_carrier".into())),
+        ]);
+        let result = evaluate_conditionals(&doc, &ctx).unwrap();
+        let table = find_node(&result, &NodeType::Table).expect("table");
+        assert!(!has_tag(table, "if"));
+        assert!(count_text(table, "Shelf only") > 0);
+        assert_eq!(count_nodes(table, &NodeType::Tr), 3); // header + Always + Shelf
+    }
+
+    #[test]
+    fn if_rows_without_leading_sep_and_following_row() {
+        // periodic_tasks Component replacements pattern: if body starts with
+        // cells (no --- after {% if %}), then unconditional rows follow the
+        // closing {% /if %} without a --- between them.
+        let src = r#"{% table %}
+* Component
+* Years
+---
+{% if equals($model, $shelf) %}
+* Shelf encoder
+* 6
+---
+* Shelf harness
+* 13
+{% /if %}
+* Emergency stop
+* 20
+{% /table %}
+"#;
+        let doc = crate::parse(src, None).unwrap();
+        let ctx = ctx_with(&[
+            ("model", Scalar::String("mir250".into())),
+            ("shelf", Scalar::String("mir250_shelf_carrier".into())),
+        ]);
+        let result = evaluate_conditionals(&doc, &ctx).unwrap();
+        let table = find_node(&result, &NodeType::Table).expect("table");
+        assert_eq!(count_text(table, "Shelf encoder"), 0);
+        assert_eq!(count_text(table, "Shelf harness"), 0);
+        assert!(count_text(table, "Emergency stop") > 0);
+        assert_eq!(count_nodes(table, &NodeType::Tr), 2); // header + Emergency
+    }
+
+    #[test]
+    fn list_table_preserves_column_weights_attr() {
+        let src = r#"{% table column_weights="1 2.5" %}
+* H1
+* H2
+---
+* a
+* b
+{% /table %}
+"#;
+        let doc = crate::parse(src, None).unwrap();
+        let table = find_node(&doc, &NodeType::Table).expect("table node");
+        assert_eq!(
+            table.attributes.get("column_weights"),
+            Some(&Scalar::String("1 2.5".into())),
+            "opening-tag column_weights must land on the Table node, tree was {table:#?}"
+        );
+        assert_eq!(count_nodes(table, &NodeType::Td), 2);
     }
 }

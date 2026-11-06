@@ -10,6 +10,7 @@ pub mod parser;
 pub mod partials;
 pub mod renderers;
 pub mod schema;
+pub mod sourcemap;
 pub mod tag_parser;
 pub mod tags;
 pub mod tokenizer;

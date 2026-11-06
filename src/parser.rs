@@ -10,14 +10,119 @@ use std::collections::HashMap;
 /// literal `{%` in node content by [`unescape_tag_literals`] afterwards.
 const ESCAPED_TAG_OPEN: &str = "\u{E010}";
 
+/// Turns a byte range in the **original** file into a `Location`.
+///
+/// Holds the source and an index over it, because the two conversions a
+/// caller needs -- byte offset to line, byte offset to UTF-16 column -- both
+/// want the whole file and neither is cheap to redo per node. One of these is
+/// built per `parse()` and borrowed by everything that makes a node.
+struct Spans<'a> {
+    src: &'a str,
+    index: crate::sourcemap::LineIndex,
+    file: Option<String>,
+}
+
+impl<'a> Spans<'a> {
+    fn new(src: &'a str, file: Option<String>) -> Self {
+        Self {
+            src,
+            index: crate::sourcemap::LineIndex::new(src),
+            file,
+        }
+    }
+
+    fn edge(&self, offset: usize) -> LocationEdge {
+        // Snap to a character boundary. A map that lands in the middle of a
+        // multi-byte character is not a position anybody can use: slicing
+        // there panics, and an editor counting UTF-16 units cannot be given
+        // half of one. It happens inside a `{% table %}` block, whose
+        // interior is parsed from an extracted copy and whose nodes are
+        // therefore located to the block rather than to the cell -- see
+        // `list_table`. Rounding down keeps the offset inside the construct
+        // it belongs to.
+        let offset = offset.min(self.src.len());
+        let offset = (0..=offset)
+            .rev()
+            .find(|&o| self.src.is_char_boundary(o))
+            .unwrap_or(0);
+        let (line, character) = self.index.line_col(self.src, offset);
+        LocationEdge {
+            line,
+            character: Some(character),
+            offset,
+        }
+    }
+
+    /// `None` for a node whose token carried no position -- which is not a
+    /// failure, only an absence: the list-table pre-pass and the frontmatter
+    /// strip both produce nodes that were never a span of the file.
+    fn location(&self, span: Option<(usize, usize)>) -> Option<Location> {
+        let (start, end) = span?;
+        Some(Location {
+            file: self.file.clone(),
+            start: self.edge(start),
+            end: self.edge(end.max(start)),
+        })
+    }
+
+    /// The line a span begins on, for `Node.lines`.
+    fn line_of(&self, span: Option<(usize, usize)>) -> usize {
+        span.map(|(s, _)| self.index.line_col(self.src, s).0)
+            .unwrap_or(1)
+    }
+}
+
 pub fn parse(content: &str, args: Option<ParserArgs>) -> Result<Node> {
+    // Every rewrite below moves bytes, and each records what it moved so a
+    // position in the final buffer can be traced back to the file the author
+    // typed. Without that chain an offset here indexes a string nobody has
+    // ever seen, which is why positions used to be discarded entirely.
+    let mut maps = crate::sourcemap::SourceMapChain::new();
+
+    // The file as the author has it open, kept for the whole of this
+    // function. Every rewrite below shadows `content`; positions are mapped
+    // back to THIS, so this is the string they index and this is what line
+    // and column are counted against.
+    let original = content;
+
+    // A byte-order mark, if the file has one.
+    //
+    // pulldown-cmark does not strip it, so `\u{FEFF}# Title` is not a
+    // heading -- it is a paragraph that happens to start with a `#`. Two
+    // files in the corpus are like that, and the website generator already
+    // strips a BOM before calling this for exactly that reason. Doing it
+    // here instead means every caller is covered, including the ones that
+    // read a file straight off disk and have no such workaround.
+    //
+    // Three bytes removed, recorded like any other rewrite, so positions
+    // still point into the file the author has open.
+    let (content, bom_map) = {
+        let mut m = crate::sourcemap::SourceMap::identity();
+        match content.strip_prefix('\u{FEFF}') {
+            Some(rest) => {
+                m.replace(0..0, 0..'\u{FEFF}'.len_utf8());
+                (rest, m)
+            }
+            None => (content, m),
+        }
+    };
+    maps.push(bom_map);
+
     // Extract frontmatter.
-    let (frontmatter_data, content_without_fm) = frontmatter::extract_frontmatter(content)?;
+    let (frontmatter_data, content_without_fm, fm_offset) =
+        frontmatter::extract_frontmatter_mapped(content)?;
+    let mut fm_map = crate::sourcemap::SourceMap::identity();
+    if fm_offset > 0 {
+        fm_map.replace(0..0, 0..fm_offset);
+    }
+    maps.push(fm_map);
 
     // Neutralise escaped tag openers (`\{%`) before any tag scanner runs, so
     // they are never treated as tags. The sentinel is restored to a literal
     // `{%` in node content after parsing (`unescape_tag_literals`).
-    let content_without_fm = content_without_fm.replace("\\{%", ESCAPED_TAG_OPEN);
+    let (content_without_fm, escape_map) =
+        crate::sourcemap::replace_mapped(&content_without_fm, "\\{%", ESCAPED_TAG_OPEN);
+    maps.push(escape_map);
 
     // Inline `{% $var %}` / `{% func(...) %}` interpolation is parsed into
     // interpolation nodes (by `segment_with_tags`) and resolved against the
@@ -27,19 +132,51 @@ pub fn parse(content: &str, args: Option<ParserArgs>) -> Result<Node> {
     // 1. Pre-extract Markdoc list-syntax `{% table %}` blocks. Their inner
     //    `---`/`*` syntax must be parsed here, before pulldown-cmark mangles
     //    it; each block becomes a placeholder spliced back in after parsing.
-    let (content_with_tables, list_tables) =
-        crate::list_table::extract_list_tables(&content_without_fm);
+    let (content_with_tables, list_tables, table_map) =
+        crate::list_table::extract_list_tables_mapped(&content_without_fm);
+    maps.push(table_map);
 
     // 2. Extract structural tags (`{% name attrs %}`, `{% /name %}`, etc.)
     //    into a side-table; replace each occurrence with a sentinel so the
     //    markdown tokenizer leaves them as opaque text. The tokenizer
     //    re-merges tag events back into the token stream.
-    let (content_with_sentinels, parsed_tags) = tag_parser::segment_with_tags(&content_with_tables);
+    let (content_with_sentinels, mut parsed_tags, sentinel_map) =
+        tag_parser::segment_with_tags_mapped(&content_with_tables);
+
+    // Two coordinate systems meet here, and conflating them is how markdown
+    // positions came to be wrong after the first tag in a file.
+    //
+    // A tag's own span was measured in `content_with_tables`, BEFORE it was
+    // replaced by a sentinel -- the tag does not exist in the buffer the
+    // tokenizer reads. So it is translated now, through the three maps built
+    // so far.
+    for tag in &mut parsed_tags {
+        tag.source_range = maps.map_range(tag.source_range.clone());
+    }
 
     let tokenizer = Tokenizer::new();
-    let tokens = tokenizer.tokenize_with_tags(&content_with_sentinels, &parsed_tags);
+    let mut tokens = tokenizer.tokenize_with_tags(&content_with_sentinels, &parsed_tags);
+
+    // Everything cmark reported, on the other hand, is measured in
+    // `content_with_sentinels`, so it needs the fourth map as well. A
+    // sentinel is three to five bytes where the tag may have been eighty.
+    maps.push(sentinel_map);
+    for token in &mut tokens {
+        // A tag token's position is the tag's own span, already translated
+        // above. Running it through the chain again would map a position
+        // that is no longer in the chain's input space.
+        if matches!(token.event, TokenEvent::Tag(_)) {
+            continue;
+        }
+        if let Some((start, end)) = token.position {
+            let mapped = maps.map_range(start..end);
+            token.position = Some((mapped.start, mapped.end));
+        }
+    }
+
     let tokens = lift_block_tags(tokens);
-    let mut doc = parse_tokens(tokens, args)?;
+    let spans = Spans::new(original, args.as_ref().and_then(|a| a.file.clone()));
+    let mut doc = parse_tokens(tokens, args, &spans)?;
 
     // Swap the list-table placeholders for their parsed `Table` nodes.
     crate::list_table::splice_list_tables(&mut doc, &list_tables);
@@ -213,7 +350,7 @@ fn flush_segment(seg: &mut Vec<Token>, para_start: &Token, para_end: &Token, out
     out.push(para_end.clone());
 }
 
-fn parse_tokens(tokens: Vec<Token>, args: Option<ParserArgs>) -> Result<Node> {
+fn parse_tokens(tokens: Vec<Token>, args: Option<ParserArgs>, spans: &Spans) -> Result<Node> {
     let args = args.unwrap_or(ParserArgs {
         file: None,
         slots: false,
@@ -222,16 +359,33 @@ fn parse_tokens(tokens: Vec<Token>, args: Option<ParserArgs>) -> Result<Node> {
 
     let mut doc = Node::new(NodeType::Document, HashMap::new(), Vec::new(), None);
     let mut stack: Vec<Node> = vec![doc.clone()];
-    let line_num = 1;
+    // Syntax errors found while building the tree. They are collected rather
+    // than returned, because `parse` is used by a renderer and by a linter
+    // and the two want opposite things from a bad document: the renderer
+    // wants the rest of it, the linter wants every fault at once. Returning
+    // on the first would give neither.
+    let mut errors: Vec<ValidationError> = Vec::new();
 
     for token in tokens {
+        let span = token.position;
         match token.event {
             TokenEvent::Start(token_type) => {
-                let node = create_node_from_token(&token_type, line_num, &args);
+                let node = create_node_from_token(&token_type, span, spans, &args);
                 stack.push(node);
             }
             TokenEvent::End(_token_type) => {
                 if stack.len() > 1 {
+                    // `close_to_tag` may have already attached open markdown
+                    // containers (lists, paragraphs, …) to a Markdoc tag that
+                    // closed mid-structure. Pulldown-cmark still emits the
+                    // matching End events afterward; ignoring them when a
+                    // Markdoc tag is on top keeps `{% if %}` / `{% callout %}`
+                    // from being popped early (which would leak later siblings
+                    // out of the conditional — e.g. a list inside a callout
+                    // inside an if, then a blank line, then another callout).
+                    if matches!(stack.last().map(|n| &n.node_type), Some(NodeType::Tag)) {
+                        continue;
+                    }
                     let node = stack.pop().unwrap();
 
                     if let Some(parent) = stack.last_mut() {
@@ -252,7 +406,11 @@ fn parse_tokens(tokens: Vec<Token>, args: Option<ParserArgs>) -> Result<Node> {
                 if let Some(parent) = stack.last_mut() {
                     let mut attrs = HashMap::new();
                     attrs.insert("content".to_string(), Scalar::String(text));
-                    let text_node = Node::new(NodeType::Text, attrs, Vec::new(), None);
+                    let mut text_node = Node::new(NodeType::Text, attrs, Vec::new(), None);
+                    // A leaf, and the only kind of node that holds prose. A
+                    // style checker reporting "passive voice" with nothing to
+                    // point at is a list of complaints about a file.
+                    locate(&mut text_node, span, spans, &args);
                     parent.push(text_node);
                 }
             }
@@ -260,7 +418,8 @@ fn parse_tokens(tokens: Vec<Token>, args: Option<ParserArgs>) -> Result<Node> {
                 if let Some(parent) = stack.last_mut() {
                     let mut attrs = HashMap::new();
                     attrs.insert("content".to_string(), Scalar::String(code));
-                    let code_node = Node::new(NodeType::Code, attrs, Vec::new(), None);
+                    let mut code_node = Node::new(NodeType::Code, attrs, Vec::new(), None);
+                    locate(&mut code_node, span, spans, &args);
                     parent.push(code_node);
                 }
             }
@@ -274,35 +433,71 @@ fn parse_tokens(tokens: Vec<Token>, args: Option<ParserArgs>) -> Result<Node> {
                 {
                     let mut attrs = HashMap::new();
                     attrs.insert("content".to_string(), Scalar::String(html));
-                    let text_node = Node::new(NodeType::Text, attrs, Vec::new(), None);
+                    let mut text_node = Node::new(NodeType::Text, attrs, Vec::new(), None);
+                    locate(&mut text_node, span, spans, &args);
                     parent.push(text_node);
                 }
             }
             TokenEvent::Tag(kind) => {
-                handle_tag_event(kind, &mut stack, line_num, &args);
+                handle_tag_event(kind, &mut stack, span, spans, &args, &mut errors);
             }
-        }
-
-        // Track line numbers (simplified)
-        if let Some((_, _end_pos)) = token.position {
-            // TODO This is a simplification - in a real implementation,
-            // we'd need to track actual line numbers from the source
         }
     }
 
-    // Pop remaining nodes and add to parent
+    // What is still on the stack is what nobody closed.
+    //
+    // Markdown containers can legitimately be here: `TokenEvent::End` is
+    // skipped while a Markdoc tag is on top of the stack (see the note
+    // there), so a paragraph inside an unclosed `{% if %}` never got its
+    // End. A **tag** that is still open is different -- it is a document
+    // the author did not finish, and until now it silently swallowed
+    // everything after it to the end of the file.
     while stack.len() > 1 {
         let node = stack.pop().unwrap();
+        if let (NodeType::Tag, Some(name)) = (&node.node_type, node.tag.as_deref())
+            && name != INTERPOLATION_TAG
+        {
+            errors.push(ValidationError {
+                id: "unclosed-tag".to_string(),
+                level: ValidationLevel::Error,
+                message: format!(
+                    "`{{% {name} %}}` is never closed. Everything after it to the end of the \
+                     file became its content; add `{{% /{name} %}}`."
+                ),
+                location: node.location.clone(),
+            });
+        }
         if let Some(parent) = stack.last_mut() {
             parent.push(node);
         }
     }
 
     doc = stack.pop().unwrap();
+    if args.location {
+        doc.lines = vec![1];
+        doc.location = spans.location(Some((0, spans.src.len())));
+    }
+    doc.errors.extend(errors);
     Ok(doc)
 }
 
-fn create_node_from_token(token_type: &TokenType, line: usize, args: &ParserArgs) -> Node {
+/// Give a node its position, if positions were asked for and there is one.
+fn locate(node: &mut Node, span: Option<(usize, usize)>, spans: &Spans, args: &ParserArgs) {
+    if !args.location {
+        return;
+    }
+    if let Some(loc) = spans.location(span) {
+        node.lines = vec![loc.start.line];
+        node.location = Some(loc);
+    }
+}
+
+fn create_node_from_token(
+    token_type: &TokenType,
+    span: Option<(usize, usize)>,
+    spans: &Spans,
+    args: &ParserArgs,
+) -> Node {
     let (node_type, attributes) = match token_type {
         TokenType::Paragraph => (NodeType::Paragraph, HashMap::new()),
         TokenType::Heading(level) => {
@@ -382,18 +577,8 @@ fn create_node_from_token(token_type: &TokenType, line: usize, args: &ParserArgs
     }
 
     if args.location {
-        node.lines = vec![line];
-        node.location = Some(Location {
-            file: args.file.clone(),
-            start: LocationEdge {
-                line,
-                character: None,
-            },
-            end: LocationEdge {
-                line,
-                character: None,
-            },
-        });
+        node.lines = vec![spans.line_of(span)];
+        node.location = spans.location(span);
     }
 
     node
@@ -410,17 +595,38 @@ fn is_slot_node(node: &Node) -> bool {
 ///     still open are attached too, in source order)
 ///   - SelfClose  → push then immediately pop
 ///   - HeadingId  → store the id on the nearest enclosing heading
-fn handle_tag_event(kind: TagKind, stack: &mut Vec<Node>, line: usize, args: &ParserArgs) {
+fn handle_tag_event(
+    kind: TagKind,
+    stack: &mut Vec<Node>,
+    span: Option<(usize, usize)>,
+    spans: &Spans,
+    args: &ParserArgs,
+    errors: &mut Vec<ValidationError>,
+) {
     match kind {
         TagKind::Open { name, attrs } => {
-            stack.push(make_tag_node(&name, attrs, line, args));
+            stack.push(make_tag_node(&name, attrs, span, spans, args));
         }
         TagKind::SelfClose { name, attrs } => {
-            stack.push(make_tag_node(&name, attrs, line, args));
+            stack.push(make_tag_node(&name, attrs, span, spans, args));
             close_to_tag(&name, stack);
         }
         TagKind::Close { name } => {
-            close_to_tag(&name, stack);
+            if !close_to_tag(&name, stack) {
+                // A close with nothing open to close. It used to be dropped
+                // without a word, which is the worst of both: the document
+                // renders, and the thing the author got wrong is invisible.
+                errors.push(ValidationError {
+                    id: "unmatched-closing-tag".to_string(),
+                    level: ValidationLevel::Error,
+                    message: format!(
+                        "`{{% /{name} %}}` closes a tag that is not open here. Either the \
+                         opening `{{% {name} %}}` is missing, or something between them is \
+                         closed in the wrong order."
+                    ),
+                    location: spans.location(span),
+                });
+            }
         }
         TagKind::HeadingId { id } => {
             // Walk the stack backwards looking for the nearest open heading.
@@ -444,6 +650,10 @@ fn handle_tag_event(kind: TagKind, stack: &mut Vec<Node>, line: usize, args: &Pa
             );
             node.expressions.insert("primary".to_string(), expr);
             node.inline = true;
+            // `{% $robot.name %}` is as much a place in the file as any
+            // other tag. A linter reporting an unknown variable has nowhere
+            // to point without this.
+            locate(&mut node, span, spans, args);
             if let Some(parent) = stack.last_mut() {
                 parent.push(node);
             }
@@ -458,7 +668,13 @@ pub(crate) const INTERPOLATION_TAG: &str = "$interpolation";
 /// Build a `Tag` node from parsed attributes, splitting them into the
 /// `attributes` map (literal scalars) and the `expressions` map (raw
 /// expression source for variables and function calls).
-fn make_tag_node(name: &str, attrs: tag_parser::TagAttrs, line: usize, args: &ParserArgs) -> Node {
+fn make_tag_node(
+    name: &str,
+    attrs: tag_parser::TagAttrs,
+    span: Option<(usize, usize)>,
+    spans: &Spans,
+    args: &ParserArgs,
+) -> Node {
     let mut attributes: HashMap<String, Scalar> = HashMap::new();
     let mut expressions: HashMap<String, String> = HashMap::new();
 
@@ -491,18 +707,8 @@ fn make_tag_node(name: &str, attrs: tag_parser::TagAttrs, line: usize, args: &Pa
     );
     node.expressions = expressions;
     if args.location {
-        node.lines = vec![line];
-        node.location = Some(Location {
-            file: args.file.clone(),
-            start: LocationEdge {
-                line,
-                character: None,
-            },
-            end: LocationEdge {
-                line,
-                character: None,
-            },
-        });
+        node.lines = vec![spans.line_of(span)];
+        node.location = spans.location(span);
     }
     node
 }
@@ -511,12 +717,16 @@ fn make_tag_node(name: &str, attrs: tag_parser::TagAttrs, line: usize, args: &Pa
 /// node with the given name is itself popped and attached. If no such tag
 /// is open, the call is a no-op (mismatched close — silently ignored for now;
 /// future work: emit a ValidationError).
-fn close_to_tag(name: &str, stack: &mut Vec<Node>) {
+/// Close the nearest open tag called `name`, attaching everything above it.
+///
+/// Returns whether there was one. A `false` is a syntax error the caller
+/// reports; this function does not know where in the file the close was.
+fn close_to_tag(name: &str, stack: &mut Vec<Node>) -> bool {
     // Find the position of the matching tag on the stack.
     let target = stack
         .iter()
         .rposition(|n| matches!(n.node_type, NodeType::Tag) && n.tag.as_deref() == Some(name));
-    let Some(target) = target else { return };
+    let Some(target) = target else { return false };
 
     // Pop everything above the target into their parents.
     while stack.len() > target + 1 {
@@ -530,11 +740,289 @@ fn close_to_tag(name: &str, stack: &mut Vec<Node>) {
     if let Some(parent) = stack.last_mut() {
         parent.push(tag_node);
     }
+    true
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    // ---- positions -------------------------------------------------------
+
+    /// Every node's span, as the text it actually covers in the original
+    /// file. Written this way because an offset pair proves nothing on its
+    /// own: a test asserting `42..49` passes just as happily when the file
+    /// has shifted under it.
+    fn spanned(src: &str) -> Vec<(NodeType, Option<String>, String, usize)> {
+        fn walk(n: &Node, src: &str, out: &mut Vec<(NodeType, Option<String>, String, usize)>) {
+            if let Some(l) = &n.location {
+                out.push((
+                    n.node_type.clone(),
+                    n.tag.clone(),
+                    src.get(l.start.offset..l.end.offset)
+                        .unwrap_or("<out of bounds>")
+                        .to_string(),
+                    l.start.line,
+                ));
+            }
+            for c in &n.children {
+                walk(c, src, out);
+            }
+        }
+        let doc = parse(src, None).unwrap();
+        let mut out = Vec::new();
+        walk(&doc, src, &mut out);
+        out
+    }
+
+    fn text_spans(src: &str) -> Vec<(String, usize)> {
+        spanned(src)
+            .into_iter()
+            .filter(|(t, _, _, _)| matches!(t, NodeType::Text))
+            .map(|(_, _, s, line)| (s, line))
+            .collect()
+    }
+
+    #[test]
+    fn a_nodes_span_is_the_text_it_covers() {
+        let src = "# Heading\n\nSome prose.\n";
+        assert_eq!(
+            text_spans(src),
+            vec![("Heading".to_string(), 1), ("Some prose.".to_string(), 3)]
+        );
+    }
+
+    #[test]
+    fn frontmatter_does_not_shift_the_lines_below_it() {
+        // The first of the four rewrites. Without its map every position in
+        // every document with frontmatter -- which is nearly all of them --
+        // is short by the length of the frontmatter.
+        let src = "---\ntitle: x\nfoo: bar\n---\n\n# Heading\n";
+        assert_eq!(text_spans(src), vec![("Heading".to_string(), 6)]);
+    }
+
+    #[test]
+    fn a_tag_knows_where_it_is_and_not_where_its_paragraph_is() {
+        // Three tags on one line are one cmark Text event. Giving each the
+        // event's span points all three diagnostics at the same place.
+        let src = "{% tag id=\"a\" /%} and {% tag id=\"b\" /%}\n";
+        let tags: Vec<String> = spanned(src)
+            .into_iter()
+            .filter(|(t, _, _, _)| matches!(t, NodeType::Tag))
+            .map(|(_, _, s, _)| s)
+            .collect();
+        assert_eq!(
+            tags,
+            vec![
+                "{% tag id=\"a\" /%}".to_string(),
+                "{% tag id=\"b\" /%}".to_string()
+            ]
+        );
+    }
+
+    #[test]
+    fn prose_after_a_tag_is_not_shifted_by_the_sentinel() {
+        // The fourth rewrite, and the one that had no map: a sentinel is a
+        // handful of bytes where the tag was eighty, so every markdown
+        // position after the first tag in a file pointed into a buffer
+        // nothing else has ever seen. Nothing read those positions, so
+        // nothing looked wrong.
+        let src = "{% callout type=\"note\" %}\nInside the callout.\n{% /callout %}\n\nAfter.\n";
+        assert_eq!(
+            text_spans(src),
+            vec![
+                ("Inside the callout.".to_string(), 2),
+                ("After.".to_string(), 5)
+            ]
+        );
+    }
+
+    #[test]
+    fn an_escaped_tag_opener_does_not_shift_what_follows() {
+        // The second rewrite: `\\{%` becomes a one-char sentinel, losing two
+        // bytes, and everything after it moves.
+        let src = "Literal \\{% not a tag %} here.\n\nAfter.\n";
+        let spans = text_spans(src);
+        assert_eq!(spans.last(), Some(&("After.".to_string(), 3)));
+    }
+
+    #[test]
+    fn a_character_column_counts_utf16_units() {
+        // 'é' is two bytes and one UTF-16 unit. An editor counts the latter.
+        let src = "café **bold**\n";
+        let doc = parse(src, None).unwrap();
+        let bold = find(&doc, &|n| matches!(n.node_type, NodeType::Strong)).unwrap();
+        let loc = bold.location.as_ref().unwrap();
+        assert_eq!(loc.start.line, 1);
+        assert_eq!(loc.start.character, Some(5), "five characters precede it");
+        assert_eq!(loc.start.offset, 6, "six bytes precede it");
+    }
+
+    #[test]
+    fn a_byte_order_mark_does_not_eat_the_first_heading() {
+        // pulldown-cmark does not strip it, so `\u{FEFF}# Title` was a
+        // paragraph that happened to start with a `#`. Two files in the
+        // corpus are like that, and the website generator carries its own
+        // workaround for exactly this.
+        let src = "\u{FEFF}# Heading\n\nText.\n";
+        let doc = parse(src, None).unwrap();
+        let h = find(&doc, &|n| matches!(n.node_type, NodeType::Heading))
+            .expect("the first line is a heading, BOM or no BOM");
+        let loc = h.location.as_ref().unwrap();
+        // And the position still points into the file as it is on disk,
+        // three bytes in -- not into the copy with the BOM removed.
+        assert_eq!(&src[loc.start.offset..loc.end.offset], "# Heading\n");
+        assert_eq!(loc.start.line, 1);
+    }
+
+    #[test]
+    fn an_interpolation_knows_where_it_is() {
+        let src = "The {% $mir250 %} is heavier.\n";
+        let doc = parse(src, None).unwrap();
+        let interp = find(&doc, &|n| n.tag.as_deref() == Some(INTERPOLATION_TAG))
+            .expect("the variable is a node");
+        let loc = interp.location.as_ref().expect("and it has a position");
+        assert_eq!(&src[loc.start.offset..loc.end.offset], "{% $mir250 %}");
+    }
+
+    #[test]
+    fn a_list_table_is_located_but_its_cells_are_not() {
+        // The block is where the placeholder was, which is right. A cell is
+        // parsed from an extracted copy and its offsets index that copy, so
+        // it has none rather than a confident wrong one.
+        let src = "Before.\n\n{% table %}\n---\n* A\n* B\n{% /table %}\n";
+        let doc = parse(src, None).unwrap();
+        let table = find(&doc, &|n| matches!(n.node_type, NodeType::Table)).unwrap();
+        let loc = table
+            .location
+            .as_ref()
+            .expect("the table knows where it is");
+        assert!(
+            src[loc.start.offset..loc.end.offset].contains("{% table %}"),
+            "{:?}",
+            &src[loc.start.offset..loc.end.offset]
+        );
+        fn no_locations(n: &Node) {
+            assert!(
+                n.location.is_none(),
+                "{:?} should carry no position",
+                n.node_type
+            );
+            for c in &n.children {
+                no_locations(c);
+            }
+        }
+        for child in &table.children {
+            no_locations(child);
+        }
+    }
+
+    #[test]
+    fn an_offset_is_always_on_a_character_boundary() {
+        // Nothing may hand out an offset that cannot be sliced. The interior
+        // of a `{% table %}` block is parsed from an extracted copy, so its
+        // nodes map to the block rather than to the cell, and the arithmetic
+        // can land mid-character in prose containing an em dash.
+        let src = "{% table %}\n---\n* Connected to the robot\u{2014}see below\n{% /table %}\n";
+        let doc = parse(src, None).unwrap();
+        fn check(n: &Node, src: &str) {
+            if let Some(l) = &n.location {
+                assert!(
+                    src.is_char_boundary(l.start.offset) && src.is_char_boundary(l.end.offset),
+                    "{:?} {}..{} is not sliceable",
+                    n.node_type,
+                    l.start.offset,
+                    l.end.offset
+                );
+                assert!(l.start.offset <= l.end.offset);
+                assert!(l.end.offset <= src.len());
+            }
+            for c in &n.children {
+                check(c, src);
+            }
+        }
+        check(&doc, src);
+    }
+
+    #[test]
+    fn positions_can_still_be_turned_off() {
+        let args = ParserArgs {
+            file: None,
+            slots: false,
+            location: false,
+        };
+        let doc = parse("# Heading\n", Some(args)).unwrap();
+        let h = find(&doc, &|n| matches!(n.node_type, NodeType::Heading)).unwrap();
+        assert!(h.location.is_none());
+    }
+
+    #[test]
+    fn the_file_name_travels_onto_every_node() {
+        let args = ParserArgs {
+            file: Some("products/mir250/intro.md".into()),
+            slots: false,
+            location: true,
+        };
+        let doc = parse("# Heading\n", Some(args)).unwrap();
+        let h = find(&doc, &|n| matches!(n.node_type, NodeType::Heading)).unwrap();
+        assert_eq!(
+            h.location.as_ref().unwrap().file.as_deref(),
+            Some("products/mir250/intro.md")
+        );
+    }
+
+    // ---- syntax errors ---------------------------------------------------
+
+    fn errors(src: &str) -> Vec<(String, usize)> {
+        parse(src, None)
+            .unwrap()
+            .errors
+            .iter()
+            .map(|e| {
+                (
+                    e.id.clone(),
+                    e.location.as_ref().map_or(0, |l| l.start.line),
+                )
+            })
+            .collect()
+    }
+
+    #[test]
+    fn an_unclosed_tag_is_reported_with_the_line_it_opened_on() {
+        // It used to swallow the rest of the file in silence.
+        let src = "# T\n\n{% callout %}\nbody\n";
+        assert_eq!(errors(src), vec![("unclosed-tag".to_string(), 3)]);
+    }
+
+    #[test]
+    fn a_close_with_nothing_open_is_reported() {
+        let src = "# T\n\nText.\n\n{% /callout %}\n";
+        assert_eq!(errors(src), vec![("unmatched-closing-tag".to_string(), 5)]);
+    }
+
+    #[test]
+    fn tags_closed_in_the_wrong_order_are_reported() {
+        // `{% /a %}` closes `a` and takes `b` with it, so `{% /b %}` then
+        // has nothing to close.
+        let src = "{% a %}\n{% b %}\n{% /a %}\n{% /b %}\n";
+        assert_eq!(errors(src), vec![("unmatched-closing-tag".to_string(), 4)]);
+    }
+
+    #[test]
+    fn a_well_formed_document_reports_nothing() {
+        let src = "# T\n\n{% callout %}\nbody\n{% /callout %}\n\n{% tag id=\"x\" /%}\n";
+        assert_eq!(errors(src), Vec::<(String, usize)>::new());
+    }
+
+    #[test]
+    fn an_error_does_not_cost_the_rest_of_the_document() {
+        // A linter wants every fault at once and a renderer wants the
+        // document anyway, so a syntax error is collected, never returned.
+        let src = "{% /nope %}\n\n# Still here\n";
+        let doc = parse(src, None).unwrap();
+        assert_eq!(doc.errors.len(), 1);
+        assert!(find(&doc, &|n| matches!(n.node_type, NodeType::Heading)).is_some());
+    }
 
     /// Walk the tree and find the first node satisfying `pred`.
     fn find<'a>(root: &'a Node, pred: &dyn Fn(&Node) -> bool) -> Option<&'a Node> {
@@ -626,6 +1114,83 @@ mod tests {
         assert_eq!(
             warn.attributes.get("content"),
             Some(&Scalar::String("Warn".to_string()))
+        );
+    }
+
+    #[test]
+    fn parses_underscore_emphasis_with_interpolated_variable() {
+        // Emphasis delimiters still wrap an inline `{% $var %}` interpolation
+        // node (resolved later at transform time).
+        let src = "* _{% $model %} Manual_\n";
+        let doc = parse(src, None).unwrap();
+        let em = find(&doc, &|n| matches!(n.node_type, NodeType::Em)).expect("em present");
+        let interp = find(em, &|n| n.tag.as_deref() == Some(INTERPOLATION_TAG))
+            .expect("interpolation inside em");
+        assert_eq!(
+            interp.expressions.get("primary").map(String::as_str),
+            Some("$model")
+        );
+        let text = find(em, &|n| matches!(n.node_type, NodeType::Text)).expect("text in em");
+        assert_eq!(
+            text.attributes.get("content"),
+            Some(&Scalar::String(" Manual".to_string()))
+        );
+    }
+
+    #[test]
+    fn parses_bold_with_interpolated_variable() {
+        let src = "**{% $mir_fleet %}**\n";
+        let doc = parse(src, None).unwrap();
+        let strong =
+            find(&doc, &|n| matches!(n.node_type, NodeType::Strong)).expect("strong present");
+        let interp = find(strong, &|n| n.tag.as_deref() == Some(INTERPOLATION_TAG))
+            .expect("interpolation inside strong");
+        assert_eq!(
+            interp.expressions.get("primary").map(String::as_str),
+            Some("$mir_fleet")
+        );
+    }
+
+    #[test]
+    fn spaced_underscores_do_not_form_emphasis() {
+        let src = "* _ {% $model %} Manual _\n";
+        let doc = parse(src, None).unwrap();
+        assert!(
+            find(&doc, &|n| matches!(n.node_type, NodeType::Em)).is_none(),
+            "spaces inside _ delimiters must prevent emphasis"
+        );
+    }
+
+    #[test]
+    fn indented_bold_inside_if_is_not_emphasis() {
+        // Four-space indent makes this a code block in CommonMark, not bold.
+        let src = r#"{% if $show %}
+
+    **MiR Fleet**
+
+{% /if %}"#;
+        let doc = parse(src, None).unwrap();
+        assert!(
+            find(&doc, &|n| matches!(n.node_type, NodeType::Strong)).is_none(),
+            "indented bold inside if-block is not parsed as Strong"
+        );
+    }
+
+    #[test]
+    fn dedented_bold_inside_if_parses_as_strong() {
+        let src = r#"{% if $show %}
+
+**MiR Fleet**
+
+{% /if %}"#;
+        let doc = parse(src, None).unwrap();
+        let strong =
+            find(&doc, &|n| matches!(n.node_type, NodeType::Strong)).expect("strong present");
+        let text =
+            find(strong, &|n| matches!(n.node_type, NodeType::Text)).expect("text in strong");
+        assert_eq!(
+            text.attributes.get("content"),
+            Some(&Scalar::String("MiR Fleet".to_string()))
         );
     }
 
@@ -737,6 +1302,85 @@ mod tests {
     }
 
     #[test]
+    fn list_inside_callout_inside_if_keeps_following_siblings() {
+        // Regression: a markdown list inside `{% callout %}` leaves
+        // pending List/Item/Paragraph End events after `{% /callout %}`.
+        // Those must not pop the enclosing `{% if %}`, or later callouts
+        // (and `{% else / %}`) escape the conditional.
+        let src = r#"{% if $x %}
+{% callout type="warning" %}
+Intro text.
+* first item
+
+* second item
+{% /callout %}
+
+{% callout type="warning" %}
+Second callout
+{% /callout %}
+{% /if %}
+"#;
+        let doc = parse(src, None).unwrap();
+        assert_eq!(
+            count_children(&doc, &|n| matches!(n.node_type, NodeType::Tag)
+                && n.tag.as_deref() == Some("if")),
+            1,
+            "exactly one top-level if, tree was {doc:#?}"
+        );
+        let if_node = tag_named(&doc, "if").unwrap();
+        assert_eq!(
+            count_children(if_node, &|n| matches!(n.node_type, NodeType::Tag)
+                && n.tag.as_deref() == Some("callout")),
+            2,
+            "both callouts must stay inside if, tree was {doc:#?}"
+        );
+        assert_eq!(
+            count_children(&doc, &|n| matches!(n.node_type, NodeType::Tag)
+                && n.tag.as_deref() == Some("callout")),
+            0,
+            "no callout may leak to document root, tree was {doc:#?}"
+        );
+    }
+
+    #[test]
+    fn list_inside_callout_then_else_stays_inside_if() {
+        let src = r#"{% if $top_module %}
+{% callout type="warning" %}
+If the robot transports a load that is larger than the supported size.
+
+* Do not load the robot with loads that extend beyond supported dimensions.
+{% /callout %}
+
+{% else / %}
+
+{% callout type="warning" %}
+Else branch callout
+{% /callout %}
+{% /if %}
+"#;
+        let doc = parse(src, None).unwrap();
+        let if_node = tag_named(&doc, "if").expect("if present");
+        assert_eq!(
+            count_children(if_node, &|n| matches!(n.node_type, NodeType::Tag)
+                && n.tag.as_deref() == Some("else")),
+            1,
+            "else must be a direct child of if, tree was {doc:#?}"
+        );
+        assert_eq!(
+            count_children(if_node, &|n| matches!(n.node_type, NodeType::Tag)
+                && n.tag.as_deref() == Some("callout")),
+            2,
+            "both branch callouts must stay inside if, tree was {doc:#?}"
+        );
+        assert_eq!(
+            count_children(&doc, &|n| matches!(n.node_type, NodeType::Tag)
+                && n.tag.as_deref() == Some("else")),
+            0,
+            "else must not leak to document root, tree was {doc:#?}"
+        );
+    }
+
+    #[test]
     fn inline_tag_sharing_a_line_stays_inline() {
         // A tag with text on the same line is inline and must NOT be
         // lifted to block level.
@@ -843,5 +1487,46 @@ mod tests {
         let plain = parse("| A | B |\n|---|---|\n| a | b |\n", None).unwrap();
         let t2 = find(&plain, &|n| matches!(n.node_type, NodeType::Table)).expect("table");
         assert!(!t2.attributes.contains_key("align"));
+    }
+
+    #[test]
+    fn indented_if_inside_ordered_list_keeps_one_list() {
+        // PDF preprocess keeps list-continuation indent on `{% if %}` so
+        // CommonMark does not terminate the ordered list between steps.
+        let src = r#"1. First step.
+
+2. Second step.
+   {% if not($top_module) %}
+   {% image id="aaa" /%}
+   {% else / %}
+   {% image id="bbb" /%}
+   {% /if %}
+
+3. Third step.
+"#;
+        let doc = parse(src, None).unwrap();
+        assert_eq!(
+            count_children(&doc, &|n| matches!(n.node_type, NodeType::List)),
+            1,
+            "expected a single ordered list, tree was {doc:#?}"
+        );
+        let list = find(&doc, &|n| matches!(n.node_type, NodeType::List)).unwrap();
+        assert_eq!(
+            count_children(list, &|n| matches!(n.node_type, NodeType::Item)),
+            3,
+            "expected three list items, tree was {doc:#?}"
+        );
+        let second = list
+            .children
+            .iter()
+            .filter(|n| matches!(n.node_type, NodeType::Item))
+            .nth(1)
+            .expect("second item");
+        assert_eq!(
+            count_children(second, &|n| matches!(n.node_type, NodeType::Tag)
+                && n.tag.as_deref() == Some("if")),
+            1,
+            "conditional must stay inside the second list item, tree was {doc:#?}"
+        );
     }
 }

@@ -86,6 +86,20 @@ pub fn evaluate(
     }
 }
 
+/// Build a table of the built-ins with `extra` layered on top. Callers that
+/// define their own functions pass the result to `evaluate`, or to the
+/// `*_with_functions` entry points on `conditionals` and `transformer`.
+///
+/// Merged once per document rather than per expression: the map is small and
+/// the alternative is a lookup closure threaded through every recursion.
+pub fn functions_with(extra: &HashMap<String, FunctionImpl>) -> HashMap<String, FunctionImpl> {
+    let mut merged = default_function_impls().clone();
+    for (name, impl_) in extra {
+        merged.insert(name.clone(), *impl_);
+    }
+    merged
+}
+
 /// Evaluate using the built-in default function table (equals/and/or/not).
 pub fn evaluate_default(expr: &Expression, ctx: &Context) -> Result<Scalar> {
     evaluate(expr, ctx, default_function_impls())

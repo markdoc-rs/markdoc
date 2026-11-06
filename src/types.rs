@@ -119,8 +119,25 @@ pub struct Location {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct LocationEdge {
+    /// 1-based, as every editor counts lines.
     pub line: usize,
+    /// 0-based, in **UTF-16 code units** -- what the Language Server
+    /// Protocol counts, and not the same as bytes or as `char`s the moment
+    /// a document contains an accent or an emoji.
     pub character: Option<usize>,
+    /// Byte offset into the original file.
+    ///
+    /// Carried as well as the line/character pair because the two answer
+    /// different questions: an editor wants line and column, and a lint rule
+    /// wants to slice the source it is complaining about. Deriving one from
+    /// the other at every call site means re-indexing the file at every call
+    /// site.
+    ///
+    /// `#[serde(default)]` so an AST serialised before this field existed
+    /// still deserialises; it reads back as 0, which is why nothing should
+    /// treat 0 as meaningful without checking `line` too.
+    #[serde(default)]
+    pub offset: usize,
 }
 
 #[derive(Debug, Clone, PartialEq, Serialize, Deserialize)]

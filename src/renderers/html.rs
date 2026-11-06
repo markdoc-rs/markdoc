@@ -14,12 +14,23 @@ fn render_tag(tag: &Tag) -> String {
     html.push('<');
     html.push_str(&tag.name);
 
-    // Attributes
-    for (key, value) in &tag.attributes {
+    // Attributes, in sorted order.
+    //
+    // `Tag::attributes` is a HashMap and Rust randomises its iteration order
+    // per process, so the same tree rendered twice produced different bytes --
+    // observed in one file: `<image id=… size=…>` and `<image size=… id=…>`.
+    // Any consumer that hashes the output (the support portal content-hashes
+    // every page for its ETag table) would then see every page change on every
+    // build. Sorting is the smallest fix that makes a render reproducible;
+    // preserving *source* order would mean an IndexMap and a public API
+    // change, which is worth doing separately.
+    let mut names: Vec<&String> = tag.attributes.keys().collect();
+    names.sort();
+    for key in names {
         html.push(' ');
         html.push_str(key);
         html.push_str("=\"");
-        html.push_str(&escape_html(&scalar_to_string(value)));
+        html.push_str(&escape_html(&scalar_to_string(&tag.attributes[key])));
         html.push('"');
     }
 

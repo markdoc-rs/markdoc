@@ -1,5 +1,6 @@
 use crate::ast::Node;
-use crate::expression::{evaluate_default, parse_expression};
+use crate::expression::{default_function_impls, evaluate, parse_expression};
+use crate::functions::FunctionImpl;
 use crate::parser::INTERPOLATION_TAG;
 use crate::types::*;
 use std::collections::HashMap;
@@ -21,7 +22,21 @@ pub fn transform_with_context(
     config: &Config,
     ctx: &Context,
 ) -> Result<RenderableTreeNode> {
-    transform_node(node, config, ctx)
+    transform_node(node, config, ctx, default_function_impls())
+}
+
+/// As `transform_with_context`, with caller-supplied functions.
+///
+/// Attribute expressions and `{% $var %}` interpolation evaluate here, so a
+/// document whose attributes call a caller-defined function needs the same
+/// table the conditionals got. Build it with `expression::functions_with`.
+pub fn transform_with_functions(
+    node: &Node,
+    config: &Config,
+    ctx: &Context,
+    fns: &HashMap<String, FunctionImpl>,
+) -> Result<RenderableTreeNode> {
+    transform_node(node, config, ctx, fns)
 }
 
 /// Build a Context from a Document node's `frontmatter` attribute (if any).
@@ -35,7 +50,12 @@ fn default_context_from(node: &Node) -> Context {
     ctx
 }
 
-fn transform_node(node: &Node, config: &Config, ctx: &Context) -> Result<RenderableTreeNode> {
+fn transform_node(
+    node: &Node,
+    config: &Config,
+    ctx: &Context,
+    fns: &HashMap<String, FunctionImpl>,
+) -> Result<RenderableTreeNode> {
     // Inline interpolation `{% $var %}` / `{% func(...) %}` — evaluate the
     // captured expression against the context and emit the value as text. A
     // parse / evaluation failure (e.g. unknown function) drops to empty
@@ -45,7 +65,7 @@ fn transform_node(node: &Node, config: &Config, ctx: &Context) -> Result<Rendera
             .expressions
             .get("primary")
             .and_then(|src| parse_expression(src).ok())
-            .and_then(|expr| evaluate_default(&expr, ctx).ok())
+            .and_then(|expr| evaluate(&expr, ctx, fns).ok())
             .unwrap_or(Scalar::Null);
         return Ok(RenderableTreeNode::Scalar(Scalar::String(
             scalar_to_display(&value),
@@ -59,10 +79,10 @@ fn transform_node(node: &Node, config: &Config, ctx: &Context) -> Result<Rendera
     // For now, we'll do basic transformation
 
     // Transform attributes
-    let attributes = transform_attributes(node, config, ctx, &schema)?;
+    let attributes = transform_attributes(node, config, ctx, &schema, fns)?;
 
     // Transform children
-    let children = transform_children(node, config, ctx)?;
+    let children = transform_children(node, config, ctx, fns)?;
 
     // Create tag or return scalar
     if should_render_as_tag(node, &schema) {
@@ -140,6 +160,7 @@ fn transform_attributes(
     _config: &Config,
     ctx: &Context,
     schema: &Option<Schema>,
+    fns: &HashMap<String, FunctionImpl>,
 ) -> Result<HashMap<String, Scalar>> {
     let mut transformed = HashMap::new();
 
@@ -158,7 +179,7 @@ fn transform_attributes(
                 "Failed to parse expression for attribute {key:?} ({source:?}): {e}"
             ))
         })?;
-        let value = evaluate_default(&expr, ctx)?;
+        let value = evaluate(&expr, ctx, fns)?;
         place_attribute(&mut transformed, schema, key, value);
     }
 
@@ -212,11 +233,12 @@ fn transform_children(
     node: &Node,
     config: &Config,
     ctx: &Context,
+    fns: &HashMap<String, FunctionImpl>,
 ) -> Result<Vec<RenderableTreeNode>> {
     let mut children = Vec::new();
 
     for child in &node.children {
-        children.push(transform_node(child, config, ctx)?);
+        children.push(transform_node(child, config, ctx, fns)?);
     }
 
     Ok(children)

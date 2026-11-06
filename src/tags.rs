@@ -109,15 +109,120 @@ pub fn default_tags() -> HashMap<String, Schema> {
     );
 
     // ── table ──────────────────────────────────────────────────────────
+    // Used both as a list-syntax table (`{% table %} * a * b --- …`) and as
+    // a styling wrapper around a pipe table. PDF honours attributes such as
+    // `column_weights="1 2"` so consecutive tables can share column widths.
     tags.insert(
         "table".to_string(),
         Schema {
             render: Some("table".to_string()),
             children: None,
-            attributes: None,
+            attributes: Some({
+                let mut attrs = HashMap::new();
+                attrs.insert(
+                    "column_weights".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::String]),
+                        render: None,
+                        default: None,
+                        required: false,
+                        description: Some(
+                            "Space/comma-separated relative column widths, e.g. \"1 2\" or \"3 1\""
+                                .to_string(),
+                        ),
+                    },
+                );
+                attrs.insert(
+                    "borders".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::String]),
+                        render: None,
+                        default: None,
+                        required: false,
+                        description: Some("grid | horizontal | none".to_string()),
+                    },
+                );
+                attrs.insert(
+                    "fillable".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::Boolean, ValidationType::String]),
+                        render: None,
+                        default: None,
+                        required: false,
+                        description: Some(
+                            "Render the table's blank cells as fields that can be filled in \
+                             and printed"
+                                .to_string(),
+                        ),
+                    },
+                );
+                attrs.insert(
+                    "header_column".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::Boolean, ValidationType::String]),
+                        render: None,
+                        default: None,
+                        required: false,
+                        description: Some("When true, treat column 0 as row headers".to_string()),
+                    },
+                );
+                attrs.insert(
+                    "stripe".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::String]),
+                        render: None,
+                        default: None,
+                        required: false,
+                        description: Some(
+                            "Zebra stripe colour, or \"none\" to disable".to_string(),
+                        ),
+                    },
+                );
+                attrs.insert(
+                    "cell_padding".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::Number, ValidationType::String]),
+                        render: None,
+                        default: None,
+                        required: false,
+                        description: Some("Per-table cell padding in points".to_string()),
+                    },
+                );
+                attrs.insert(
+                    "header_background".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::String]),
+                        render: None,
+                        default: None,
+                        required: false,
+                        description: Some("Header row fill colour (CSS colour)".to_string()),
+                    },
+                );
+                attrs.insert(
+                    "border_color".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::String]),
+                        render: None,
+                        default: None,
+                        required: false,
+                        description: Some("Table border colour (CSS colour)".to_string()),
+                    },
+                );
+                attrs.insert(
+                    "edge_color".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::String]),
+                        render: None,
+                        default: None,
+                        required: false,
+                        description: Some("Outer edge colour (CSS colour)".to_string()),
+                    },
+                );
+                attrs
+            }),
             self_closing: false,
             inline: false,
-            description: Some("Table tag".to_string()),
+            description: Some("Table (list-syntax or pipe-table styling wrapper)".to_string()),
         },
     );
 
@@ -307,7 +412,7 @@ pub fn default_tags() -> HashMap<String, Schema> {
                         default: None,
                         required: false,
                         description: Some(
-                            "Display size preset: small (50%) | medium (75%) | large (100%, default) of the available width".into(),
+                            "Display size preset: small (45%) | medium (75%) | large (100%, default) of the available width".into(),
                         ),
                     },
                 );
@@ -378,6 +483,19 @@ pub fn default_tags() -> HashMap<String, Schema> {
                         required: false,
                         description: Some(
                             "Cross-document target — id of the Adeptus document that owns the anchor. Adeptus rewrites these into resolved links before publish; renderers that see one in raw source treat it as an unresolved placeholder."
+                                .into(),
+                        ),
+                    },
+                );
+                attrs.insert(
+                    "text".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::String]),
+                        render: None,
+                        default: None,
+                        required: false,
+                        description: Some(
+                            "Visible link text. When omitted, the target section heading is used."
                                 .into(),
                         ),
                     },
@@ -595,6 +713,97 @@ pub fn default_tags() -> HashMap<String, Schema> {
             self_closing: true,
             inline: false,
             description: Some("Colour swatch / bar — solid or linear-gradient fill".to_string()),
+        },
+    );
+
+    // ── pagebreak ───────────────────────────────────────────────────────
+    // Force the following content onto a new PDF page. Self-closing;
+    // no attributes. Web renderers drop this tag as a no-op.
+    tags.insert(
+        "pagebreak".to_string(),
+        Schema {
+            render: None,
+            children: None,
+            attributes: None,
+            self_closing: true,
+            inline: false,
+            description: Some(
+                "Force a PDF page break; no-op in non-paginated renderers".to_string(),
+            ),
+        },
+    );
+
+    // ── imagegrid / gridimage ───────────────────────────────────────────
+    // Side-by-side illustrated callouts (MiR manuals). `{% imagegrid %}`
+    // wraps one or more self-closing `{% gridimage id=… headline=…
+    // bodytext=… /%}` cells; the PDF renderer paints them as equal
+    // columns on a light grey panel (mirrors `.imagegrid` / `.gridimage`
+    // in `public/globals.css`).
+    tags.insert(
+        "imagegrid".to_string(),
+        Schema {
+            render: None,
+            children: None,
+            attributes: None,
+            self_closing: false,
+            inline: false,
+            description: Some("Row of gridimage cells on a light grey background".to_string()),
+        },
+    );
+    tags.insert(
+        "gridimage".to_string(),
+        Schema {
+            render: None,
+            children: None,
+            attributes: Some({
+                let mut attrs = HashMap::new();
+                attrs.insert(
+                    "id".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::String]),
+                        render: None,
+                        default: None,
+                        required: true,
+                        description: Some("Asset id for the illustration".to_string()),
+                    },
+                );
+                attrs.insert(
+                    "alt".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::String]),
+                        render: None,
+                        default: Some(Scalar::String(String::new())),
+                        required: false,
+                        description: Some("Accessibility text for the illustration".to_string()),
+                    },
+                );
+                attrs.insert(
+                    "headline".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::String]),
+                        render: None,
+                        default: Some(Scalar::String(String::new())),
+                        required: false,
+                        description: Some("Bold title under the illustration".to_string()),
+                    },
+                );
+                attrs.insert(
+                    "bodytext".to_string(),
+                    SchemaAttribute {
+                        attr_type: Some(vec![ValidationType::String]),
+                        render: None,
+                        default: Some(Scalar::String(String::new())),
+                        required: false,
+                        description: Some("Body copy under the headline".to_string()),
+                    },
+                );
+                attrs
+            }),
+            self_closing: true,
+            inline: false,
+            description: Some(
+                "One imagegrid cell: illustration + headline + body text".to_string(),
+            ),
         },
     );
 
@@ -1350,10 +1559,22 @@ mod tests {
     fn default_config_has_layout_tags_registered() {
         let cfg = Config::default();
         for name in [
-            "columns", "grid", "swatch", "chip", "qr", "float", "color", "c", "list", "caption",
+            "columns",
+            "grid",
+            "swatch",
+            "chip",
+            "qr",
+            "float",
+            "color",
+            "c",
+            "list",
+            "caption",
+            "pagebreak",
         ] {
             assert!(cfg.tags.contains_key(name), "{name} tag registered");
         }
+        assert!(!cfg.tags["pagebreak"].inline);
+        assert!(cfg.tags["pagebreak"].self_closing);
         // Float declares side/width/gap, all optional.
         let fattrs = cfg.tags["float"].attributes.as_ref().unwrap();
         for a in ["side", "width", "gap"] {

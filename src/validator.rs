@@ -60,6 +60,44 @@ fn validate_attributes(node: &Node, schema: &Schema, errors: &mut Vec<Validation
             }
         }
 
+        // An attribute the schema does not define.
+        //
+        // Every renderer ignores one silently, which is the whole reason this
+        // check exists: `{% table colomn_weights="1 2" %}` is a typo for
+        // `column_weights`, it parses, it validates, it renders, and the
+        // table comes out with the automatic column widths the author was
+        // trying to override. Thirty-six pages of one corpus carried exactly
+        // that before anything looked.
+        //
+        // `primary` is exempt because it is not a named attribute at all: it
+        // is where the parser puts `{% tag "value" %}`, and most schemas have
+        // no reason to declare it. `frontmatter` likewise is put on the
+        // document by the parser rather than written by an author.
+        for attr_name in node.attributes.keys() {
+            if attr_name == "primary" || attr_name == "frontmatter" {
+                continue;
+            }
+            if schema_attrs.contains_key(attr_name) {
+                continue;
+            }
+            let mut message = format!(
+                "Attribute '{}' is not defined for '{}'",
+                attr_name,
+                node.tag.as_deref().unwrap_or(&node.node_type.to_string())
+            );
+            // A near-miss is almost always a typo, and saying which one turns
+            // a puzzle into a fix.
+            if let Some(near) = nearest(attr_name, schema_attrs.keys()) {
+                message.push_str(&format!(" (did you mean '{near}'?)"));
+            }
+            errors.push(ValidationError {
+                id: "undefined-attribute".to_string(),
+                level: ValidationLevel::Error,
+                message,
+                location: node.location.clone(),
+            });
+        }
+
         // Validate attribute types
         for (attr_name, attr_value) in &node.attributes {
             if let Some(attr_schema) = schema_attrs.get(attr_name)
@@ -79,6 +117,37 @@ fn validate_attributes(node: &Node, schema: &Schema, errors: &mut Vec<Validation
             }
         }
     }
+}
+
+/// The closest defined name, when it is close enough to be a typo.
+///
+/// Edit distance over a handful of short names, so the cost is nothing and
+/// the gain is that `colomn_weights` names `column_weights` instead of
+/// leaving the author to spot a transposition by eye. The threshold scales
+/// with the name's length: two edits in `id` is a different word, two edits
+/// in `column_weights` is a slip.
+fn nearest<'a>(name: &str, candidates: impl Iterator<Item = &'a String>) -> Option<&'a str> {
+    let limit = (name.len() / 4).clamp(1, 3);
+    candidates
+        .map(|c| (edit_distance(name, c), c.as_str()))
+        .filter(|(d, _)| *d <= limit)
+        .min_by_key(|(d, c)| (*d, c.len()))
+        .map(|(_, c)| c)
+}
+
+fn edit_distance(a: &str, b: &str) -> usize {
+    let (a, b): (Vec<char>, Vec<char>) = (a.chars().collect(), b.chars().collect());
+    let mut prev: Vec<usize> = (0..=b.len()).collect();
+    let mut cur = vec![0usize; b.len() + 1];
+    for (i, ca) in a.iter().enumerate() {
+        cur[0] = i + 1;
+        for (j, cb) in b.iter().enumerate() {
+            let cost = usize::from(ca != cb);
+            cur[j + 1] = (prev[j] + cost).min(prev[j + 1] + 1).min(cur[j] + 1);
+        }
+        std::mem::swap(&mut prev, &mut cur);
+    }
+    prev[b.len()]
 }
 
 fn validate_children(node: &Node, schema: &Schema, errors: &mut Vec<ValidationError>) {

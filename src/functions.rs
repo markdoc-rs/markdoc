@@ -79,6 +79,18 @@ pub fn default_functions() -> HashMap<String, (ConfigFunction, FunctionImpl)> {
         ),
     );
 
+    // include(array, value) — true when array contains value (MiR web parity).
+    functions.insert(
+        "include".to_string(),
+        (
+            ConfigFunction {
+                returns: Some(vec![ValidationType::Boolean]),
+                parameters: None,
+            },
+            include as FunctionImpl,
+        ),
+    );
+
     functions
 }
 
@@ -133,6 +145,21 @@ fn not(args: &[Scalar]) -> Result<Scalar> {
     }
 
     Ok(Scalar::Boolean(!truthy(&args[0])))
+}
+
+fn include(args: &[Scalar]) -> Result<Scalar> {
+    if args.len() != 2 {
+        return Err(MarkdocError::TransformError(
+            "include requires exactly 2 arguments".to_string(),
+        ));
+    }
+
+    let found = match &args[0] {
+        Scalar::Array(items) => items.iter().any(|item| scalar_eq(item, &args[1])),
+        _ => false,
+    };
+
+    Ok(Scalar::Boolean(found))
 }
 
 fn default_value(args: &[Scalar]) -> Result<Scalar> {

@@ -21,7 +21,8 @@
 //! all falsy; everything else is truthy.
 
 use crate::ast::Node;
-use crate::expression::{evaluate_default, parse_expression};
+use crate::expression::{default_function_impls, evaluate, parse_expression};
+use crate::functions::FunctionImpl;
 use crate::tags::truthy;
 use crate::types::*;
 use std::collections::HashMap;
@@ -29,7 +30,21 @@ use std::collections::HashMap;
 /// Resolve every `{% if %}` tag in `node` against `ctx`. Returns a new
 /// tree with conditionals resolved (splice / drop).
 pub fn evaluate_conditionals(node: &Node, ctx: &Context) -> Result<Node> {
-    let nodes = walk(node, ctx)?;
+    evaluate_conditionals_with_functions(node, ctx, default_function_impls())
+}
+
+/// As `evaluate_conditionals`, with caller-supplied functions.
+///
+/// `{% if %}` predicates may call functions, and before this the table was
+/// fixed at `expression.rs`'s built-ins — so a document using a function this
+/// crate does not define failed to render and there was no way to supply one
+/// from outside. Build `fns` with `expression::functions_with`.
+pub fn evaluate_conditionals_with_functions(
+    node: &Node,
+    ctx: &Context,
+    fns: &HashMap<String, FunctionImpl>,
+) -> Result<Node> {
+    let nodes = walk(node, ctx, fns)?;
     if nodes.len() == 1 {
         Ok(nodes.into_iter().next().unwrap())
     } else if nodes.is_empty() {
@@ -48,13 +63,13 @@ pub fn evaluate_conditionals(node: &Node, ctx: &Context) -> Result<Node> {
     }
 }
 
-fn walk(node: &Node, ctx: &Context) -> Result<Vec<Node>> {
+fn walk(node: &Node, ctx: &Context, fns: &HashMap<String, FunctionImpl>) -> Result<Vec<Node>> {
     if is_if_tag(node) {
-        return evaluate_if(node, ctx);
+        return evaluate_if(node, ctx, fns);
     }
     let mut new_children = Vec::with_capacity(node.children.len());
     for child in &node.children {
-        new_children.extend(walk(child, ctx)?);
+        new_children.extend(walk(child, ctx, fns)?);
     }
     let mut new_node = node.clone();
     new_node.children = new_children;
@@ -65,7 +80,11 @@ fn is_if_tag(node: &Node) -> bool {
     matches!(node.node_type, NodeType::Tag) && node.tag.as_deref() == Some("if")
 }
 
-fn evaluate_if(node: &Node, ctx: &Context) -> Result<Vec<Node>> {
+fn evaluate_if(
+    node: &Node,
+    ctx: &Context,
+    fns: &HashMap<String, FunctionImpl>,
+) -> Result<Vec<Node>> {
     // Build the branch table: a Vec of (predicate_source, body_nodes).
     // The first entry's predicate is the `if`'s own; each subsequent
     // `{% else %}` self-closing tag among `node.children` opens a new
@@ -91,16 +110,16 @@ fn evaluate_if(node: &Node, ctx: &Context) -> Result<Vec<Node>> {
     for (pred_source, body) in &branches {
         let predicate_value = match pred_source {
             // The `if`'s own branch (predicate lives on `node`).
-            Some(p) if std::ptr::eq(*p, node) => predicate_for(node, ctx)?,
+            Some(p) if std::ptr::eq(*p, node) => predicate_for(node, ctx, fns)?,
             // An `{% else $cond /%}` branch (predicate on the else tag).
-            Some(p) => predicate_for_else(p, ctx)?,
+            Some(p) => predicate_for_else(p, ctx, fns)?,
             // Unreachable — every branch has a Some(_) source by construction.
             None => Scalar::Null,
         };
         if truthy(&predicate_value) {
             let mut spliced = Vec::new();
             for child in body {
-                spliced.extend(walk(child, ctx)?);
+                spliced.extend(walk(child, ctx, fns)?);
             }
             return Ok(spliced);
         }
@@ -115,12 +134,16 @@ fn is_else_tag(node: &Node) -> bool {
 
 /// Resolve the predicate on an `{% if %}` tag — either an unresolved
 /// expression or a literal scalar. Missing predicate is treated as falsy.
-fn predicate_for(node: &Node, ctx: &Context) -> Result<Scalar> {
+fn predicate_for(
+    node: &Node,
+    ctx: &Context,
+    fns: &HashMap<String, FunctionImpl>,
+) -> Result<Scalar> {
     if let Some(source) = node.expressions.get("primary") {
         let expr = parse_expression(source).map_err(|e| {
             MarkdocError::TransformError(format!("Failed to parse if predicate {source:?}: {e}"))
         })?;
-        return evaluate_default(&expr, ctx);
+        return evaluate(&expr, ctx, fns);
     }
     if let Some(literal) = node.attributes.get("primary") {
         return Ok(literal.clone());
@@ -131,12 +154,16 @@ fn predicate_for(node: &Node, ctx: &Context) -> Result<Scalar> {
 /// Resolve the predicate on an `{% else %}` tag. A bare `{% else /%}`
 /// (no primary attribute, no expression) is treated as truthy — the
 /// unconditional fallback. An `{% else $cond /%}` evaluates `$cond`.
-fn predicate_for_else(node: &Node, ctx: &Context) -> Result<Scalar> {
+fn predicate_for_else(
+    node: &Node,
+    ctx: &Context,
+    fns: &HashMap<String, FunctionImpl>,
+) -> Result<Scalar> {
     if let Some(source) = node.expressions.get("primary") {
         let expr = parse_expression(source).map_err(|e| {
             MarkdocError::TransformError(format!("Failed to parse else predicate {source:?}: {e}"))
         })?;
-        return evaluate_default(&expr, ctx);
+        return evaluate(&expr, ctx, fns);
     }
     if let Some(literal) = node.attributes.get("primary") {
         return Ok(literal.clone());

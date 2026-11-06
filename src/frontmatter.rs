@@ -2,12 +2,28 @@ use crate::types::*;
 use std::collections::HashMap;
 
 /// Extract and parse YAML frontmatter from markdown content
-pub fn extract_frontmatter(content: &str) -> Result<(Option<HashMap<String, Scalar>>, String)> {
+/// Split frontmatter from body.
+///
+/// The third element is the byte offset in `content` where the returned body
+/// begins. Everything before it was consumed by the frontmatter, and that one
+/// number is the whole source map for this rewrite -- which is why the body is
+/// now *sliced* out of `content` rather than rebuilt by joining lines. Joining
+/// normalised CRLF to LF and dropped a trailing newline, so offsets into the
+/// result did not correspond to bytes in the file. Every writer here is on
+/// Windows, so that was a latent wrong-position bug waiting for the first
+/// CRLF checkout.
+///
+/// Returns the parsed frontmatter if there was any, the content with it
+/// removed, and how many bytes were removed -- the last so a caller can keep
+/// positions pointing into the file the author has open.
+pub type Frontmatter = (Option<HashMap<String, Scalar>>, String, usize);
+
+pub fn extract_frontmatter_mapped(content: &str) -> Result<Frontmatter> {
     let lines: Vec<&str> = content.lines().collect();
 
     // Check if content starts with frontmatter delimiter
     if lines.is_empty() || lines[0].trim() != "---" {
-        return Ok((None, content.to_string()));
+        return Ok((None, content.to_string(), 0));
     }
 
     // Find closing delimiter
@@ -21,7 +37,7 @@ pub fn extract_frontmatter(content: &str) -> Result<(Option<HashMap<String, Scal
 
     let Some(end) = end_line else {
         // No closing delimiter found, treat as regular content
-        return Ok((None, content.to_string()));
+        return Ok((None, content.to_string(), 0));
     };
 
     // Extract frontmatter content
@@ -38,10 +54,24 @@ pub fn extract_frontmatter(content: &str) -> Result<(Option<HashMap<String, Scal
         .map(|(k, v)| (k, yaml_to_scalar(v)))
         .collect();
 
-    // Get remaining content
-    let remaining_content = lines[(end + 1)..].join("\n");
+    // Where the body starts, as a byte offset into `content`: skip `end + 1`
+    // physical lines, counting their real terminators rather than assuming
+    // one byte each.
+    let offset: usize = content
+        .split_inclusive('\n')
+        .take(end + 1)
+        .map(str::len)
+        .sum();
+    let remaining_content = content[offset.min(content.len())..].to_string();
 
-    Ok((Some(frontmatter_scalar), remaining_content))
+    Ok((Some(frontmatter_scalar), remaining_content, offset))
+}
+
+/// Frontmatter and body, without the offset. Kept for callers that only want
+/// the data.
+pub fn extract_frontmatter(content: &str) -> Result<(Option<HashMap<String, Scalar>>, String)> {
+    let (fm, body, _) = extract_frontmatter_mapped(content)?;
+    Ok((fm, body))
 }
 
 fn yaml_to_scalar(value: serde_yaml::Value) -> Scalar {
