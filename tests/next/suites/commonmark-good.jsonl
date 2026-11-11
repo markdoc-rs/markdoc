@@ -1,0 +1,652 @@
+{"id": "commonmark/good.txt line 3: src line: 354", "code": "\tfoo\tbaz\t\tbim\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 13: src line: 361", "code": "  \tfoo\tbaz\t\tbim\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 23: src line: 368", "code": "    a\ta\n    ὐ\ta\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 35: src line: 381", "code": "  - foo\n\n\tbar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 51: src line: 394", "code": "- foo\n\n\t\tbar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 68: src line: 417", "code": ">\t\tfoo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 80: src line: 426", "code": "-\t\tfoo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 94: src line: 438", "code": "    foo\n\tbar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 106: src line: 447", "code": " - foo\n   - bar\n\t - baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 127: src line: 465", "code": "#\tFoo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 136: src line: 471", "code": "*\t*\t*\t\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 145: src line: 488", "code": "\\!\\\"\\#\\$\\%\\&\\'\\(\\)\\*\\+\\,\\-\\.\\/\\:\\;\\<\\=\\>\\?\\@\\[\\\\\\]\\^\\_\\`\\{\\|\\}\\~\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 154: src line: 498", "code": "\\\t\\A\\a\\ \\3\\φ\\«\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 163: src line: 508", "code": "\\*not emphasized*\n\\<br/> not a tag\n\\[not a link](/foo)\n\\`not code`\n1\\. not a list\n\\* not a list\n\\# not a heading\n\\[foo]: /url \"not a reference\"\n\\&ouml; not a character entity\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 188: src line: 533", "code": "\\\\*emphasis*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 197: src line: 542", "code": "foo\\\nbar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 208: src line: 554", "code": "`` \\[\\` ``\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 217: src line: 561", "code": "    \\[\\]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 227: src line: 569", "code": "~~~\n\\[\\]\n~~~\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 239: src line: 579", "code": "<https://example.com?find=\\*>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 248: src line: 586", "code": "<a href=\"/bar\\/)\">\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 257: src line: 596", "code": "[foo](/bar\\* \"ti\\*tle\")\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 266: src line: 603", "code": "[foo]\n\n[foo]: /bar\\* \"ti\\*tle\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 277: src line: 612", "code": "``` foo\\+bar\nfoo\n```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 289: src line: 648", "code": "&nbsp; &amp; &copy; &AElig; &Dcaron;\n&frac34; &HilbertSpace; &DifferentialD;\n&ClockwiseContourIntegral; &ngE;\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 302: src line: 667", "code": "&#35; &#1234; &#992; &#0;\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 311: src line: 680", "code": "&#X22; &#XD06; &#xcab;\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 320: src line: 689", "code": "&nbsp &x; &#; &#x;\n&#87654321;\n&#abcdef0;\n&ThisIsNotDefined; &hi?;\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 335: src line: 706", "code": "&copy\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 344: src line: 716", "code": "&MadeUpEntity;\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 353: src line: 727", "code": "<a href=\"&ouml;&ouml;.html\">\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 362: src line: 734", "code": "[foo](/f&ouml;&ouml; \"f&ouml;&ouml;\")\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 371: src line: 741", "code": "[foo]\n\n[foo]: /f&ouml;&ouml; \"f&ouml;&ouml;\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 382: src line: 750", "code": "``` f&ouml;&ouml;\nfoo\n```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 394: src line: 763", "code": "`f&ouml;&ouml;`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 403: src line: 770", "code": "    f&ouml;f&ouml;\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 413: src line: 782", "code": "&#42;foo&#42;\n*foo*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 424: src line: 790", "code": "&#42; foo\n\n* foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 438: src line: 801", "code": "foo&#10;&#10;bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 449: src line: 809", "code": "&#9;foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 458: src line: 816", "code": "[a](url &quot;tit&quot;)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 467: src line: 839", "code": "- `one\n- two`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 480: src line: 878", "code": "***\n---\n___\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 493: src line: 891", "code": "+++\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 502: src line: 898", "code": "===\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 511: src line: 907", "code": "--\n**\n__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 524: src line: 920", "code": " ***\n  ***\n   ***\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 537: src line: 933", "code": "    ***\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 547: src line: 941", "code": "Foo\n    ***\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 558: src line: 952", "code": "_____________________________________\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 567: src line: 961", "code": " - - -\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 576: src line: 968", "code": " **  * ** * ** * **\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 585: src line: 975", "code": "-     -      -      -\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 594: src line: 984", "code": "- - - -    \n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 603: src line: 993", "code": "_ _ _ _ a\n\na------\n\n---a---\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 618: src line: 1009", "code": " *-*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 627: src line: 1018", "code": "- foo\n***\n- bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 644: src line: 1035", "code": "Foo\n***\nbar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 657: src line: 1052", "code": "Foo\n---\nbar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 669: src line: 1065", "code": "* Foo\n* * *\n* Bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 686: src line: 1082", "code": "- Foo\n- * * *\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 701: src line: 1111", "code": "# foo\n## foo\n### foo\n#### foo\n##### foo\n###### foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 720: src line: 1130", "code": "####### foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 729: src line: 1145", "code": "#5 bolt\n\n#hashtag\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 741: src line: 1157", "code": "\\## foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 750: src line: 1166", "code": "# foo *bar* \\*baz\\*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 759: src line: 1175", "code": "#                  foo                     \n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 768: src line: 1184", "code": " ### foo\n  ## foo\n   # foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 781: src line: 1197", "code": "    # foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 791: src line: 1205", "code": "foo\n    # bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 802: src line: 1216", "code": "## foo ##\n  ###   bar    ###\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 813: src line: 1227", "code": "# foo ##################################\n##### foo ##\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 824: src line: 1238", "code": "### foo ###     \n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 833: src line: 1249", "code": "### foo ### b\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 842: src line: 1258", "code": "# foo#\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 851: src line: 1268", "code": "### foo \\###\n## foo #\\##\n# foo \\#\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 864: src line: 1282", "code": "****\n## foo\n****\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 877: src line: 1293", "code": "Foo bar\n# baz\nBar foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 890: src line: 1306", "code": "## \n#\n### ###\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 903: src line: 1346", "code": "Foo *bar*\n=========\n\nFoo *bar*\n---------\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 917: src line: 1360", "code": "Foo *bar\nbaz*\n====\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 929: src line: 1374", "code": "  Foo *bar\nbaz*\t\n====\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 941: src line: 1386", "code": "Foo\n-------------------------\n\nFoo\n=\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 955: src line: 1401", "code": "   Foo\n---\n\n  Foo\n-----\n\n  Foo\n  ===\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 973: src line: 1419", "code": "    Foo\n    ---\n\n    Foo\n---\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 991: src line: 1438", "code": "Foo\n   ----      \n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1001: src line: 1448", "code": "Foo\n    ---\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1012: src line: 1459", "code": "Foo\n= =\n\nFoo\n--- -\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1028: src line: 1475", "code": "Foo  \n-----\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1038: src line: 1485", "code": "Foo\\\n----\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1048: src line: 1496", "code": "`Foo\n----\n`\n\n<a title=\"a lot\n---\nof dashes\"/>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1066: src line: 1515", "code": "> Foo\n---\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1079: src line: 1526", "code": "> foo\nbar\n===\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1094: src line: 1539", "code": "- Foo\n---\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1107: src line: 1554", "code": "Foo\nBar\n---\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1119: src line: 1567", "code": "---\nFoo\n---\nBar\n---\nBaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1136: src line: 1584", "code": "\n====\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1146: src line: 1596", "code": "---\n---\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1157: src line: 1605", "code": "- foo\n-----\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1170: src line: 1616", "code": "    foo\n---\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1182: src line: 1626", "code": "> foo\n-----\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1195: src line: 1640", "code": "\\> foo\n------\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1205: src line: 1671", "code": "Foo\n\nbar\n---\nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1220: src line: 1687", "code": "Foo\nbar\n\n---\n\nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1237: src line: 1705", "code": "Foo\nbar\n* * *\nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1252: src line: 1720", "code": "Foo\nbar\n\\---\nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1267: src line: 1748", "code": "    a simple\n      indented code block\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1279: src line: 1762", "code": "  - foo\n\n    bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1295: src line: 1776", "code": "1.  foo\n\n    - bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1313: src line: 1796", "code": "    <a/>\n    *hi*\n\n    - one\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1329: src line: 1812", "code": "    chunk1\n\n    chunk2\n  \n \n \n    chunk3\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1351: src line: 1835", "code": "    chunk1\n      \n      chunk2\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1365: src line: 1850", "code": "Foo\n    bar\n\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1377: src line: 1864", "code": "    foo\nbar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1389: src line: 1877", "code": "# Heading\n    foo\nHeading\n------\n    foo\n----\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1409: src line: 1897", "code": "        foo\n    bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1421: src line: 1910", "code": "\n    \n    foo\n    \n\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1435: src line: 1924", "code": "    foo  \n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1445: src line: 1979", "code": "```\n<\n >\n```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1459: src line: 1993", "code": "~~~\n<\n >\n~~~\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1473: src line: 2006", "code": "``\nfoo\n``\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1484: src line: 2017", "code": "```\naaa\n~~~\n```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1498: src line: 2029", "code": "~~~\naaa\n```\n~~~\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1512: src line: 2043", "code": "````\naaa\n```\n``````\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1526: src line: 2055", "code": "~~~~\naaa\n~~~\n~~~~\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1540: src line: 2070", "code": "```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1549: src line: 2077", "code": "`````\n\n```\naaa\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1564: src line: 2090", "code": "> ```\n> aaa\n\nbbb\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1580: src line: 2106", "code": "```\n\n  \n```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1594: src line: 2120", "code": "```\n```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1604: src line: 2132", "code": " ```\n aaa\naaa\n```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1618: src line: 2144", "code": "  ```\naaa\n  aaa\naaa\n  ```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1634: src line: 2158", "code": "   ```\n   aaa\n    aaa\n  aaa\n   ```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1650: src line: 2174", "code": "    ```\n    aaa\n    ```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1664: src line: 2189", "code": "```\naaa\n  ```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1676: src line: 2199", "code": "   ```\naaa\n  ```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1688: src line: 2211", "code": "```\naaa\n    ```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1701: src line: 2225", "code": "``` ```\naaa\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1712: src line: 2234", "code": "~~~~~~\naaa\n~~~ ~~\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1725: src line: 2248", "code": "foo\n```\nbar\n```\nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1741: src line: 2265", "code": "foo\n---\n~~~\nbar\n~~~\n# baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1758: src line: 2287", "code": "```ruby\ndef foo(x)\n  return 3\nend\n```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1774: src line: 2301", "code": "~~~~    ruby startline=3 $%@#$\ndef foo(x)\n  return 3\nend\n~~~~~~~\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1790: src line: 2315", "code": "````;\n````\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1800: src line: 2325", "code": "``` aa ```\nfoo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1811: src line: 2336", "code": "~~~ aa ``` ~~~\nfoo\n~~~\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1823: src line: 2348", "code": "```\n``` aaa\n```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1835: src line: 2427", "code": "<table><tr><td>\n<pre>\n**Hello**,\n\n_world_.\n</pre>\n</td></tr></table>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1855: src line: 2456", "code": "<table>\n  <tr>\n    <td>\n           hi\n    </td>\n  </tr>\n</table>\n\nokay.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1879: src line: 2478", "code": " <div>\n  *hello*\n         <foo><a>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1892: src line: 2491", "code": "</div>\n*foo*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1903: src line: 2502", "code": "<DIV CLASS=\"foo\">\n\n*Markdown*\n\n</DIV>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1918: src line: 2518", "code": "<div id=\"foo\"\n  class=\"bar\">\n</div>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1931: src line: 2529", "code": "<div id=\"foo\" class=\"bar\n  baz\">\n</div>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1944: src line: 2541", "code": "<div>\n*foo*\n\n*bar*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1958: src line: 2557", "code": "<div id=\"foo\"\n*hi*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1969: src line: 2566", "code": "<div class\nfoo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1980: src line: 2578", "code": "<div *???-&&&-<---\n*foo*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 1991: src line: 2590", "code": "<div><a href=\"bar\">*foo*</a></div>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2000: src line: 2597", "code": "<table><tr><td>\nfoo\n</td></tr></table>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2013: src line: 2614", "code": "<div></div>\n``` c\nint x = 33;\n```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2028: src line: 2631", "code": "<a href=\"foo\">\n*bar*\n</a>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2041: src line: 2644", "code": "<Warning>\n*bar*\n</Warning>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2054: src line: 2655", "code": "<i class=\"foo\">\n*bar*\n</i>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2067: src line: 2666", "code": "</ins>\n*bar*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2078: src line: 2681", "code": "<del>\n*foo*\n</del>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2091: src line: 2696", "code": "<del>\n\n*foo*\n\n</del>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2106: src line: 2714", "code": "<del>*foo*</del>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2115: src line: 2730", "code": "<pre language=\"haskell\"><code>\nimport Text.HTML.TagSoup\n\nmain :: IO ()\nmain = print $ parseTags tags\n</code></pre>\nokay\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2136: src line: 2751", "code": "<script type=\"text/javascript\">\n// JavaScript example\n\ndocument.getElementById(\"demo\").innerHTML = \"Hello JavaScript!\";\n</script>\nokay\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2155: src line: 2770", "code": "<textarea>\n\n*foo*\n\n_bar_\n\n</textarea>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2176: src line: 2790", "code": "<style\n  type=\"text/css\">\nh1 {color:red;}\n\np {color:blue;}\n</style>\nokay\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2197: src line: 2813", "code": "<style\n  type=\"text/css\">\n\nfoo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2212: src line: 2826", "code": "> <div>\n> foo\n\nbar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2228: src line: 2840", "code": "- <div>\n- foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2243: src line: 2855", "code": "<style>p{color:red;}</style>\n*foo*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2254: src line: 2864", "code": "<!-- foo -->*bar*\n*baz*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2265: src line: 2876", "code": "<script>\nfoo\n</script>1. *bar*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2278: src line: 2889", "code": "<!-- Foo\n\nbar\n   baz -->\nokay\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2295: src line: 2907", "code": "<?php\n\n  echo '>';\n\n?>\nokay\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2314: src line: 2926", "code": "<!DOCTYPE html>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2323: src line: 2935", "code": "<![CDATA[\nfunction matchwo(a,b)\n{\n  if (a < b && a < 0) then {\n    return 1;\n\n  } else {\n\n    return 0;\n  }\n}\n]]>\nokay\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2356: src line: 2969", "code": "  <!-- foo -->\n\n    <!-- foo -->\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2369: src line: 2980", "code": "  <div>\n\n    <div>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2382: src line: 2994", "code": "Foo\n<div>\nbar\n</div>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2397: src line: 3011", "code": "<div>\nbar\n</div>\n*foo*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2412: src line: 3026", "code": "Foo\n<a href=\"bar\">\nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2425: src line: 3067", "code": "<div>\n\n*Emphasized* text.\n\n</div>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2440: src line: 3080", "code": "<div>\n*Emphasized* text.\n</div>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2453: src line: 3102", "code": "<table>\n\n<tr>\n\n<td>\nHi\n</td>\n\n</tr>\n\n</table>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2478: src line: 3129", "code": "<table>\n\n  <tr>\n\n    <td>\n      Hi\n    </td>\n\n  </tr>\n\n</table>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2504: src line: 3178", "code": "[foo]: /url \"title\"\n\n[foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2515: src line: 3187", "code": "   [foo]: \n      /url  \n           'the title'  \n\n[foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2528: src line: 3198", "code": "[Foo*bar\\]]:my_(url) 'title (with parens)'\n\n[Foo*bar\\]]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2539: src line: 3207", "code": "[Foo bar]:\n<my url>\n'title'\n\n[Foo bar]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2552: src line: 3220", "code": "[foo]: /url '\ntitle\nline1\nline2\n'\n\n[foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2571: src line: 3239", "code": "[foo]: /url 'title\n\nwith blank line'\n\n[foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2586: src line: 3254", "code": "[foo]:\n/url\n\n[foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2598: src line: 3266", "code": "[foo]:\n\n[foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2610: src line: 3278", "code": "[foo]: <>\n\n[foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2621: src line: 3289", "code": "[foo]: <bar>(baz)\n\n[foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2633: src line: 3302", "code": "[foo]: /url\\bar\\*baz \"foo\\\"bar\\baz\"\n\n[foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2644: src line: 3313", "code": "[foo]\n\n[foo]: url\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2655: src line: 3325", "code": "[foo]\n\n[foo]: first\n[foo]: second\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2667: src line: 3338", "code": "[FOO]: /url\n\n[Foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2678: src line: 3347", "code": "[ΑΓΩ]: /φου\n\n[αγω]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2689: src line: 3362", "code": "[foo]: /url\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2697: src line: 3370", "code": "[\nfoo\n]: /url\nbar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2709: src line: 3383", "code": "[foo]: /url \"title\" ok\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2718: src line: 3392", "code": "[foo]: /url\n\"title\" ok\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2728: src line: 3403", "code": "    [foo]: /url \"title\"\n\n[foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2741: src line: 3417", "code": "```\n[foo]: /url\n```\n\n[foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2756: src line: 3432", "code": "Foo\n[bar]: /baz\n\n[bar]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2770: src line: 3447", "code": "# [Foo]\n[foo]: /url\n> bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2784: src line: 3458", "code": "[foo]: /url\nbar\n===\n[foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2797: src line: 3468", "code": "[foo]: /url\n===\n[foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2809: src line: 3481", "code": "[foo]: /foo-url \"foo\"\n[bar]: /bar-url\n  \"bar\"\n[baz]: /baz-url\n\n[foo],\n[bar],\n[baz]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2827: src line: 3502", "code": "[foo]\n\n> [foo]: /url\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2840: src line: 3524", "code": "aaa\n\nbbb\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2852: src line: 3536", "code": "aaa\nbbb\n\nccc\nddd\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2868: src line: 3552", "code": "aaa\n\n\nbbb\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2881: src line: 3565", "code": "  aaa\n bbb\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2892: src line: 3577", "code": "aaa\n             bbb\n                                       ccc\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2905: src line: 3591", "code": "   aaa\nbbb\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2916: src line: 3600", "code": "    aaa\nbbb\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2928: src line: 3614", "code": "aaa     \nbbb     \n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2939: src line: 3631", "code": "  \n\naaa\n  \n\n# aaa\n\n  \n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2956: src line: 3699", "code": "> # Foo\n> bar\n> baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2971: src line: 3714", "code": "># Foo\n>bar\n> baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 2986: src line: 3729", "code": "   > # Foo\n   > bar\n > baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3001: src line: 3744", "code": "    > # Foo\n    > bar\n    > baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3015: src line: 3759", "code": "> # Foo\n> bar\nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3030: src line: 3775", "code": "> bar\nbaz\n> foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3045: src line: 3799", "code": "> foo\n---\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3058: src line: 3819", "code": "> - foo\n- bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3075: src line: 3837", "code": ">     foo\n    bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3090: src line: 3850", "code": "> ```\nfoo\n```\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3105: src line: 3866", "code": "> foo\n    - bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3118: src line: 3890", "code": ">\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3128: src line: 3898", "code": ">\n>  \n> \n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3140: src line: 3910", "code": ">\n> foo\n>  \n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3153: src line: 3923", "code": "> foo\n\n> bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3169: src line: 3945", "code": "> foo\n> bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3182: src line: 3958", "code": "> foo\n>\n> bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3196: src line: 3972", "code": "foo\n> bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3209: src line: 3986", "code": "> aaa\n***\n> bbb\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3226: src line: 4004", "code": "> bar\nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3239: src line: 4015", "code": "> bar\n\nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3253: src line: 4027", "code": "> bar\n>\nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3267: src line: 4043", "code": "> > > foo\nbar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3284: src line: 4058", "code": ">>> foo\n> bar\n>>baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3303: src line: 4080", "code": ">     code\n\n>    not code\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3320: src line: 4134", "code": "A paragraph\nwith two lines.\n\n    indented code\n\n> A block quote.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3340: src line: 4156", "code": "1.  A paragraph\n    with two lines.\n\n        indented code\n\n    > A block quote.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3364: src line: 4189", "code": "- one\n\n two\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3378: src line: 4201", "code": "- one\n\n  two\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3394: src line: 4215", "code": " -    one\n\n     two\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3409: src line: 4228", "code": " -    one\n\n      two\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3425: src line: 4250", "code": "   > > 1.  one\n>>\n>>     two\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3445: src line: 4277", "code": ">>- one\n>>\n  >  > two\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3463: src line: 4296", "code": "-one\n\n2.two\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3475: src line: 4309", "code": "- foo\n\n\n  bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3492: src line: 4326", "code": "1.  foo\n\n    ```\n    bar\n    ```\n\n    baz\n\n    > bam\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3519: src line: 4354", "code": "- Foo\n\n      bar\n\n\n      baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3542: src line: 4376", "code": "123456789. ok\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3553: src line: 4385", "code": "1234567890. not ok\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3562: src line: 4394", "code": "0. ok\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3573: src line: 4403", "code": "003. ok\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3584: src line: 4414", "code": "-1. not ok\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3593: src line: 4437", "code": "- foo\n\n      bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3610: src line: 4454", "code": "  10.  foo\n\n           bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3627: src line: 4473", "code": "    indented code\n\nparagraph\n\n    more code\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3644: src line: 4488", "code": "1.     indented code\n\n   paragraph\n\n       more code\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3665: src line: 4510", "code": "1.      indented code\n\n   paragraph\n\n       more code\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3686: src line: 4537", "code": "   foo\n\nbar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3698: src line: 4547", "code": "-    foo\n\n  bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3712: src line: 4564", "code": "-  foo\n\n   bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3728: src line: 4591", "code": "-\n  foo\n-\n  ```\n  bar\n  ```\n-\n      baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3754: src line: 4617", "code": "-   \n  foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3766: src line: 4631", "code": "-\n\n  foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3780: src line: 4645", "code": "- foo\n-\n- bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3795: src line: 4660", "code": "- foo\n-   \n- bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3810: src line: 4675", "code": "1. foo\n2.\n3. bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3825: src line: 4690", "code": "*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3836: src line: 4700", "code": "foo\n*\n\nfoo\n1.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3852: src line: 4722", "code": " 1.  A paragraph\n     with two lines.\n\n         indented code\n\n     > A block quote.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3876: src line: 4746", "code": "  1.  A paragraph\n      with two lines.\n\n          indented code\n\n      > A block quote.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3900: src line: 4770", "code": "   1.  A paragraph\n       with two lines.\n\n           indented code\n\n       > A block quote.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3924: src line: 4794", "code": "    1.  A paragraph\n        with two lines.\n\n            indented code\n\n        > A block quote.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3944: src line: 4824", "code": "  1.  A paragraph\nwith two lines.\n\n          indented code\n\n      > A block quote.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3968: src line: 4848", "code": "  1.  A paragraph\n    with two lines.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 3981: src line: 4861", "code": "> 1. > Blockquote\ncontinued here.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4000: src line: 4878", "code": "> 1. > Blockquote\n> continued here.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4019: src line: 4906", "code": "- foo\n  - bar\n    - baz\n      - boo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4045: src line: 4932", "code": "- foo\n - bar\n  - baz\n   - boo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4062: src line: 4949", "code": "10) foo\n    - bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4078: src line: 4965", "code": "10) foo\n   - bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4093: src line: 4980", "code": "- - foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4108: src line: 4993", "code": "1. - 2. foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4127: src line: 5012", "code": "- # Foo\n- Bar\n  ---\n  baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4146: src line: 5248", "code": "- foo\n- bar\n+ baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4163: src line: 5263", "code": "1. foo\n2. bar\n3) baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4180: src line: 5282", "code": "Foo\n- bar\n- baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4195: src line: 5359", "code": "The number of windows in my house is\n14.  The number of doors is 6.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4206: src line: 5369", "code": "The number of windows in my house is\n1.  The number of doors is 6.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4219: src line: 5383", "code": "- foo\n\n- bar\n\n\n- baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4243: src line: 5404", "code": "- foo\n  - bar\n    - baz\n\n\n      bim\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4270: src line: 5434", "code": "- foo\n- bar\n\n<!-- -->\n\n- baz\n- bim\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4293: src line: 5455", "code": "-   foo\n\n    notcode\n\n-   foo\n\n<!-- -->\n\n    code\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4321: src line: 5486", "code": "- a\n - b\n  - c\n   - d\n  - e\n - f\n- g\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4344: src line: 5507", "code": "1. a\n\n  2. b\n\n   3. c\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4367: src line: 5531", "code": "- a\n - b\n  - c\n   - d\n    - e\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4386: src line: 5551", "code": "1. a\n\n  2. b\n\n    3. c\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4408: src line: 5574", "code": "- a\n- b\n\n- c\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4430: src line: 5596", "code": "* a\n*\n\n* c\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4450: src line: 5618", "code": "- a\n- b\n\n  c\n- d\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4474: src line: 5640", "code": "- a\n- b\n\n  [ref]: /url\n- d\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4497: src line: 5663", "code": "- a\n- ```\n  b\n\n\n  ```\n- c\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4521: src line: 5689", "code": "- a\n  - b\n\n    c\n- d\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4544: src line: 5713", "code": "* a\n  > b\n  >\n* c\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4563: src line: 5733", "code": "- a\n  > b\n  ```\n  c\n  ```\n- d\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4586: src line: 5756", "code": "- a\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4597: src line: 5765", "code": "- a\n  - b\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4613: src line: 5782", "code": "1. ```\n   foo\n   ```\n\n   bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4632: src line: 5801", "code": "* foo\n  * bar\n\n  baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4652: src line: 5819", "code": "- a\n  - b\n  - c\n\n- d\n  - e\n  - f\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4682: src line: 5853", "code": "`hi`lo`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4691: src line: 5885", "code": "`foo`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4700: src line: 5896", "code": "`` foo ` bar ``\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4709: src line: 5906", "code": "` `` `\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4718: src line: 5914", "code": "`  ``  `\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4727: src line: 5923", "code": "` a`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4736: src line: 5932", "code": "` b `\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4745: src line: 5940", "code": "` `\n`  `\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4756: src line: 5951", "code": "``\nfoo\nbar  \nbaz\n``\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4769: src line: 5961", "code": "``\nfoo \n``\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4780: src line: 5972", "code": "`foo   bar \nbaz`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4790: src line: 5989", "code": "`foo\\`bar`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4799: src line: 6000", "code": "``foo`bar``\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4808: src line: 6006", "code": "` foo `` bar `\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4817: src line: 6018", "code": "*foo`*`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4826: src line: 6027", "code": "[not a `link](/foo`)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4835: src line: 6037", "code": "`<a href=\"`\">`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4844: src line: 6046", "code": "<a href=\"`\">`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4853: src line: 6055", "code": "`<https://foo.bar.`baz>`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4862: src line: 6064", "code": "<https://foo.bar.`baz>`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4871: src line: 6074", "code": "```foo``\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4880: src line: 6081", "code": "`foo\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4889: src line: 6090", "code": "`foo``bar``\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4898: src line: 6307", "code": "*foo bar*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4907: src line: 6317", "code": "a * foo bar*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4916: src line: 6328", "code": "a*\"foo\"*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4925: src line: 6337", "code": "* a *\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4934: src line: 6346", "code": "*$*alpha.\n\n*£*bravo.\n\n*€*charlie.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4949: src line: 6361", "code": "foo*bar*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4958: src line: 6368", "code": "5*6*78\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4967: src line: 6377", "code": "_foo bar_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4976: src line: 6387", "code": "_ foo bar_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4985: src line: 6397", "code": "a_\"foo\"_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 4994: src line: 6406", "code": "foo_bar_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5003: src line: 6413", "code": "5_6_78\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5012: src line: 6420", "code": "пристаням_стремятся_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5021: src line: 6430", "code": "aa_\"bb\"_cc\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5030: src line: 6441", "code": "foo-_(bar)_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5039: src line: 6453", "code": "_foo*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5048: src line: 6463", "code": "*foo bar *\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5057: src line: 6472", "code": "*foo bar\n*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5068: src line: 6485", "code": "*(*foo)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5077: src line: 6495", "code": "*(*foo*)*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5086: src line: 6504", "code": "*foo*bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5095: src line: 6517", "code": "_foo bar _\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5104: src line: 6527", "code": "_(_foo)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5113: src line: 6536", "code": "_(_foo_)_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5122: src line: 6545", "code": "_foo_bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5131: src line: 6552", "code": "_пристаням_стремятся\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5140: src line: 6559", "code": "_foo_bar_baz_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5149: src line: 6570", "code": "_(bar)_.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5158: src line: 6579", "code": "**foo bar**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5167: src line: 6589", "code": "** foo bar**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5176: src line: 6600", "code": "a**\"foo\"**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5185: src line: 6609", "code": "foo**bar**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5194: src line: 6618", "code": "__foo bar__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5203: src line: 6628", "code": "__ foo bar__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5212: src line: 6636", "code": "__\nfoo bar__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5223: src line: 6648", "code": "a__\"foo\"__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5232: src line: 6657", "code": "foo__bar__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5241: src line: 6664", "code": "5__6__78\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5250: src line: 6671", "code": "пристаням__стремятся__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5259: src line: 6678", "code": "__foo, __bar__, baz__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5268: src line: 6689", "code": "foo-__(bar)__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5277: src line: 6702", "code": "**foo bar **\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5286: src line: 6715", "code": "**(**foo)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5295: src line: 6725", "code": "*(**foo**)*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5304: src line: 6732", "code": "**Gomphocarpus (*Gomphocarpus physocarpus*, syn.\n*Asclepias physocarpa*)**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5315: src line: 6741", "code": "**foo \"*bar*\" foo**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5324: src line: 6750", "code": "**foo**bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5333: src line: 6762", "code": "__foo bar __\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5342: src line: 6772", "code": "__(__foo)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5351: src line: 6782", "code": "_(__foo__)_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5360: src line: 6791", "code": "__foo__bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5369: src line: 6798", "code": "__пристаням__стремятся\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5378: src line: 6805", "code": "__foo__bar__baz__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5387: src line: 6816", "code": "__(bar)__.\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5396: src line: 6828", "code": "*foo [bar](/url)*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5405: src line: 6835", "code": "*foo\nbar*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5416: src line: 6847", "code": "_foo __bar__ baz_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5425: src line: 6854", "code": "_foo _bar_ baz_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5434: src line: 6861", "code": "__foo_ bar_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5443: src line: 6868", "code": "*foo *bar**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5452: src line: 6875", "code": "*foo **bar** baz*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5461: src line: 6881", "code": "*foo**bar**baz*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5470: src line: 6905", "code": "*foo**bar*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5479: src line: 6918", "code": "***foo** bar*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5488: src line: 6925", "code": "*foo **bar***\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5497: src line: 6932", "code": "*foo**bar***\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5506: src line: 6943", "code": "foo***bar***baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5515: src line: 6949", "code": "foo******bar*********baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5524: src line: 6958", "code": "*foo **bar *baz* bim** bop*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5533: src line: 6965", "code": "*foo [*bar*](/url)*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5542: src line: 6974", "code": "** is not an empty emphasis\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5551: src line: 6981", "code": "**** is not an empty strong emphasis\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5560: src line: 6994", "code": "**foo [bar](/url)**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5569: src line: 7001", "code": "**foo\nbar**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5580: src line: 7013", "code": "__foo _bar_ baz__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5589: src line: 7020", "code": "__foo __bar__ baz__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5598: src line: 7027", "code": "____foo__ bar__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5607: src line: 7034", "code": "**foo **bar****\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5616: src line: 7041", "code": "**foo *bar* baz**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5625: src line: 7048", "code": "**foo*bar*baz**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5634: src line: 7055", "code": "***foo* bar**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5643: src line: 7062", "code": "**foo *bar***\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5652: src line: 7071", "code": "**foo *bar **baz**\nbim* bop**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5663: src line: 7080", "code": "**foo [*bar*](/url)**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5672: src line: 7089", "code": "__ is not an empty emphasis\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5681: src line: 7096", "code": "____ is not an empty strong emphasis\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5690: src line: 7106", "code": "foo ***\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5699: src line: 7113", "code": "foo *\\**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5708: src line: 7120", "code": "foo *_*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5717: src line: 7127", "code": "foo *****\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5726: src line: 7134", "code": "foo **\\***\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5735: src line: 7141", "code": "foo **_**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5744: src line: 7152", "code": "**foo*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5753: src line: 7159", "code": "*foo**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5762: src line: 7166", "code": "***foo**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5771: src line: 7173", "code": "****foo*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5780: src line: 7180", "code": "**foo***\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5789: src line: 7187", "code": "*foo****\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5798: src line: 7197", "code": "foo ___\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5807: src line: 7204", "code": "foo _\\__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5816: src line: 7211", "code": "foo _*_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5825: src line: 7218", "code": "foo _____\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5834: src line: 7225", "code": "foo __\\___\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5843: src line: 7232", "code": "foo __*__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5852: src line: 7239", "code": "__foo_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5861: src line: 7250", "code": "_foo__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5870: src line: 7257", "code": "___foo__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5879: src line: 7264", "code": "____foo_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5888: src line: 7271", "code": "__foo___\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5897: src line: 7278", "code": "_foo____\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5906: src line: 7288", "code": "**foo**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5915: src line: 7295", "code": "*_foo_*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5924: src line: 7302", "code": "__foo__\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5933: src line: 7309", "code": "_*foo*_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5942: src line: 7319", "code": "****foo****\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5951: src line: 7326", "code": "____foo____\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5960: src line: 7337", "code": "******foo******\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5969: src line: 7346", "code": "***foo***\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5978: src line: 7353", "code": "_____foo_____\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5987: src line: 7362", "code": "*foo _bar* baz_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 5996: src line: 7369", "code": "*foo __bar *baz bim__ bam*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6005: src line: 7378", "code": "**foo **bar baz**\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6014: src line: 7385", "code": "*foo *bar baz*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6023: src line: 7394", "code": "*[bar*](/url)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6032: src line: 7401", "code": "_foo [bar_](/url)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6041: src line: 7408", "code": "*<img src=\"foo\" title=\"*\"/>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6050: src line: 7415", "code": "**<a href=\"**\">\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6059: src line: 7422", "code": "__<a href=\"__\">\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6068: src line: 7429", "code": "*a `*`*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6077: src line: 7436", "code": "_a `_`_\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6086: src line: 7443", "code": "**a<https://foo.bar/?q=**>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6095: src line: 7450", "code": "__a<https://foo.bar/?q=__>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6104: src line: 7538", "code": "[link](/uri \"title\")\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6113: src line: 7548", "code": "[link](/uri)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6122: src line: 7554", "code": "[](./target.md)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6131: src line: 7561", "code": "[link]()\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6140: src line: 7568", "code": "[link](<>)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6149: src line: 7575", "code": "[]()\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6158: src line: 7584", "code": "[link](/my uri)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6167: src line: 7590", "code": "[link](</my uri>)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6176: src line: 7599", "code": "[link](foo\nbar)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6187: src line: 7607", "code": "[link](<foo\nbar>)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6198: src line: 7618", "code": "[a](<b)c>)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6207: src line: 7626", "code": "[link](<foo\\>)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6216: src line: 7635", "code": "[a](<b)c\n[a](<b)c>\n[a](<b>c)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6229: src line: 7647", "code": "[link](\\(foo\\))\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6238: src line: 7656", "code": "[link](foo(and(bar)))\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6247: src line: 7665", "code": "[link](foo(and(bar))\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6256: src line: 7672", "code": "[link](foo\\(and\\(bar\\))\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6265: src line: 7679", "code": "[link](<foo(and(bar)>)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6274: src line: 7689", "code": "[link](foo\\)\\:)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6283: src line: 7698", "code": "[link](#fragment)\n\n[link](https://example.com#fragment)\n\n[link](https://example.com?foo=3#frag)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6298: src line: 7714", "code": "[link](foo\\bar)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6307: src line: 7730", "code": "[link](foo%20b&auml;)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6316: src line: 7741", "code": "[link](\"title\")\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6325: src line: 7750", "code": "[link](/url \"title\")\n[link](/url 'title')\n[link](/url (title))\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6338: src line: 7764", "code": "[link](/url \"title \\\"&quot;\")\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6347: src line: 7775", "code": "[link](/url \"title\")\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6356: src line: 7784", "code": "[link](/url \"title \"and\" title\")\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6365: src line: 7793", "code": "[link](/url 'title \"and\" title')\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6374: src line: 7818", "code": "[link](   /uri\n  \"title\"  )\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6384: src line: 7829", "code": "[link] (/uri)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6393: src line: 7839", "code": "[link [foo [bar]]](/uri)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6402: src line: 7846", "code": "[link] bar](/uri)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6411: src line: 7853", "code": "[link [bar](/uri)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6420: src line: 7860", "code": "[link \\[bar](/uri)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6429: src line: 7869", "code": "[link *foo **bar** `#`*](/uri)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6438: src line: 7876", "code": "[![moon](moon.jpg)](/uri)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6447: src line: 7885", "code": "[foo [bar](/uri)](/uri)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6456: src line: 7892", "code": "[foo *[bar [baz](/uri)](/uri)*](/uri)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6465: src line: 7899", "code": "![[[foo](uri1)](uri2)](uri3)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6474: src line: 7909", "code": "*[foo*](/uri)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6483: src line: 7916", "code": "[foo *bar](baz*)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6492: src line: 7926", "code": "*foo [bar* baz]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6501: src line: 7936", "code": "[foo <bar attr=\"](baz)\">\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6510: src line: 7943", "code": "[foo`](/uri)`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6519: src line: 7950", "code": "[foo<https://example.com/?search=](uri)>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6528: src line: 7988", "code": "[foo][bar]\n\n[bar]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6539: src line: 8003", "code": "[link [foo [bar]]][ref]\n\n[ref]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6550: src line: 8012", "code": "[link \\[bar][ref]\n\n[ref]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6561: src line: 8023", "code": "[link *foo **bar** `#`*][ref]\n\n[ref]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6572: src line: 8032", "code": "[![moon](moon.jpg)][ref]\n\n[ref]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6583: src line: 8043", "code": "[foo [bar](/uri)][ref]\n\n[ref]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6594: src line: 8052", "code": "[foo *bar [baz][ref]*][ref]\n\n[ref]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6605: src line: 8067", "code": "*[foo*][ref]\n\n[ref]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6616: src line: 8076", "code": "[foo *bar][ref]*\n\n[ref]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6627: src line: 8088", "code": "[foo <bar attr=\"][ref]\">\n\n[ref]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6638: src line: 8097", "code": "[foo`][ref]`\n\n[ref]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6649: src line: 8106", "code": "[foo<https://example.com/?search=][ref]>\n\n[ref]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6660: src line: 8117", "code": "[foo][BaR]\n\n[bar]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6671: src line: 8128", "code": "[ẞ]\n\n[SS]: /url\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6682: src line: 8140", "code": "[Foo\n  bar]: /url\n\n[Baz][Foo bar]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6694: src line: 8153", "code": "[foo] [bar]\n\n[bar]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6705: src line: 8162", "code": "[foo]\n[bar]\n\n[bar]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6718: src line: 8203", "code": "[foo]: /url1\n\n[foo]: /url2\n\n[bar][foo]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6731: src line: 8218", "code": "[bar][foo\\!]\n\n[foo!]: /url\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6742: src line: 8230", "code": "[foo][ref[]\n\n[ref[]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6754: src line: 8240", "code": "[foo][ref[bar]]\n\n[ref[bar]]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6766: src line: 8250", "code": "[[[foo]]]\n\n[[[foo]]]: /url\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6778: src line: 8260", "code": "[foo][ref\\[]\n\n[ref\\[]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6789: src line: 8271", "code": "[bar\\\\]: /uri\n\n[bar\\\\]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6800: src line: 8283", "code": "[]\n\n[]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6812: src line: 8293", "code": "[\n ]\n\n[\n ]: /uri\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6828: src line: 8316", "code": "[foo][]\n\n[foo]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6839: src line: 8325", "code": "[*foo* bar][]\n\n[*foo* bar]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6850: src line: 8336", "code": "[Foo][]\n\n[foo]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6861: src line: 8349", "code": "[foo] \n[]\n\n[foo]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6874: src line: 8369", "code": "[foo]\n\n[foo]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6885: src line: 8378", "code": "[*foo* bar]\n\n[*foo* bar]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6896: src line: 8387", "code": "[[*foo* bar]]\n\n[*foo* bar]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6907: src line: 8396", "code": "[[bar [foo]\n\n[foo]: /url\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6918: src line: 8407", "code": "[Foo]\n\n[foo]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6929: src line: 8418", "code": "[foo] bar\n\n[foo]: /url\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6940: src line: 8430", "code": "\\[foo]\n\n[foo]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6951: src line: 8442", "code": "[foo*]: /url\n\n*[foo*]\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6962: src line: 8454", "code": "[foo][bar]\n\n[foo]: /url1\n[bar]: /url2\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6974: src line: 8463", "code": "[foo][]\n\n[foo]: /url1\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6985: src line: 8473", "code": "[foo]()\n\n[foo]: /url1\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 6996: src line: 8481", "code": "[foo](not a link)\n\n[foo]: /url1\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7007: src line: 8492", "code": "[foo][bar][baz]\n\n[baz]: /url\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7018: src line: 8504", "code": "[foo][bar][baz]\n\n[baz]: /url1\n[bar]: /url2\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7030: src line: 8517", "code": "[foo][bar][baz]\n\n[baz]: /url1\n[foo]: /url2\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7042: src line: 8540", "code": "![foo](/url \"title\")\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7051: src line: 8547", "code": "![foo *bar*]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7062: src line: 8556", "code": "![foo ![bar](/url)](/url2)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7071: src line: 8563", "code": "![foo [bar](/url)](/url2)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7080: src line: 8577", "code": "![foo *bar*][]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7091: src line: 8586", "code": "![foo *bar*][foobar]\n\n[FOOBAR]: train.jpg \"train & tracks\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7102: src line: 8595", "code": "![foo](train.jpg)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7111: src line: 8602", "code": "My ![foo bar](/path/to/train.jpg  \"title\"   )\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7120: src line: 8609", "code": "![foo](<url>)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7129: src line: 8616", "code": "![](/url)\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7138: src line: 8625", "code": "![foo][bar]\n\n[bar]: /url\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7149: src line: 8634", "code": "![foo][bar]\n\n[BAR]: /url\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7160: src line: 8645", "code": "![foo][]\n\n[foo]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7171: src line: 8654", "code": "![*foo* bar][]\n\n[*foo* bar]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7182: src line: 8665", "code": "![Foo][]\n\n[foo]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7193: src line: 8677", "code": "![foo] \n[]\n\n[foo]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7206: src line: 8690", "code": "![foo]\n\n[foo]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7217: src line: 8699", "code": "![*foo* bar]\n\n[*foo* bar]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7228: src line: 8710", "code": "![[foo]]\n\n[[foo]]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7240: src line: 8722", "code": "![Foo]\n\n[foo]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7251: src line: 8734", "code": "!\\[foo]\n\n[foo]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7262: src line: 8746", "code": "\\![foo]\n\n[foo]: /url \"title\"\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7273: src line: 8779", "code": "<http://foo.bar.baz>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7282: src line: 8786", "code": "<https://foo.bar.baz/test?q=hello&id=22&boolean>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7291: src line: 8793", "code": "<irc://foo.bar:2233/baz>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7300: src line: 8802", "code": "<MAILTO:FOO@BAR.BAZ>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7309: src line: 8814", "code": "<a+b+c:d>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7318: src line: 8821", "code": "<made-up-scheme://foo,bar>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7327: src line: 8828", "code": "<https://../>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7336: src line: 8835", "code": "<localhost:5001/foo>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7345: src line: 8844", "code": "<https://foo.bar/baz bim>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7354: src line: 8853", "code": "<https://example.com/\\[\\>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7363: src line: 8875", "code": "<foo@bar.example.com>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7372: src line: 8882", "code": "<foo+special@Bar.baz-bar0.com>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7381: src line: 8891", "code": "<foo\\+@bar.example.com>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7390: src line: 8900", "code": "<>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7399: src line: 8907", "code": "< https://foo.bar >\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7408: src line: 8914", "code": "<m:abc>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7417: src line: 8921", "code": "<foo.bar.baz>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7426: src line: 8928", "code": "https://example.com\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7435: src line: 8935", "code": "foo@bar.example.com\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7444: src line: 9015", "code": "<a><bab><c2c>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7453: src line: 9024", "code": "<a/><b2/>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7462: src line: 9033", "code": "<a  /><b2\ndata=\"foo\" >\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7473: src line: 9044", "code": "<a foo=\"bar\" bam = 'baz <em>\"</em>'\n_boolean zoop:33=zoop:33 />\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7484: src line: 9055", "code": "Foo <responsive-image src=\"foo.jpg\" />\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7493: src line: 9064", "code": "<33> <__>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7502: src line: 9073", "code": "<a h*#ref=\"hi\">\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7511: src line: 9082", "code": "<a href=\"hi'> <a href=hi'>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7520: src line: 9091", "code": "< a><\nfoo><bar/ >\n<foo bar=baz\nbim!bop />\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7535: src line: 9106", "code": "<a href='bar'title=title>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7544: src line: 9115", "code": "</a></foo >\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7553: src line: 9124", "code": "</a href=\"foo\">\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7562: src line: 9133", "code": "foo <!-- this is a --\ncomment - with hyphens -->\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7573: src line: 9141", "code": "foo <!--> foo -->\n\nfoo <!---> foo -->\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7585: src line: 9153", "code": "foo <?php echo $a; ?>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7594: src line: 9162", "code": "foo <!ELEMENT br EMPTY>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7603: src line: 9171", "code": "foo <![CDATA[>&<]]>\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7612: src line: 9181", "code": "foo <a href=\"&ouml;\">\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7621: src line: 9190", "code": "foo <a href=\"\\*\">\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7630: src line: 9197", "code": "<a href=\"\\\"\">\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7639: src line: 9211", "code": "foo  \nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7650: src line: 9223", "code": "foo\\\nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7661: src line: 9234", "code": "foo       \nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7672: src line: 9245", "code": "foo  \n     bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7683: src line: 9254", "code": "foo\\\n     bar\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7694: src line: 9266", "code": "*foo  \nbar*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7705: src line: 9275", "code": "*foo\\\nbar*\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7716: src line: 9286", "code": "`code  \nspan`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7726: src line: 9294", "code": "`code\\\nspan`\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7736: src line: 9304", "code": "<a href=\"foo  \nbar\">\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7747: src line: 9313", "code": "<a href=\"foo\\\nbar\">\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7758: src line: 9326", "code": "foo\\\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7767: src line: 9333", "code": "foo  \n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7776: src line: 9340", "code": "### foo\\\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7785: src line: 9347", "code": "### foo  \n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7794: src line: 9362", "code": "foo\nbaz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7805: src line: 9374", "code": "foo \n baz\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7816: src line: 9394", "code": "hello $.;'there\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7825: src line: 9401", "code": "Foo χρῆν\n", "allowIndentation": false, "allowComments": false}
+{"id": "commonmark/good.txt line 7834: src line: 9410", "code": "Multiple     spaces\n", "allowIndentation": false, "allowComments": false}

@@ -2,19 +2,54 @@
 name = "markdoc"
 version = "0.1.0"
 edition = "2024"
+description = "Rust implementation of the Markdoc document language (CommonMark plus a {% tag %} extension)"
 license = "MIT"
-repository = "https://github.com/markdoc/markdoc"
-
-# Standalone crate now — `flux-types`, `leptos-markdoc`, and
-# `markdoc-pdf` were promoted to sibling crates one level up
-# (../flux-types, ../leptos-markdoc, ../markdoc-pdf) and pin their
-# own dependency versions.
+repository = "https://github.com/markdoc-rs/markdoc"
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
+# `preserve_order`: a serde_json::Map keeps its keys in insertion order. Token.meta and
+# token.errors are serde_json values, and upstream's objects keep their key order (the
+# order shows in the AST, in validation errors and in rendered attributes), so the tag
+# meta the tokenizer plugins write must reach the parser in the order upstream builds it.
+# `float_roundtrip`: JSON text is read into an f64 with correct rounding, as JSON.parse
+# reads it. Without it serde_json's faster parse is off by one unit in the last place for
+# many long mantissas (2^-24's shortest text, 5.960464477539063e-8, read back as
+# 5.960464477539064e-8), so upstream's numbers read from JSON (golden files, the oracle's
+# tokens and ASTs) would not be the numbers upstream holds.
+serde_json = { version = "1.0", features = ["preserve_order", "float_roundtrip"] }
 thiserror = "1.0"
-pulldown-cmark = "0.11"
-indexmap = "2.0"
+indexmap = { version = "2.0", features = ["serde"] }
 regex = "1.10"
+# ECMAScript regular expressions for `next`: a schema attribute's `matches` RegExp is
+# tested as JavaScript tests it (UTF-16 code units, JS classes, case folding, flags).
+# Vendored: regress 0.12.0 with the fixes listed in vendor/regress/VENDORED.md (carried until
+# upstream accepts them). A published crate's dependencies come from crates.io (packaging
+# drops `path`, and `[patch]` does not travel), so the fork is published there as
+# `markdoc-regress` and named `regress` here. Publish it first:
+# `cargo publish --manifest-path vendor/regress/Cargo.toml`.
+regress = { package = "markdoc-regress", version = "0.12.0", path = "vendor/regress", features = ["utf16"] }
 serde_yaml = "0.9"
+# Parses `schema/tags.toml`, the built-in tag schema, and its overlays (src/ext/bundle.rs).
+# `preserve_order`: tables keep the file's order, which is the order of a
+# schema's attributes and so of the attributes upstream's renderer writes.
+toml = { version = "1.1.8", features = ["preserve_order"] }
+
+# Grows the thread's stack where upstream's recursion is bounded only by V8's stack (the
+# engine's block and inline rules, the tag grammar, the transform, the value resolution,
+# serde of deep trees), so that the port's depth limits can be node's (see `src/depth.rs`).
+# Behind the `stack-growth` feature, and never on wasm, whose call stack belongs to the host:
+# without it every recursion keeps a fixed limit that fits a 2 MiB stack.
+[target.'cfg(not(target_family = "wasm"))'.dependencies]
+stacker = { version = "0.1.25", optional = true }
+
+[features]
+default = ["stack-growth"]
+# Node's depth limits for the recursions that mirror upstream's (see `src/depth.rs`). Off (or
+# on a target without stack switching), those recursions stop at fixed, smaller depths.
+stack-growth = ["dep:stacker"]
+
+[dev-dependencies]
+# tests/conformance.rs checks the vendored corpus's sha256 on every run, so it
+# cannot be edited to fit the parser without the test saying so.
+sha2 = "0.10"

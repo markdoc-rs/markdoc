@@ -1,0 +1,18 @@
+{"id": "empty", "src": ""}
+{"id": "blank-lf", "src": "\n"}
+{"id": "blank-lines", "src": "\n\n\n"}
+{"id": "blank-spaces", "src": "   \n\t\n  \t  \n"}
+{"id": "blank-crlf", "src": "\r\n\r\n"}
+{"id": "blank-cr", "src": "\r\r \r"}
+{"id": "blank-trailing-spaces-no-eol", "src": "\n   "}
+{"id": "text", "src": "hello world"}
+{"id": "text-lines", "src": "one\ntwo\n\nthree\n"}
+{"id": "text-crlf", "src": "a\r\nb\rc\r\n"}
+{"id": "text-nul", "src": "a\u0000b\u0000"}
+{"id": "text-astral", "src": "x 😀 y 𐐀"}
+{"id": "text-markers", "src": "*a* _b_ `c` [d](e) <f> &amp; \\g ~~h~~ ![i](j)"}
+{"id": "text-unicode-space", "src": " a　b c﻿"}
+{"id": "text-tabs", "src": "\ta\t\tb"}
+{"id": "text-long-line", "src": "word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word word "}
+{"id": "text-only-newlines-inline", "src": "\n\n"}
+{"id": "text-indented", "src": "    code?\n        more"}

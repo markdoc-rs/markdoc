@@ -1,0 +1,6 @@
+{"id": "tokenizer-plugins-comments#0 MarkdownIt Comments plugin > inline comments > simple inline comment", "code": "this is a test <!-- example comment --> foo", "allowIndentation": false, "allowComments": true}
+{"id": "tokenizer-plugins-comments#1 MarkdownIt Comments plugin > inline comments > inline comment with a newline", "code": "this is a test <!-- \nexample comment\n--> foo", "allowIndentation": false, "allowComments": true}
+{"id": "tokenizer-plugins-comments#2 MarkdownIt Comments plugin > block comments > simple block comment after a paragraph", "code": "this is a test\n<!--\nexample comment\n-->\nfoo", "allowIndentation": false, "allowComments": true}
+{"id": "tokenizer-plugins-comments#3 MarkdownIt Comments plugin > block comments > block comment with ending on same line as content", "code": "this is a test\n<!--\nexample comment -->\nfoo", "allowIndentation": false, "allowComments": true}
+{"id": "tokenizer-plugins-comments#4 MarkdownIt Comments plugin > block comments > block comment one one line", "code": "this is a test\n<!-- example comment -->\nfoo", "allowIndentation": false, "allowComments": true}
+{"id": "tokenizer-plugins-comments#5 MarkdownIt Comments plugin > block comments > block comment across multiple lines with blank lines", "code": "foo <!-- example\n\n      comment --> bar", "allowIndentation": false, "allowComments": true}

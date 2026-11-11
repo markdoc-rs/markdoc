@@ -1,0 +1,57 @@
+{"id": "parser#0 Markdown parser > handling options > no args", "code": "# This is a test", "allowIndentation": false, "allowComments": true}
+{"id": "parser#1 Markdown parser > handling options > filename as string", "code": "# This is a test", "allowIndentation": false, "allowComments": true, "file": "foo.md"}
+{"id": "parser#2 Markdown parser > handling options > location off", "code": "# This is a test", "allowIndentation": false, "allowComments": true, "file": "foo.md", "parse": {"location": false}}
+{"id": "parser#3 Markdown parser > handling options > location on", "code": "# This is a test", "allowIndentation": false, "allowComments": true, "file": "foo.md", "parse": {"location": true}}
+{"id": "parser#4 Markdown parser > handling frontmatter > simple frontmatter", "code": "---\nfoo: bar\n---", "allowIndentation": false, "allowComments": true}
+{"id": "parser#5 Markdown parser > handling frontmatter > frontmatter followed by content", "code": "---\nfoo: bar\ntest: true\n---\n# This is a test", "allowIndentation": false, "allowComments": true}
+{"id": "parser#6 Markdown parser > handling attributes > for emphasis", "code": "a*b*c", "allowIndentation": false, "allowComments": true}
+{"id": "parser#7 Markdown parser > handling attributes > for emphasis", "code": "a**b**c", "allowIndentation": false, "allowComments": true}
+{"id": "parser#8 Markdown parser > handling attributes > for emphasis", "code": "_foo_ bar", "allowIndentation": false, "allowComments": true}
+{"id": "parser#9 Markdown parser > handling attributes > for emphasis", "code": "__foo__ bar", "allowIndentation": false, "allowComments": true}
+{"id": "parser#10 Markdown parser > handling attributes > for emphasis", "code": "foo *bar* baz", "allowIndentation": false, "allowComments": true}
+{"id": "parser#11 Markdown parser > handling attributes > for emphasis", "code": "foo **bar** baz", "allowIndentation": false, "allowComments": true}
+{"id": "parser#12 Markdown parser > handling attributes > for heading", "code": "# Sample Heading", "allowIndentation": false, "allowComments": true}
+{"id": "parser#13 Markdown parser > handling attributes > for list", "code": "* Example 1\n* Example 2\n* Example 3", "allowIndentation": false, "allowComments": true}
+{"id": "parser#14 Markdown parser > handling attributes > for list", "code": "1. Example 1\n2. Example 2\n3. Example 3", "allowIndentation": false, "allowComments": true}
+{"id": "parser#15 Markdown parser > handling attributes > for ordered list start", "code": "3. Example 1\n4. Example 2\n5. Example 3", "allowIndentation": false, "allowComments": true}
+{"id": "parser#16 Markdown parser > handling attributes > for ordered list start", "code": "1. Example 1\n4. Example 2\n5. Example 3", "allowIndentation": false, "allowComments": true}
+{"id": "parser#17 Markdown parser > handling attributes > for link with one word", "code": "[foo](/bar)", "allowIndentation": false, "allowComments": true}
+{"id": "parser#18 Markdown parser > handling attributes > for link with one word and a title", "code": "[foo](/bar \"title\")", "allowIndentation": false, "allowComments": true}
+{"id": "parser#19 Markdown parser > handling attributes > for link", "code": "[this is a test](/bar)", "allowIndentation": false, "allowComments": true}
+{"id": "parser#20 Markdown parser > handling attributes > for text", "code": "This is a test", "allowIndentation": false, "allowComments": true}
+{"id": "parser#21 Markdown parser > handling attributes > for code fence", "code": "```ruby\nThis is a test\n```", "allowIndentation": false, "allowComments": true}
+{"id": "parser#22 Markdown parser > handling attributes > for code fence", "code": "```ruby this is a test\nThis is a test\n```", "allowIndentation": false, "allowComments": true}
+{"id": "parser#23 Markdown parser > handling attributes > for code fence", "code": "```\nThis is a test\n```", "allowIndentation": false, "allowComments": true}
+{"id": "parser#24 Markdown parser > handling attributes > for image with no title", "code": "![foo](/url)", "allowIndentation": false, "allowComments": true}
+{"id": "parser#25 Markdown parser > handling attributes > for image with a title", "code": "![foo](/url \"title\")", "allowIndentation": false, "allowComments": true}
+{"id": "parser#26 Markdown parser > handling attributes > for table with alignments", "code": "| Left | Center | Right |\n| :--- | :----: | ----: |\n| Left | Center | Right |", "allowIndentation": false, "allowComments": true}
+{"id": "parser#27 Markdown parser > handling a header", "code": "# Sample Heading\nThis is a sample paragraph", "allowIndentation": false, "allowComments": true}
+{"id": "parser#28 Markdown parser > handling an image", "code": "![Alt](/logo.png)", "allowIndentation": false, "allowComments": true}
+{"id": "parser#29 Markdown parser > handling lists > with bullets", "code": "* foo\n* bar", "allowIndentation": false, "allowComments": true}
+{"id": "parser#30 Markdown parser > handling lists > with numbers", "code": "1. foo\n2. bar", "allowIndentation": false, "allowComments": true}
+{"id": "parser#31 Markdown parser > handling fenced code > with a language", "code": "```ruby\nputs \"foo\"\n```", "allowIndentation": false, "allowComments": true}
+{"id": "parser#32 Markdown parser > handling fenced code > with an annotation", "code": "```ruby {% #foo .bar %}\ntest\n```", "allowIndentation": false, "allowComments": true}
+{"id": "parser#33 Markdown parser > handling tags > at block level > with a class", "code": "{% callout .foo .bar %}\n### Heading\nThis is a paragraph\n{% /callout %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#34 Markdown parser > handling tags > at block level > with nesting", "code": "{% callout %}\n{% callout %}\nThis is a test\n{% /callout %}\n{% /callout %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#35 Markdown parser > handling annotations > in a header > with an id", "code": "# Sample Heading {% #foo-bar %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#36 Markdown parser > handling annotations > in a header > with a class", "code": "# Sample Heading {% .foo-bar .test %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#37 Markdown parser > handling annotations > in a header > with complex values", "code": "# Sample Heading {% #asdf .foo-bar .test foo=\"bar\" %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#38 Markdown parser > handling variables > by itself on a line", "code": "{% $test %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#39 Markdown parser > handling variables > in an inline text node", "code": "This is a test: {% $test %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#40 Markdown parser > handling variables > with nested property access", "code": "{% $bar.baz[1].test %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#41 Markdown parser > parsing nested tags with indentation should not throw", "code": "{% tag1 %}\n{% tag2 %}\nContents\n{% /tag2 %}\n{% /tag1 %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#42 Markdown parser > parsing comments", "code": "this is a test\n<!-- foo -->", "allowIndentation": false, "allowComments": true}
+{"id": "parser#43 Markdown parser > handles attribute errors correctly > with error for duplicate attributes", "code": "{% foo bar=1 bar=2 bar=3 bar=4 /%}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#44 Markdown parser > handles attribute errors correctly > with error for duplicate ids", "code": "{% foo #bar #baz #qux /%}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#45 Markdown parser > handles attribute errors correctly > with annotation values", "code": "testing {% foo=1 foo=2 %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#46 Markdown parser > handles attribute errors correctly > across annotations on the same node", "code": "testing {% foo=1 %} another test {% foo=1 %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#47 Markdown parser > handles attribute errors correctly > with no error for multiple classes", "code": "{% foo .bar .baz .qux /%}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#48 Markdown parser > displays error for annotations in a fence", "code": "~~~\ntest\n{% #foo %}\ntest\n~~~", "allowIndentation": false, "allowComments": true}
+{"id": "parser#49 Markdown parser > correctly identifies inlines", "code": "# This is a test\n{% foo %}\nAnother {% bar %}test{% /bar %} test\n{% /foo %}\n* bar", "allowIndentation": false, "allowComments": true}
+{"id": "parser#50 Markdown parser > handles structural errors correctly > with unmatched closing tag", "code": "{% foo %}\nTest\n{% /bar %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#51 Markdown parser > handles structural errors correctly > missing opening", "code": "This a test\n{% /foo %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#52 Markdown parser > handles structural errors correctly > with missing closing tag", "code": "{% foo %}\nTest", "allowIndentation": false, "allowComments": true}
+{"id": "parser#53 Markdown parser > table parsing > should preserve default if tag during table parsing without extra parser args", "code": "{% table %}\n- column 1\n- column 2\n---\n{% if $fakeCondition.condition1 %}\n- cell 1\n- cell 2\n{% else /%}\n- cell 3\n- cell 4\n{% /if %}\n{% /table %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#54 Markdown parser > table parsing > should not preserve unregistered tags during table parsing without extra parser args", "code": "{% table %}\n- column 1\n- column 2\n---\n{% if-pref conditions=[{platform: 'web'}] %}\n- cell 1\n- cell 2\n{% /if-pref %}\n{% if-pref conditions=[{platform: 'ios'}] %}\n- cell 1\n- cell 2\n{% /if-pref %}\n{% /table %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#55 Markdown parser > table parsing > should preserve all registered tags and ignore unregistered tags during table parsing with extra parser args", "code": "{% table %}\n- column 1\n- column 2\n---\n{% if-pref conditions=[{platform: 'web'}] %}\n- cell 1\n- cell 2\n{% /if-pref %}\n{% if-pref conditions=[{platform: 'ios'}] %}\n- cell 1\n- cell 2\n{% /if-pref %}\n{% if $fakeCondition.condition1 %}\n- cell 1\n- cell 2\n{% else /%}\n- cell 3\n- cell 4\n{% /if %}\n{% unregistered-if-tag $fakeCondition.condition2 %}\n- cell 1\n- cell 2\n{% /unregistered-if-tag %}\n{% /table %}", "allowIndentation": false, "allowComments": true}
+{"id": "parser#56 Markdown parser > table parsing > should preserve all registered tags and ignore unregistered tags during table parsing with extra parser args", "code": "{% table %}\n- column 1\n- column 2\n---\n{% if-pref conditions=[{platform: 'web'}] %}\n- cell 1\n- cell 2\n{% /if-pref %}\n{% if-pref conditions=[{platform: 'ios'}] %}\n- cell 1\n- cell 2\n{% /if-pref %}\n{% if $fakeCondition.condition1 %}\n- cell 1\n- cell 2\n{% else /%}\n- cell 3\n- cell 4\n{% /if %}\n{% unregistered-if-tag $fakeCondition.condition2 %}\n- cell 1\n- cell 2\n{% /unregistered-if-tag %}\n{% /table %}", "allowIndentation": false, "allowComments": true, "parse": {"conditionalTags": ["if", "if-pref"]}}

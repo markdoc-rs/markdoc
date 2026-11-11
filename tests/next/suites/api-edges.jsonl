@@ -1,0 +1,642 @@
+{"id": "api-edge-0", "code": "# Heading {% level=-1 %}\n"}
+{"id": "api-edge-1", "code": "```js {% content=-1 %}\ncode\n```\n"}
+{"id": "api-edge-2", "code": "```js {% language=-1 %}\ncode\n```\n"}
+{"id": "api-edge-3", "code": "- item\n\n  ```js {% language=-1 %}\n  code\n  ```\n"}
+{"id": "api-edge-4", "code": "{% x class=-1 /%}\n"}
+{"id": "api-edge-5", "code": "{% x id=-1 /%}\n"}
+{"id": "api-edge-6", "code": "{% x a=-1 b={k: -1, \"k e\": [-1]} /%}\n"}
+{"id": "api-edge-7", "code": "{% x -1 /%}\n"}
+{"id": "api-edge-8", "code": "Para {% a=-1 %}\n"}
+{"id": "api-edge-9", "code": "| a | b |\n|---|---|\n| c {% x=-1 %} | d |\n"}
+{"id": "api-edge-10", "code": "# Heading {% level=0 %}\n"}
+{"id": "api-edge-11", "code": "```js {% content=0 %}\ncode\n```\n"}
+{"id": "api-edge-12", "code": "```js {% language=0 %}\ncode\n```\n"}
+{"id": "api-edge-13", "code": "- item\n\n  ```js {% language=0 %}\n  code\n  ```\n"}
+{"id": "api-edge-14", "code": "{% x class=0 /%}\n"}
+{"id": "api-edge-15", "code": "{% x id=0 /%}\n"}
+{"id": "api-edge-16", "code": "{% x a=0 b={k: 0, \"k e\": [0]} /%}\n"}
+{"id": "api-edge-17", "code": "{% x 0 /%}\n"}
+{"id": "api-edge-18", "code": "Para {% a=0 %}\n"}
+{"id": "api-edge-19", "code": "| a | b |\n|---|---|\n| c {% x=0 %} | d |\n"}
+{"id": "api-edge-20", "code": "# Heading {% level=1 %}\n"}
+{"id": "api-edge-21", "code": "```js {% content=1 %}\ncode\n```\n"}
+{"id": "api-edge-22", "code": "```js {% language=1 %}\ncode\n```\n"}
+{"id": "api-edge-23", "code": "- item\n\n  ```js {% language=1 %}\n  code\n  ```\n"}
+{"id": "api-edge-24", "code": "{% x class=1 /%}\n"}
+{"id": "api-edge-25", "code": "{% x id=1 /%}\n"}
+{"id": "api-edge-26", "code": "{% x a=1 b={k: 1, \"k e\": [1]} /%}\n"}
+{"id": "api-edge-27", "code": "{% x 1 /%}\n"}
+{"id": "api-edge-28", "code": "Para {% a=1 %}\n"}
+{"id": "api-edge-29", "code": "| a | b |\n|---|---|\n| c {% x=1 %} | d |\n"}
+{"id": "api-edge-30", "code": "# Heading {% level=2 %}\n"}
+{"id": "api-edge-31", "code": "```js {% content=2 %}\ncode\n```\n"}
+{"id": "api-edge-32", "code": "```js {% language=2 %}\ncode\n```\n"}
+{"id": "api-edge-33", "code": "- item\n\n  ```js {% language=2 %}\n  code\n  ```\n"}
+{"id": "api-edge-34", "code": "{% x class=2 /%}\n"}
+{"id": "api-edge-35", "code": "{% x id=2 /%}\n"}
+{"id": "api-edge-36", "code": "{% x a=2 b={k: 2, \"k e\": [2]} /%}\n"}
+{"id": "api-edge-37", "code": "{% x 2 /%}\n"}
+{"id": "api-edge-38", "code": "Para {% a=2 %}\n"}
+{"id": "api-edge-39", "code": "| a | b |\n|---|---|\n| c {% x=2 %} | d |\n"}
+{"id": "api-edge-40", "code": "# Heading {% level=1.7 %}\n"}
+{"id": "api-edge-41", "code": "```js {% content=1.7 %}\ncode\n```\n"}
+{"id": "api-edge-42", "code": "```js {% language=1.7 %}\ncode\n```\n"}
+{"id": "api-edge-43", "code": "- item\n\n  ```js {% language=1.7 %}\n  code\n  ```\n"}
+{"id": "api-edge-44", "code": "{% x class=1.7 /%}\n"}
+{"id": "api-edge-45", "code": "{% x id=1.7 /%}\n"}
+{"id": "api-edge-46", "code": "{% x a=1.7 b={k: 1.7, \"k e\": [1.7]} /%}\n"}
+{"id": "api-edge-47", "code": "{% x 1.7 /%}\n"}
+{"id": "api-edge-48", "code": "Para {% a=1.7 %}\n"}
+{"id": "api-edge-49", "code": "| a | b |\n|---|---|\n| c {% x=1.7 %} | d |\n"}
+{"id": "api-edge-50", "code": "# Heading {% level=-0.5 %}\n"}
+{"id": "api-edge-51", "code": "```js {% content=-0.5 %}\ncode\n```\n"}
+{"id": "api-edge-52", "code": "```js {% language=-0.5 %}\ncode\n```\n"}
+{"id": "api-edge-53", "code": "- item\n\n  ```js {% language=-0.5 %}\n  code\n  ```\n"}
+{"id": "api-edge-54", "code": "{% x class=-0.5 /%}\n"}
+{"id": "api-edge-55", "code": "{% x id=-0.5 /%}\n"}
+{"id": "api-edge-56", "code": "{% x a=-0.5 b={k: -0.5, \"k e\": [-0.5]} /%}\n"}
+{"id": "api-edge-57", "code": "{% x -0.5 /%}\n"}
+{"id": "api-edge-58", "code": "Para {% a=-0.5 %}\n"}
+{"id": "api-edge-59", "code": "| a | b |\n|---|---|\n| c {% x=-0.5 %} | d |\n"}
+{"id": "api-edge-60", "code": "# Heading {% level=7 %}\n"}
+{"id": "api-edge-61", "code": "```js {% content=7 %}\ncode\n```\n"}
+{"id": "api-edge-62", "code": "```js {% language=7 %}\ncode\n```\n"}
+{"id": "api-edge-63", "code": "- item\n\n  ```js {% language=7 %}\n  code\n  ```\n"}
+{"id": "api-edge-64", "code": "{% x class=7 /%}\n"}
+{"id": "api-edge-65", "code": "{% x id=7 /%}\n"}
+{"id": "api-edge-66", "code": "{% x a=7 b={k: 7, \"k e\": [7]} /%}\n"}
+{"id": "api-edge-67", "code": "{% x 7 /%}\n"}
+{"id": "api-edge-68", "code": "Para {% a=7 %}\n"}
+{"id": "api-edge-69", "code": "| a | b |\n|---|---|\n| c {% x=7 %} | d |\n"}
+{"id": "api-edge-70", "code": "# Heading {% level=\"3\" %}\n"}
+{"id": "api-edge-71", "code": "```js {% content=\"3\" %}\ncode\n```\n"}
+{"id": "api-edge-72", "code": "```js {% language=\"3\" %}\ncode\n```\n"}
+{"id": "api-edge-73", "code": "- item\n\n  ```js {% language=\"3\" %}\n  code\n  ```\n"}
+{"id": "api-edge-74", "code": "{% x class=\"3\" /%}\n"}
+{"id": "api-edge-75", "code": "{% x id=\"3\" /%}\n"}
+{"id": "api-edge-76", "code": "{% x a=\"3\" b={k: \"3\", \"k e\": [\"3\"]} /%}\n"}
+{"id": "api-edge-77", "code": "{% x \"3\" /%}\n"}
+{"id": "api-edge-78", "code": "Para {% a=\"3\" %}\n"}
+{"id": "api-edge-79", "code": "| a | b |\n|---|---|\n| c {% x=\"3\" %} | d |\n"}
+{"id": "api-edge-80", "code": "# Heading {% level=\"abc\" %}\n"}
+{"id": "api-edge-81", "code": "```js {% content=\"abc\" %}\ncode\n```\n"}
+{"id": "api-edge-82", "code": "```js {% language=\"abc\" %}\ncode\n```\n"}
+{"id": "api-edge-83", "code": "- item\n\n  ```js {% language=\"abc\" %}\n  code\n  ```\n"}
+{"id": "api-edge-84", "code": "{% x class=\"abc\" /%}\n"}
+{"id": "api-edge-85", "code": "{% x id=\"abc\" /%}\n"}
+{"id": "api-edge-86", "code": "{% x a=\"abc\" b={k: \"abc\", \"k e\": [\"abc\"]} /%}\n"}
+{"id": "api-edge-87", "code": "{% x \"abc\" /%}\n"}
+{"id": "api-edge-88", "code": "Para {% a=\"abc\" %}\n"}
+{"id": "api-edge-89", "code": "| a | b |\n|---|---|\n| c {% x=\"abc\" %} | d |\n"}
+{"id": "api-edge-90", "code": "# Heading {% level=\" -2 \" %}\n"}
+{"id": "api-edge-91", "code": "```js {% content=\" -2 \" %}\ncode\n```\n"}
+{"id": "api-edge-92", "code": "```js {% language=\" -2 \" %}\ncode\n```\n"}
+{"id": "api-edge-93", "code": "- item\n\n  ```js {% language=\" -2 \" %}\n  code\n  ```\n"}
+{"id": "api-edge-94", "code": "{% x class=\" -2 \" /%}\n"}
+{"id": "api-edge-95", "code": "{% x id=\" -2 \" /%}\n"}
+{"id": "api-edge-96", "code": "{% x a=\" -2 \" b={k: \" -2 \", \"k e\": [\" -2 \"]} /%}\n"}
+{"id": "api-edge-97", "code": "{% x \" -2 \" /%}\n"}
+{"id": "api-edge-98", "code": "Para {% a=\" -2 \" %}\n"}
+{"id": "api-edge-99", "code": "| a | b |\n|---|---|\n| c {% x=\" -2 \" %} | d |\n"}
+{"id": "api-edge-100", "code": "# Heading {% level=\"0x10\" %}\n"}
+{"id": "api-edge-101", "code": "```js {% content=\"0x10\" %}\ncode\n```\n"}
+{"id": "api-edge-102", "code": "```js {% language=\"0x10\" %}\ncode\n```\n"}
+{"id": "api-edge-103", "code": "- item\n\n  ```js {% language=\"0x10\" %}\n  code\n  ```\n"}
+{"id": "api-edge-104", "code": "{% x class=\"0x10\" /%}\n"}
+{"id": "api-edge-105", "code": "{% x id=\"0x10\" /%}\n"}
+{"id": "api-edge-106", "code": "{% x a=\"0x10\" b={k: \"0x10\", \"k e\": [\"0x10\"]} /%}\n"}
+{"id": "api-edge-107", "code": "{% x \"0x10\" /%}\n"}
+{"id": "api-edge-108", "code": "Para {% a=\"0x10\" %}\n"}
+{"id": "api-edge-109", "code": "| a | b |\n|---|---|\n| c {% x=\"0x10\" %} | d |\n"}
+{"id": "api-edge-110", "code": "# Heading {% level=\"\" %}\n"}
+{"id": "api-edge-111", "code": "```js {% content=\"\" %}\ncode\n```\n"}
+{"id": "api-edge-112", "code": "```js {% language=\"\" %}\ncode\n```\n"}
+{"id": "api-edge-113", "code": "- item\n\n  ```js {% language=\"\" %}\n  code\n  ```\n"}
+{"id": "api-edge-114", "code": "{% x class=\"\" /%}\n"}
+{"id": "api-edge-115", "code": "{% x id=\"\" /%}\n"}
+{"id": "api-edge-116", "code": "{% x a=\"\" b={k: \"\", \"k e\": [\"\"]} /%}\n"}
+{"id": "api-edge-117", "code": "{% x \"\" /%}\n"}
+{"id": "api-edge-118", "code": "Para {% a=\"\" %}\n"}
+{"id": "api-edge-119", "code": "| a | b |\n|---|---|\n| c {% x=\"\" %} | d |\n"}
+{"id": "api-edge-120", "code": "# Heading {% level=true %}\n"}
+{"id": "api-edge-121", "code": "```js {% content=true %}\ncode\n```\n"}
+{"id": "api-edge-122", "code": "```js {% language=true %}\ncode\n```\n"}
+{"id": "api-edge-123", "code": "- item\n\n  ```js {% language=true %}\n  code\n  ```\n"}
+{"id": "api-edge-124", "code": "{% x class=true /%}\n"}
+{"id": "api-edge-125", "code": "{% x id=true /%}\n"}
+{"id": "api-edge-126", "code": "{% x a=true b={k: true, \"k e\": [true]} /%}\n"}
+{"id": "api-edge-127", "code": "{% x true /%}\n"}
+{"id": "api-edge-128", "code": "Para {% a=true %}\n"}
+{"id": "api-edge-129", "code": "| a | b |\n|---|---|\n| c {% x=true %} | d |\n"}
+{"id": "api-edge-130", "code": "# Heading {% level=false %}\n"}
+{"id": "api-edge-131", "code": "```js {% content=false %}\ncode\n```\n"}
+{"id": "api-edge-132", "code": "```js {% language=false %}\ncode\n```\n"}
+{"id": "api-edge-133", "code": "- item\n\n  ```js {% language=false %}\n  code\n  ```\n"}
+{"id": "api-edge-134", "code": "{% x class=false /%}\n"}
+{"id": "api-edge-135", "code": "{% x id=false /%}\n"}
+{"id": "api-edge-136", "code": "{% x a=false b={k: false, \"k e\": [false]} /%}\n"}
+{"id": "api-edge-137", "code": "{% x false /%}\n"}
+{"id": "api-edge-138", "code": "Para {% a=false %}\n"}
+{"id": "api-edge-139", "code": "| a | b |\n|---|---|\n| c {% x=false %} | d |\n"}
+{"id": "api-edge-140", "code": "# Heading {% level=null %}\n"}
+{"id": "api-edge-141", "code": "```js {% content=null %}\ncode\n```\n"}
+{"id": "api-edge-142", "code": "```js {% language=null %}\ncode\n```\n"}
+{"id": "api-edge-143", "code": "- item\n\n  ```js {% language=null %}\n  code\n  ```\n"}
+{"id": "api-edge-144", "code": "{% x class=null /%}\n"}
+{"id": "api-edge-145", "code": "{% x id=null /%}\n"}
+{"id": "api-edge-146", "code": "{% x a=null b={k: null, \"k e\": [null]} /%}\n"}
+{"id": "api-edge-147", "code": "{% x null /%}\n"}
+{"id": "api-edge-148", "code": "Para {% a=null %}\n"}
+{"id": "api-edge-149", "code": "| a | b |\n|---|---|\n| c {% x=null %} | d |\n"}
+{"id": "api-edge-150", "code": "# Heading {% level=[2] %}\n"}
+{"id": "api-edge-151", "code": "```js {% content=[2] %}\ncode\n```\n"}
+{"id": "api-edge-152", "code": "```js {% language=[2] %}\ncode\n```\n"}
+{"id": "api-edge-153", "code": "- item\n\n  ```js {% language=[2] %}\n  code\n  ```\n"}
+{"id": "api-edge-154", "code": "{% x class=[2] /%}\n"}
+{"id": "api-edge-155", "code": "{% x id=[2] /%}\n"}
+{"id": "api-edge-156", "code": "{% x a=[2] b={k: [2], \"k e\": [[2]]} /%}\n"}
+{"id": "api-edge-157", "code": "{% x [2] /%}\n"}
+{"id": "api-edge-158", "code": "Para {% a=[2] %}\n"}
+{"id": "api-edge-159", "code": "| a | b |\n|---|---|\n| c {% x=[2] %} | d |\n"}
+{"id": "api-edge-160", "code": "# Heading {% level=[-2] %}\n"}
+{"id": "api-edge-161", "code": "```js {% content=[-2] %}\ncode\n```\n"}
+{"id": "api-edge-162", "code": "```js {% language=[-2] %}\ncode\n```\n"}
+{"id": "api-edge-163", "code": "- item\n\n  ```js {% language=[-2] %}\n  code\n  ```\n"}
+{"id": "api-edge-164", "code": "{% x class=[-2] /%}\n"}
+{"id": "api-edge-165", "code": "{% x id=[-2] /%}\n"}
+{"id": "api-edge-166", "code": "{% x a=[-2] b={k: [-2], \"k e\": [[-2]]} /%}\n"}
+{"id": "api-edge-167", "code": "{% x [-2] /%}\n"}
+{"id": "api-edge-168", "code": "Para {% a=[-2] %}\n"}
+{"id": "api-edge-169", "code": "| a | b |\n|---|---|\n| c {% x=[-2] %} | d |\n"}
+{"id": "api-edge-170", "code": "# Heading {% level=[] %}\n"}
+{"id": "api-edge-171", "code": "```js {% content=[] %}\ncode\n```\n"}
+{"id": "api-edge-172", "code": "```js {% language=[] %}\ncode\n```\n"}
+{"id": "api-edge-173", "code": "- item\n\n  ```js {% language=[] %}\n  code\n  ```\n"}
+{"id": "api-edge-174", "code": "{% x class=[] /%}\n"}
+{"id": "api-edge-175", "code": "{% x id=[] /%}\n"}
+{"id": "api-edge-176", "code": "{% x a=[] b={k: [], \"k e\": [[]]} /%}\n"}
+{"id": "api-edge-177", "code": "{% x [] /%}\n"}
+{"id": "api-edge-178", "code": "Para {% a=[] %}\n"}
+{"id": "api-edge-179", "code": "| a | b |\n|---|---|\n| c {% x=[] %} | d |\n"}
+{"id": "api-edge-180", "code": "# Heading {% level=[1, 2] %}\n"}
+{"id": "api-edge-181", "code": "```js {% content=[1, 2] %}\ncode\n```\n"}
+{"id": "api-edge-182", "code": "```js {% language=[1, 2] %}\ncode\n```\n"}
+{"id": "api-edge-183", "code": "- item\n\n  ```js {% language=[1, 2] %}\n  code\n  ```\n"}
+{"id": "api-edge-184", "code": "{% x class=[1, 2] /%}\n"}
+{"id": "api-edge-185", "code": "{% x id=[1, 2] /%}\n"}
+{"id": "api-edge-186", "code": "{% x a=[1, 2] b={k: [1, 2], \"k e\": [[1, 2]]} /%}\n"}
+{"id": "api-edge-187", "code": "{% x [1, 2] /%}\n"}
+{"id": "api-edge-188", "code": "Para {% a=[1, 2] %}\n"}
+{"id": "api-edge-189", "code": "| a | b |\n|---|---|\n| c {% x=[1, 2] %} | d |\n"}
+{"id": "api-edge-190", "code": "# Heading {% level={} %}\n"}
+{"id": "api-edge-191", "code": "```js {% content={} %}\ncode\n```\n"}
+{"id": "api-edge-192", "code": "```js {% language={} %}\ncode\n```\n"}
+{"id": "api-edge-193", "code": "- item\n\n  ```js {% language={} %}\n  code\n  ```\n"}
+{"id": "api-edge-194", "code": "{% x class={} /%}\n"}
+{"id": "api-edge-195", "code": "{% x id={} /%}\n"}
+{"id": "api-edge-196", "code": "{% x a={} b={k: {}, \"k e\": [{}]} /%}\n"}
+{"id": "api-edge-197", "code": "{% x {} /%}\n"}
+{"id": "api-edge-198", "code": "Para {% a={} %}\n"}
+{"id": "api-edge-199", "code": "| a | b |\n|---|---|\n| c {% x={} %} | d |\n"}
+{"id": "api-edge-200", "code": "# Heading {% level={a: 1} %}\n"}
+{"id": "api-edge-201", "code": "```js {% content={a: 1} %}\ncode\n```\n"}
+{"id": "api-edge-202", "code": "```js {% language={a: 1} %}\ncode\n```\n"}
+{"id": "api-edge-203", "code": "- item\n\n  ```js {% language={a: 1} %}\n  code\n  ```\n"}
+{"id": "api-edge-204", "code": "{% x class={a: 1} /%}\n"}
+{"id": "api-edge-205", "code": "{% x id={a: 1} /%}\n"}
+{"id": "api-edge-206", "code": "{% x a={a: 1} b={k: {a: 1}, \"k e\": [{a: 1}]} /%}\n"}
+{"id": "api-edge-207", "code": "{% x {a: 1} /%}\n"}
+{"id": "api-edge-208", "code": "Para {% a={a: 1} %}\n"}
+{"id": "api-edge-209", "code": "| a | b |\n|---|---|\n| c {% x={a: 1} %} | d |\n"}
+{"id": "api-edge-210", "code": "# Heading {% level={toString: 1} %}\n"}
+{"id": "api-edge-211", "code": "```js {% content={toString: 1} %}\ncode\n```\n"}
+{"id": "api-edge-212", "code": "```js {% language={toString: 1} %}\ncode\n```\n"}
+{"id": "api-edge-213", "code": "- item\n\n  ```js {% language={toString: 1} %}\n  code\n  ```\n"}
+{"id": "api-edge-214", "code": "{% x class={toString: 1} /%}\n"}
+{"id": "api-edge-215", "code": "{% x id={toString: 1} /%}\n"}
+{"id": "api-edge-216", "code": "{% x a={toString: 1} b={k: {toString: 1}, \"k e\": [{toString: 1}]} /%}\n"}
+{"id": "api-edge-217", "code": "{% x {toString: 1} /%}\n"}
+{"id": "api-edge-218", "code": "Para {% a={toString: 1} %}\n"}
+{"id": "api-edge-219", "code": "| a | b |\n|---|---|\n| c {% x={toString: 1} %} | d |\n"}
+{"id": "api-edge-220", "code": "# Heading {% level={valueOf: 1} %}\n"}
+{"id": "api-edge-221", "code": "```js {% content={valueOf: 1} %}\ncode\n```\n"}
+{"id": "api-edge-222", "code": "```js {% language={valueOf: 1} %}\ncode\n```\n"}
+{"id": "api-edge-223", "code": "- item\n\n  ```js {% language={valueOf: 1} %}\n  code\n  ```\n"}
+{"id": "api-edge-224", "code": "{% x class={valueOf: 1} /%}\n"}
+{"id": "api-edge-225", "code": "{% x id={valueOf: 1} /%}\n"}
+{"id": "api-edge-226", "code": "{% x a={valueOf: 1} b={k: {valueOf: 1}, \"k e\": [{valueOf: 1}]} /%}\n"}
+{"id": "api-edge-227", "code": "{% x {valueOf: 1} /%}\n"}
+{"id": "api-edge-228", "code": "Para {% a={valueOf: 1} %}\n"}
+{"id": "api-edge-229", "code": "| a | b |\n|---|---|\n| c {% x={valueOf: 1} %} | d |\n"}
+{"id": "api-edge-230", "code": "# Heading {% level=$x %}\n"}
+{"id": "api-edge-231", "code": "```js {% content=$x %}\ncode\n```\n"}
+{"id": "api-edge-232", "code": "```js {% language=$x %}\ncode\n```\n"}
+{"id": "api-edge-233", "code": "- item\n\n  ```js {% language=$x %}\n  code\n  ```\n"}
+{"id": "api-edge-234", "code": "{% x class=$x /%}\n"}
+{"id": "api-edge-235", "code": "{% x id=$x /%}\n"}
+{"id": "api-edge-236", "code": "{% x a=$x b={k: $x, \"k e\": [$x]} /%}\n"}
+{"id": "api-edge-237", "code": "{% x $x /%}\n"}
+{"id": "api-edge-238", "code": "Para {% a=$x %}\n"}
+{"id": "api-edge-239", "code": "| a | b |\n|---|---|\n| c {% x=$x %} | d |\n"}
+{"id": "api-edge-240", "code": "# Heading {% level=$x.y[0] %}\n"}
+{"id": "api-edge-241", "code": "```js {% content=$x.y[0] %}\ncode\n```\n"}
+{"id": "api-edge-242", "code": "```js {% language=$x.y[0] %}\ncode\n```\n"}
+{"id": "api-edge-243", "code": "- item\n\n  ```js {% language=$x.y[0] %}\n  code\n  ```\n"}
+{"id": "api-edge-244", "code": "{% x class=$x.y[0] /%}\n"}
+{"id": "api-edge-245", "code": "{% x id=$x.y[0] /%}\n"}
+{"id": "api-edge-246", "code": "{% x a=$x.y[0] b={k: $x.y[0], \"k e\": [$x.y[0]]} /%}\n"}
+{"id": "api-edge-247", "code": "{% x $x.y[0] /%}\n"}
+{"id": "api-edge-248", "code": "Para {% a=$x.y[0] %}\n"}
+{"id": "api-edge-249", "code": "| a | b |\n|---|---|\n| c {% x=$x.y[0] %} | d |\n"}
+{"id": "api-edge-250", "code": "# Heading {% level=f() %}\n"}
+{"id": "api-edge-251", "code": "```js {% content=f() %}\ncode\n```\n"}
+{"id": "api-edge-252", "code": "```js {% language=f() %}\ncode\n```\n"}
+{"id": "api-edge-253", "code": "- item\n\n  ```js {% language=f() %}\n  code\n  ```\n"}
+{"id": "api-edge-254", "code": "{% x class=f() /%}\n"}
+{"id": "api-edge-255", "code": "{% x id=f() /%}\n"}
+{"id": "api-edge-256", "code": "{% x a=f() b={k: f(), \"k e\": [f()]} /%}\n"}
+{"id": "api-edge-257", "code": "{% x f() /%}\n"}
+{"id": "api-edge-258", "code": "Para {% a=f() %}\n"}
+{"id": "api-edge-259", "code": "| a | b |\n|---|---|\n| c {% x=f() %} | d |\n"}
+{"id": "api-edge-260", "code": "# Heading {% level=f(1, x=2) %}\n"}
+{"id": "api-edge-261", "code": "```js {% content=f(1, x=2) %}\ncode\n```\n"}
+{"id": "api-edge-262", "code": "```js {% language=f(1, x=2) %}\ncode\n```\n"}
+{"id": "api-edge-263", "code": "- item\n\n  ```js {% language=f(1, x=2) %}\n  code\n  ```\n"}
+{"id": "api-edge-264", "code": "{% x class=f(1, x=2) /%}\n"}
+{"id": "api-edge-265", "code": "{% x id=f(1, x=2) /%}\n"}
+{"id": "api-edge-266", "code": "{% x a=f(1, x=2) b={k: f(1, x=2), \"k e\": [f(1, x=2)]} /%}\n"}
+{"id": "api-edge-267", "code": "{% x f(1, x=2) /%}\n"}
+{"id": "api-edge-268", "code": "Para {% a=f(1, x=2) %}\n"}
+{"id": "api-edge-269", "code": "| a | b |\n|---|---|\n| c {% x=f(1, x=2) %} | d |\n"}
+{"id": "api-edge-270", "code": "# Heading {% level=@a.b %}\n"}
+{"id": "api-edge-271", "code": "```js {% content=@a.b %}\ncode\n```\n"}
+{"id": "api-edge-272", "code": "```js {% language=@a.b %}\ncode\n```\n"}
+{"id": "api-edge-273", "code": "- item\n\n  ```js {% language=@a.b %}\n  code\n  ```\n"}
+{"id": "api-edge-274", "code": "{% x class=@a.b /%}\n"}
+{"id": "api-edge-275", "code": "{% x id=@a.b /%}\n"}
+{"id": "api-edge-276", "code": "{% x a=@a.b b={k: @a.b, \"k e\": [@a.b]} /%}\n"}
+{"id": "api-edge-277", "code": "{% x @a.b /%}\n"}
+{"id": "api-edge-278", "code": "Para {% a=@a.b %}\n"}
+{"id": "api-edge-279", "code": "| a | b |\n|---|---|\n| c {% x=@a.b %} | d |\n"}
+{"id": "api-edge-280", "code": "# Heading {% level=10000000000 %}\n"}
+{"id": "api-edge-281", "code": "```js {% content=10000000000 %}\ncode\n```\n"}
+{"id": "api-edge-282", "code": "```js {% language=10000000000 %}\ncode\n```\n"}
+{"id": "api-edge-283", "code": "- item\n\n  ```js {% language=10000000000 %}\n  code\n  ```\n"}
+{"id": "api-edge-284", "code": "{% x class=10000000000 /%}\n"}
+{"id": "api-edge-285", "code": "{% x id=10000000000 /%}\n"}
+{"id": "api-edge-286", "code": "{% x a=10000000000 b={k: 10000000000, \"k e\": [10000000000]} /%}\n"}
+{"id": "api-edge-287", "code": "{% x 10000000000 /%}\n"}
+{"id": "api-edge-288", "code": "Para {% a=10000000000 %}\n"}
+{"id": "api-edge-289", "code": "| a | b |\n|---|---|\n| c {% x=10000000000 %} | d |\n"}
+{"id": "api-edge-290", "code": "# Heading {% level=536870889 %}\n"}
+{"id": "api-edge-291", "code": "```js {% content=536870889 %}\ncode\n```\n"}
+{"id": "api-edge-292", "code": "```js {% language=536870889 %}\ncode\n```\n"}
+{"id": "api-edge-293", "code": "- item\n\n  ```js {% language=536870889 %}\n  code\n  ```\n"}
+{"id": "api-edge-294", "code": "{% x class=536870889 /%}\n"}
+{"id": "api-edge-295", "code": "{% x id=536870889 /%}\n"}
+{"id": "api-edge-296", "code": "{% x a=536870889 b={k: 536870889, \"k e\": [536870889]} /%}\n"}
+{"id": "api-edge-297", "code": "{% x 536870889 /%}\n"}
+{"id": "api-edge-298", "code": "Para {% a=536870889 %}\n"}
+{"id": "api-edge-299", "code": "| a | b |\n|---|---|\n| c {% x=536870889 %} | d |\n"}
+{"id": "api-edge-300", "code": "# Heading {% level=\"Infinity\" %}\n"}
+{"id": "api-edge-301", "code": "```js {% content=\"Infinity\" %}\ncode\n```\n"}
+{"id": "api-edge-302", "code": "```js {% language=\"Infinity\" %}\ncode\n```\n"}
+{"id": "api-edge-303", "code": "- item\n\n  ```js {% language=\"Infinity\" %}\n  code\n  ```\n"}
+{"id": "api-edge-304", "code": "{% x class=\"Infinity\" /%}\n"}
+{"id": "api-edge-305", "code": "{% x id=\"Infinity\" /%}\n"}
+{"id": "api-edge-306", "code": "{% x a=\"Infinity\" b={k: \"Infinity\", \"k e\": [\"Infinity\"]} /%}\n"}
+{"id": "api-edge-307", "code": "{% x \"Infinity\" /%}\n"}
+{"id": "api-edge-308", "code": "Para {% a=\"Infinity\" %}\n"}
+{"id": "api-edge-309", "code": "| a | b |\n|---|---|\n| c {% x=\"Infinity\" %} | d |\n"}
+{"id": "api-edge-310", "code": "# Heading {% level=\"-Infinity\" %}\n"}
+{"id": "api-edge-311", "code": "```js {% content=\"-Infinity\" %}\ncode\n```\n"}
+{"id": "api-edge-312", "code": "```js {% language=\"-Infinity\" %}\ncode\n```\n"}
+{"id": "api-edge-313", "code": "- item\n\n  ```js {% language=\"-Infinity\" %}\n  code\n  ```\n"}
+{"id": "api-edge-314", "code": "{% x class=\"-Infinity\" /%}\n"}
+{"id": "api-edge-315", "code": "{% x id=\"-Infinity\" /%}\n"}
+{"id": "api-edge-316", "code": "{% x a=\"-Infinity\" b={k: \"-Infinity\", \"k e\": [\"-Infinity\"]} /%}\n"}
+{"id": "api-edge-317", "code": "{% x \"-Infinity\" /%}\n"}
+{"id": "api-edge-318", "code": "Para {% a=\"-Infinity\" %}\n"}
+{"id": "api-edge-319", "code": "| a | b |\n|---|---|\n| c {% x=\"-Infinity\" %} | d |\n"}
+{"id": "api-edge-320", "code": "* not a list\n"}
+{"id": "api-edge-321", "code": "\\* escaped\n"}
+{"id": "api-edge-322", "code": "> quote\n"}
+{"id": "api-edge-323", "code": "\\> not a quote\n"}
+{"id": "api-edge-324", "code": "## heading\n"}
+{"id": "api-edge-325", "code": "a ## b c\n"}
+{"id": "api-edge-326", "code": "#not heading\n"}
+{"id": "api-edge-327", "code": "x   y\n"}
+{"id": "api-edge-328", "code": "# nbsp\n"}
+{"id": "api-edge-329", "code": "**a*b_c~d**\n"}
+{"id": "api-edge-330", "code": "~~a_b~~\n"}
+{"id": "api-edge-331", "code": "_a*b_\n"}
+{"id": "api-edge-332", "code": "***x***\n"}
+{"id": "api-edge-333", "code": "a\\\nb\n"}
+{"id": "api-edge-334", "code": "a  \nb\n"}
+{"id": "api-edge-335", "code": "a\nb\n"}
+{"id": "api-edge-336", "code": "[a](</x y>)\n"}
+{"id": "api-edge-337", "code": "[a](u \"t\")\n"}
+{"id": "api-edge-338", "code": "[a](u 'q\"t')\n"}
+{"id": "api-edge-339", "code": "<http://a.b>\n"}
+{"id": "api-edge-340", "code": "[http://a.b](http://a.b)\n"}
+{"id": "api-edge-341", "code": "[http://a.b](http://a.b \"t\")\n"}
+{"id": "api-edge-342", "code": "![i](a(b) \"t\")\n"}
+{"id": "api-edge-343", "code": "![](x)\n"}
+{"id": "api-edge-344", "code": "![a *b*](x)\n"}
+{"id": "api-edge-345", "code": "[a](x(y))\n"}
+{"id": "api-edge-346", "code": "[{% a %}](u)\n"}
+{"id": "api-edge-347", "code": "[](u)\n"}
+{"id": "api-edge-348", "code": "`code`\n"}
+{"id": "api-edge-349", "code": "`` a`b ``\n"}
+{"id": "api-edge-350", "code": "`{% $x %}`\n"}
+{"id": "api-edge-351", "code": "0. zero\n1. one\n"}
+{"id": "api-edge-352", "code": "123456789. big\n"}
+{"id": "api-edge-353", "code": "3) a\n4) b\n"}
+{"id": "api-edge-354", "code": "- a\n\n- b\n- c\n"}
+{"id": "api-edge-355", "code": "- a\n  - b\n    - c\n"}
+{"id": "api-edge-356", "code": "1. a\n\n   b\n2. c\n"}
+{"id": "api-edge-357", "code": "* a\n+ b\n- c\n"}
+{"id": "api-edge-358", "code": "- {% x %}\n  y\n  {% /x %}\n"}
+{"id": "api-edge-359", "code": "- a {% .c %}\n- b {% #i %}\n"}
+{"id": "api-edge-360", "code": "> a\n>\n> b\n"}
+{"id": "api-edge-361", "code": "> - a\n> - b\n"}
+{"id": "api-edge-362", "code": "> > nested\n"}
+{"id": "api-edge-363", "code": "> ```\n> code\n> ```\n"}
+{"id": "api-edge-364", "code": "---\nfm: 1\n---\n# T\n"}
+{"id": "api-edge-365", "code": "---\n---\nx\n"}
+{"id": "api-edge-366", "code": "<!-- c -->\n"}
+{"id": "api-edge-367", "code": "<!--\n  a\n  b -->\n"}
+{"id": "api-edge-368", "code": "````\n```\nin\n```\n````\n"}
+{"id": "api-edge-369", "code": "```\nno newline at end"}
+{"id": "api-edge-370", "code": "```\n```\n"}
+{"id": "api-edge-371", "code": "~~~\ntilde\n~~~\n"}
+{"id": "api-edge-372", "code": "    indented code\n"}
+{"id": "api-edge-373", "code": "***\n"}
+{"id": "api-edge-374", "code": "---\n"}
+{"id": "api-edge-375", "code": "___\n"}
+{"id": "api-edge-376", "code": "| a | b |\n|:--|--:|\n| `c` | d\\|e |\n"}
+{"id": "api-edge-377", "code": "| a |\n|---|\n"}
+{"id": "api-edge-378", "code": "|a|b|\n|-|-|\n|1|\n"}
+{"id": "api-edge-379", "code": "{% table %}\n- a\n- b\n---\n- c\n- d\n{% /table %}\n"}
+{"id": "api-edge-380", "code": "{% table %}\n* H1\n* H2\n{% if $var %}\n---\n* H3\n* H4\n{% /if %}\n{% /table %}\n"}
+{"id": "api-edge-381", "code": "{% table %}\n---\n- x\n{% /table %}\n"}
+{"id": "api-edge-382", "code": "{% table %}\n{% /table %}\n"}
+{"id": "api-edge-383", "code": "{% table %}\n| a | b |\n|---|---|\n| c | d |\n{% /table %}\n"}
+{"id": "api-edge-384", "code": "{% table %}\n- a {% colspan=2 %}\n---\n- b\n  - nested\n{% /table %}\n"}
+{"id": "api-edge-385", "code": "{% x %}{% /x %}\n"}
+{"id": "api-edge-386", "code": "{% x %}\n\n{% /x %}\n"}
+{"id": "api-edge-387", "code": "{% x %}inline{% /x %} text\n"}
+{"id": "api-edge-388", "code": "Text {% x %}inline{% /x %} more\n"}
+{"id": "api-edge-389", "code": "{% x a=1 b=\"a very long attribute value that goes on and on and on\" c=[1, 2, 3] /%}\n"}
+{"id": "api-edge-390", "code": "# {% x a=1 b=\"a very long attribute value that goes on and on and on\" /%}\n"}
+{"id": "api-edge-391", "code": "{% if $a %}\nyes\n{% else /%}\nno\n{% /if %}\n"}
+{"id": "api-edge-392", "code": "{% $var %}\n"}
+{"id": "api-edge-393", "code": "{% f(1, \"a\", [true, null]) %}\n"}
+{"id": "api-edge-394", "code": "Inline {% $a.b[\"c d\"][0] %} x\n"}
+{"id": "api-edge-395", "code": "{% x .primary /%}\n"}
+{"id": "api-edge-396", "code": "{% x class={primary: true} /%}\n"}
+{"id": "api-edge-397", "code": "{% x .a .b #c /%}\n"}
+{"id": "api-edge-398", "code": "{% x class=\"a b\" /%}\n"}
+{"id": "api-edge-399", "code": "{% x id=\"has space\" /%}\n"}
+{"id": "api-edge-400", "code": "{% x \"primary\" key=1 /%}\n"}
+{"id": "api-edge-401", "code": "{% partial file=\"p\" /%}\n"}
+{"id": "api-edge-402", "code": "{% slot \"s\" %}\nx\n{% /slot %}\n"}
+{"id": "api-edge-403", "code": "﻿# BOM\n"}
+{"id": "api-edge-404", "code": " line sep\n"}
+{"id": "api-edge-405", "code": "😀 **😀** _😀_\n"}
+{"id": "api-edge-406", "code": "| 😀 | b |\n|---|---|\n| c | 😀😀 |\n"}
+{"id": "api-edge-407", "code": "a<b>c</b>\n"}
+{"id": "api-edge-408", "code": "<div>\nhtml\n</div>\n"}
+{"id": "api-edge-409", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"allowIndentation": true}}
+{"id": "api-edge-410", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"orderedListMode": "increment"}}
+{"id": "api-edge-411", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"orderedListMode": "repeat"}}
+{"id": "api-edge-412", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"maxTagOpeningWidth": 0}}
+{"id": "api-edge-413", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"maxTagOpeningWidth": 10}}
+{"id": "api-edge-414", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"maxTagOpeningWidth": -1}}
+{"id": "api-edge-415", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"maxTagOpeningWidth": "Infinity"}}
+{"id": "api-edge-416", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"maxTagOpeningWidth": 1000}}
+{"id": "api-edge-417", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"indent": 2}}
+{"id": "api-edge-418", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"indent": 0}}
+{"id": "api-edge-419", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"indent": -1}}
+{"id": "api-edge-420", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"indent": 1.5}}
+{"id": "api-edge-421", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"indent": 3}}
+{"id": "api-edge-422", "code": "{% a %}\n{% b %}\nx\n{% /b %}\n{% /a %}\n", "formatOptions": {"allowIndentation": true, "indent": 4, "orderedListMode": "increment"}}
+{"id": "api-edge-423", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"allowIndentation": true}}
+{"id": "api-edge-424", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"orderedListMode": "increment"}}
+{"id": "api-edge-425", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"orderedListMode": "repeat"}}
+{"id": "api-edge-426", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"maxTagOpeningWidth": 0}}
+{"id": "api-edge-427", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"maxTagOpeningWidth": 10}}
+{"id": "api-edge-428", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"maxTagOpeningWidth": -1}}
+{"id": "api-edge-429", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"maxTagOpeningWidth": "Infinity"}}
+{"id": "api-edge-430", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"maxTagOpeningWidth": 1000}}
+{"id": "api-edge-431", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"indent": 2}}
+{"id": "api-edge-432", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"indent": 0}}
+{"id": "api-edge-433", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"indent": -1}}
+{"id": "api-edge-434", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"indent": 1.5}}
+{"id": "api-edge-435", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"indent": 3}}
+{"id": "api-edge-436", "code": "3. one\n4. two\n\n1) a\n2) b\n", "formatOptions": {"allowIndentation": true, "indent": 4, "orderedListMode": "increment"}}
+{"id": "api-edge-437", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"allowIndentation": true}}
+{"id": "api-edge-438", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"orderedListMode": "increment"}}
+{"id": "api-edge-439", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"orderedListMode": "repeat"}}
+{"id": "api-edge-440", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"maxTagOpeningWidth": 0}}
+{"id": "api-edge-441", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"maxTagOpeningWidth": 10}}
+{"id": "api-edge-442", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"maxTagOpeningWidth": -1}}
+{"id": "api-edge-443", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"maxTagOpeningWidth": "Infinity"}}
+{"id": "api-edge-444", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"maxTagOpeningWidth": 1000}}
+{"id": "api-edge-445", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"indent": 2}}
+{"id": "api-edge-446", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"indent": 0}}
+{"id": "api-edge-447", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"indent": -1}}
+{"id": "api-edge-448", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"indent": 1.5}}
+{"id": "api-edge-449", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"indent": 3}}
+{"id": "api-edge-450", "code": "{% tag a=true b=\"My very long text well over 80 characters in total\" c=123456789 d=false /%}\n", "formatOptions": {"allowIndentation": true, "indent": 4, "orderedListMode": "increment"}}
+{"id": "api-edge-451", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"allowIndentation": true}}
+{"id": "api-edge-452", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"orderedListMode": "increment"}}
+{"id": "api-edge-453", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"orderedListMode": "repeat"}}
+{"id": "api-edge-454", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"maxTagOpeningWidth": 0}}
+{"id": "api-edge-455", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"maxTagOpeningWidth": 10}}
+{"id": "api-edge-456", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"maxTagOpeningWidth": -1}}
+{"id": "api-edge-457", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"maxTagOpeningWidth": "Infinity"}}
+{"id": "api-edge-458", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"maxTagOpeningWidth": 1000}}
+{"id": "api-edge-459", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"indent": 2}}
+{"id": "api-edge-460", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"indent": 0}}
+{"id": "api-edge-461", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"indent": -1}}
+{"id": "api-edge-462", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"indent": 1.5}}
+{"id": "api-edge-463", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"indent": 3}}
+{"id": "api-edge-464", "code": "- a\n  - b\n\n> q\n\n| a | b |\n|---|---|\n| c | d |\n", "formatOptions": {"allowIndentation": true, "indent": 4, "orderedListMode": "increment"}}
+{"id": "api-edge-465", "code": "{% callout type=\"x\" n=2 %}\nBody\n{% /callout %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}}
+{"id": "api-edge-466", "code": "{% callout type=\"x\" n=2 %}\nBody\n{% /callout %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": {"Callout": "MyCallout", "_Under": {"comp": 1}, "1d": "one"}}
+{"id": "api-edge-467", "code": "{% callout type=\"x\" n=2 %}\nBody\n{% /callout %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": "$function"}
+{"id": "api-edge-468", "code": "{% box data={a: 1, b: [1, 2]} list=[1, \"x\"] /%}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}}
+{"id": "api-edge-469", "code": "{% box data={a: 1, b: [1, 2]} list=[1, \"x\"] /%}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": {"Callout": "MyCallout", "_Under": {"comp": 1}, "1d": "one"}}
+{"id": "api-edge-470", "code": "{% box data={a: 1, b: [1, 2]} list=[1, \"x\"] /%}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": "$function"}
+{"id": "api-edge-471", "code": "{% under /%}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}}
+{"id": "api-edge-472", "code": "{% under /%}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": {"Callout": "MyCallout", "_Under": {"comp": 1}, "1d": "one"}}
+{"id": "api-edge-473", "code": "{% under /%}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": "$function"}
+{"id": "api-edge-474", "code": "{% digit /%}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}}
+{"id": "api-edge-475", "code": "{% digit /%}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": {"Callout": "MyCallout", "_Under": {"comp": 1}, "1d": "one"}}
+{"id": "api-edge-476", "code": "{% digit /%}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": "$function"}
+{"id": "api-edge-477", "code": "{% astral /%}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}}
+{"id": "api-edge-478", "code": "{% astral /%}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": {"Callout": "MyCallout", "_Under": {"comp": 1}, "1d": "one"}}
+{"id": "api-edge-479", "code": "{% astral /%}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": "$function"}
+{"id": "api-edge-480", "code": "{% empty %}x{% /empty %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}}
+{"id": "api-edge-481", "code": "{% empty %}x{% /empty %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": {"Callout": "MyCallout", "_Under": {"comp": 1}, "1d": "one"}}
+{"id": "api-edge-482", "code": "{% empty %}x{% /empty %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": "$function"}
+{"id": "api-edge-483", "code": "{% $v %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}}
+{"id": "api-edge-484", "code": "{% $v %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": {"Callout": "MyCallout", "_Under": {"comp": 1}, "1d": "one"}}
+{"id": "api-edge-485", "code": "{% $v %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": "$function"}
+{"id": "api-edge-486", "code": "{% $arr %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}}
+{"id": "api-edge-487", "code": "{% $arr %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": {"Callout": "MyCallout", "_Under": {"comp": 1}, "1d": "one"}}
+{"id": "api-edge-488", "code": "{% $arr %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": "$function"}
+{"id": "api-edge-489", "code": "{% $obj %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}}
+{"id": "api-edge-490", "code": "{% $obj %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": {"Callout": "MyCallout", "_Under": {"comp": 1}, "1d": "one"}}
+{"id": "api-edge-491", "code": "{% $obj %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": "$function"}
+{"id": "api-edge-492", "code": "Text {% $v %} and {% $arr %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}}
+{"id": "api-edge-493", "code": "Text {% $v %} and {% $arr %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": {"Callout": "MyCallout", "_Under": {"comp": 1}, "1d": "one"}}
+{"id": "api-edge-494", "code": "Text {% $v %} and {% $arr %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": "$function"}
+{"id": "api-edge-495", "code": "# Title {% .a .b #c %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}}
+{"id": "api-edge-496", "code": "# Title {% .a .b #c %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": {"Callout": "MyCallout", "_Under": {"comp": 1}, "1d": "one"}}
+{"id": "api-edge-497", "code": "# Title {% .a .b #c %}\n", "config": {"tags": {"callout": {"render": "Callout", "attributes": {"type": {"type": "String"}, "n": {"type": "Number"}}}, "box": {"render": "box", "attributes": {"data": {"type": "Object"}, "list": {"type": "Array"}}}, "under": {"render": "_Under"}, "digit": {"render": "1d"}, "empty": {"render": ""}, "astral": {"render": "😀x"}}, "variables": {"v": {"$$mdtype": "Tag", "name": "b", "attributes": {"x": 1}, "children": ["t"]}, "arr": [1, [2, {"a": 3}], null], "obj": {"k": "v", "n": null}}}, "components": "$function"}
+{"id": "api-edge-498", "code": "", "renderTree": {"name": "h1", "children": ["test", null]}}
+{"id": "api-edge-499", "code": "", "renderTree": {"name": "h1", "children": ["test", null]}, "components": {"Foo": "bar"}}
+{"id": "api-edge-500", "code": "", "renderTree": {"name": "h1", "children": ["test", null]}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-501", "code": "", "renderTree": {"name": "h1", "children": ["test", null]}, "components": "$function"}
+{"id": "api-edge-502", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {}, "children": ["test", null]}}
+{"id": "api-edge-503", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {}, "children": ["test", null]}, "components": {"Foo": "bar"}}
+{"id": "api-edge-504", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {}, "children": ["test", null]}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-505", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {}, "children": ["test", null]}, "components": "$function"}
+{"id": "api-edge-506", "code": "", "renderTree": [{"$$mdtype": "Tag", "name": "p", "attributes": {}, "children": ["foo"]}, {"$$mdtype": "Tag", "name": "p", "attributes": {}, "children": ["bar"]}]}
+{"id": "api-edge-507", "code": "", "renderTree": [{"$$mdtype": "Tag", "name": "p", "attributes": {}, "children": ["foo"]}, {"$$mdtype": "Tag", "name": "p", "attributes": {}, "children": ["bar"]}], "components": {"Foo": "bar"}}
+{"id": "api-edge-508", "code": "", "renderTree": [{"$$mdtype": "Tag", "name": "p", "attributes": {}, "children": ["foo"]}, {"$$mdtype": "Tag", "name": "p", "attributes": {}, "children": ["bar"]}], "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-509", "code": "", "renderTree": [{"$$mdtype": "Tag", "name": "p", "attributes": {}, "children": ["foo"]}, {"$$mdtype": "Tag", "name": "p", "attributes": {}, "children": ["bar"]}], "components": "$function"}
+{"id": "api-edge-510", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "Foo", "attributes": {}, "children": ["test"]}}
+{"id": "api-edge-511", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "Foo", "attributes": {}, "children": ["test"]}, "components": {"Foo": "bar"}}
+{"id": "api-edge-512", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "Foo", "attributes": {}, "children": ["test"]}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-513", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "Foo", "attributes": {}, "children": ["test"]}, "components": "$function"}
+{"id": "api-edge-514", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {"class": "foo bar"}, "children": ["test"]}}
+{"id": "api-edge-515", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {"class": "foo bar"}, "children": ["test"]}, "components": {"Foo": "bar"}}
+{"id": "api-edge-516", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {"class": "foo bar"}, "children": ["test"]}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-517", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {"class": "foo bar"}, "children": ["test"]}, "components": "$function"}
+{"id": "api-edge-518", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {"data-foo": 42}, "children": ["test"]}}
+{"id": "api-edge-519", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {"data-foo": 42}, "children": ["test"]}, "components": {"Foo": "bar"}}
+{"id": "api-edge-520", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {"data-foo": 42}, "children": ["test"]}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-521", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {"data-foo": 42}, "children": ["test"]}, "components": "$function"}
+{"id": "api-edge-522", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "pre", "attributes": {"class": "code code-ruby"}, "children": ["t"]}}
+{"id": "api-edge-523", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "pre", "attributes": {"class": "code code-ruby"}, "children": ["t"]}, "components": {"Foo": "bar"}}
+{"id": "api-edge-524", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "pre", "attributes": {"class": "code code-ruby"}, "children": ["t"]}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-525", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "pre", "attributes": {"class": "code code-ruby"}, "children": ["t"]}, "components": "$function"}
+{"id": "api-edge-526", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": null}}
+{"id": "api-edge-527", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": null}, "components": {"Foo": "bar"}}
+{"id": "api-edge-528", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": null}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-529", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": null}, "components": "$function"}
+{"id": "api-edge-530", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": "xy"}}
+{"id": "api-edge-531", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": "xy"}, "components": {"Foo": "bar"}}
+{"id": "api-edge-532", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": "xy"}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-533", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": "xy"}, "components": "$function"}
+{"id": "api-edge-534", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": 5}}
+{"id": "api-edge-535", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": 5}, "components": {"Foo": "bar"}}
+{"id": "api-edge-536", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": 5}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-537", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": 5}, "components": "$function"}
+{"id": "api-edge-538", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "children": null}}
+{"id": "api-edge-539", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "children": null}, "components": {"Foo": "bar"}}
+{"id": "api-edge-540", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "children": null}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-541", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "children": null}, "components": "$function"}
+{"id": "api-edge-542", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "children": "xy"}}
+{"id": "api-edge-543", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "children": "xy"}, "components": {"Foo": "bar"}}
+{"id": "api-edge-544", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "children": "xy"}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-545", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "children": "xy"}, "components": "$function"}
+{"id": "api-edge-546", "code": "", "renderTree": {"$$mdtype": "Tag", "name": ""}}
+{"id": "api-edge-547", "code": "", "renderTree": {"$$mdtype": "Tag", "name": ""}, "components": {"Foo": "bar"}}
+{"id": "api-edge-548", "code": "", "renderTree": {"$$mdtype": "Tag", "name": ""}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-549", "code": "", "renderTree": {"$$mdtype": "Tag", "name": ""}, "components": "$function"}
+{"id": "api-edge-550", "code": "", "renderTree": {"$$mdtype": "Tag"}}
+{"id": "api-edge-551", "code": "", "renderTree": {"$$mdtype": "Tag"}, "components": {"Foo": "bar"}}
+{"id": "api-edge-552", "code": "", "renderTree": {"$$mdtype": "Tag"}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-553", "code": "", "renderTree": {"$$mdtype": "Tag"}, "components": "$function"}
+{"id": "api-edge-554", "code": "", "renderTree": {"$$mdtype": "Tag", "name": 5}}
+{"id": "api-edge-555", "code": "", "renderTree": {"$$mdtype": "Tag", "name": 5}, "components": {"Foo": "bar"}}
+{"id": "api-edge-556", "code": "", "renderTree": {"$$mdtype": "Tag", "name": 5}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-557", "code": "", "renderTree": {"$$mdtype": "Tag", "name": 5}, "components": "$function"}
+{"id": "api-edge-558", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"class": "", "className": "k", "id": "i"}}}
+{"id": "api-edge-559", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"class": "", "className": "k", "id": "i"}}, "components": {"Foo": "bar"}}
+{"id": "api-edge-560", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"class": "", "className": "k", "id": "i"}}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-561", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"class": "", "className": "k", "id": "i"}}, "components": "$function"}
+{"id": "api-edge-562", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"className": "k", "class": "c", "z": 1}}}
+{"id": "api-edge-563", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"className": "k", "class": "c", "z": 1}}, "components": {"Foo": "bar"}}
+{"id": "api-edge-564", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"className": "k", "class": "c", "z": 1}}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-565", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"className": "k", "class": "c", "z": 1}}, "components": "$function"}
+{"id": "api-edge-566", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"__proto__": {"x": 1}, "b": 2}}}
+{"id": "api-edge-567", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"__proto__": {"x": 1}, "b": 2}}, "components": {"Foo": "bar"}}
+{"id": "api-edge-568", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"__proto__": {"x": 1}, "b": 2}}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-569", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"__proto__": {"x": 1}, "b": 2}}, "components": "$function"}
+{"id": "api-edge-570", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"t": {"$$mdtype": "Tag", "name": "b", "attributes": {}, "children": []}, "l": [1, {"$$mdtype": "Tag", "name": "c"}], "o": {"p": null}}}}
+{"id": "api-edge-571", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"t": {"$$mdtype": "Tag", "name": "b", "attributes": {}, "children": []}, "l": [1, {"$$mdtype": "Tag", "name": "c"}], "o": {"p": null}}}, "components": {"Foo": "bar"}}
+{"id": "api-edge-572", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"t": {"$$mdtype": "Tag", "name": "b", "attributes": {}, "children": []}, "l": [1, {"$$mdtype": "Tag", "name": "c"}], "o": {"p": null}}}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-573", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"t": {"$$mdtype": "Tag", "name": "b", "attributes": {}, "children": []}, "l": [1, {"$$mdtype": "Tag", "name": "c"}], "o": {"p": null}}}, "components": "$function"}
+{"id": "api-edge-574", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {}, "children": [null, true, 1.5, "s", {"x": 1}, [1, "y"], []]}}
+{"id": "api-edge-575", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {}, "children": [null, true, 1.5, "s", {"x": 1}, [1, "y"], []]}, "components": {"Foo": "bar"}}
+{"id": "api-edge-576", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {}, "children": [null, true, 1.5, "s", {"x": 1}, [1, "y"], []]}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-577", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {}, "children": [null, true, 1.5, "s", {"x": 1}, [1, "y"], []]}, "components": "$function"}
+{"id": "api-edge-578", "code": "", "renderTree": "just a string"}
+{"id": "api-edge-579", "code": "", "renderTree": "just a string", "components": {"Foo": "bar"}}
+{"id": "api-edge-580", "code": "", "renderTree": "just a string", "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-581", "code": "", "renderTree": "just a string", "components": "$function"}
+{"id": "api-edge-582", "code": "", "renderTree": 42}
+{"id": "api-edge-583", "code": "", "renderTree": 42, "components": {"Foo": "bar"}}
+{"id": "api-edge-584", "code": "", "renderTree": 42, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-585", "code": "", "renderTree": 42, "components": "$function"}
+{"id": "api-edge-586", "code": "", "renderTree": null}
+{"id": "api-edge-587", "code": "", "renderTree": null, "components": {"Foo": "bar"}}
+{"id": "api-edge-588", "code": "", "renderTree": null, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-589", "code": "", "renderTree": null, "components": "$function"}
+{"id": "api-edge-590", "code": "", "renderTree": true}
+{"id": "api-edge-591", "code": "", "renderTree": true, "components": {"Foo": "bar"}}
+{"id": "api-edge-592", "code": "", "renderTree": true, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-593", "code": "", "renderTree": true, "components": "$function"}
+{"id": "api-edge-594", "code": "", "renderTree": []}
+{"id": "api-edge-595", "code": "", "renderTree": [], "components": {"Foo": "bar"}}
+{"id": "api-edge-596", "code": "", "renderTree": [], "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-597", "code": "", "renderTree": [], "components": "$function"}
+{"id": "api-edge-598", "code": "", "renderTree": [[["deep"]]]}
+{"id": "api-edge-599", "code": "", "renderTree": [[["deep"]]], "components": {"Foo": "bar"}}
+{"id": "api-edge-600", "code": "", "renderTree": [[["deep"]]], "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-601", "code": "", "renderTree": [[["deep"]]], "components": "$function"}
+{"id": "api-edge-602", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "__proto__", "attributes": {"a": 1}, "children": ["x"]}}
+{"id": "api-edge-603", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "__proto__", "attributes": {"a": 1}, "children": ["x"]}, "components": {"Foo": "bar"}}
+{"id": "api-edge-604", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "__proto__", "attributes": {"a": 1}, "children": ["x"]}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-605", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "__proto__", "attributes": {"a": 1}, "children": ["x"]}, "components": "$function"}
+{"id": "api-edge-606", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "__defineGetter__", "children": []}}
+{"id": "api-edge-607", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "__defineGetter__", "children": []}, "components": {"Foo": "bar"}}
+{"id": "api-edge-608", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "__defineGetter__", "children": []}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-609", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "__defineGetter__", "children": []}, "components": "$function"}
+{"id": "api-edge-610", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "__lookupSetter__", "children": []}}
+{"id": "api-edge-611", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "__lookupSetter__", "children": []}, "components": {"Foo": "bar"}}
+{"id": "api-edge-612", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "__lookupSetter__", "children": []}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-613", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "__lookupSetter__", "children": []}, "components": "$function"}
+{"id": "api-edge-614", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "constructor", "children": []}}
+{"id": "api-edge-615", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "constructor", "children": []}, "components": {"Foo": "bar"}}
+{"id": "api-edge-616", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "constructor", "children": []}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-617", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "constructor", "children": []}, "components": "$function"}
+{"id": "api-edge-618", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "_x", "children": []}}
+{"id": "api-edge-619", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "_x", "children": []}, "components": {"Foo": "bar"}}
+{"id": "api-edge-620", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "_x", "children": []}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-621", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "_x", "children": []}, "components": "$function"}
+{"id": "api-edge-622", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "Foo2", "children": []}}
+{"id": "api-edge-623", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "Foo2", "children": []}, "components": {"Foo": "bar"}}
+{"id": "api-edge-624", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "Foo2", "children": []}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-625", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "Foo2", "children": []}, "components": "$function"}
+{"id": "api-edge-626", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"$$mdtype": "Tag", "name": "b", "attributes": {"k": 1}, "children": ["c"]}, "children": ["d"]}}
+{"id": "api-edge-627", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"$$mdtype": "Tag", "name": "b", "attributes": {"k": 1}, "children": ["c"]}, "children": ["d"]}, "components": {"Foo": "bar"}}
+{"id": "api-edge-628", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"$$mdtype": "Tag", "name": "b", "attributes": {"k": 1}, "children": ["c"]}, "children": ["d"]}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-629", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"$$mdtype": "Tag", "name": "b", "attributes": {"k": 1}, "children": ["c"]}, "children": ["d"]}, "components": "$function"}
+{"id": "api-edge-630", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"class": "x", "$$mdtype": "Tag", "name": "b"}, "children": []}}
+{"id": "api-edge-631", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"class": "x", "$$mdtype": "Tag", "name": "b"}, "children": []}, "components": {"Foo": "bar"}}
+{"id": "api-edge-632", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"class": "x", "$$mdtype": "Tag", "name": "b"}, "children": []}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-633", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"class": "x", "$$mdtype": "Tag", "name": "b"}, "children": []}, "components": "$function"}
+{"id": "api-edge-634", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"$$mdtype": "Tag"}, "children": []}}
+{"id": "api-edge-635", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"$$mdtype": "Tag"}, "children": []}, "components": {"Foo": "bar"}}
+{"id": "api-edge-636", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"$$mdtype": "Tag"}, "children": []}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-637", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"$$mdtype": "Tag"}, "children": []}, "components": "$function"}
+{"id": "api-edge-638", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"9": 1, "b": 2, "1": 3}}}
+{"id": "api-edge-639", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"9": 1, "b": 2, "1": 3}}, "components": {"Foo": "bar"}}
+{"id": "api-edge-640", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"9": 1, "b": 2, "1": 3}}, "components": {"__proto__": "own", "_x": "under"}}
+{"id": "api-edge-641", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "a", "attributes": {"9": 1, "b": 2, "1": 3}}, "components": "$function"}

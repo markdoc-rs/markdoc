@@ -1,0 +1,652 @@
+{"id": "commonmark/good.txt line 3: src line: 354", "src": "\tfoo\tbaz\t\tbim\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 13: src line: 361", "src": "  \tfoo\tbaz\t\tbim\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 23: src line: 368", "src": "    a\ta\n    ὐ\ta\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 35: src line: 381", "src": "  - foo\n\n\tbar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 51: src line: 394", "src": "- foo\n\n\t\tbar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 68: src line: 417", "src": ">\t\tfoo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 80: src line: 426", "src": "-\t\tfoo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 94: src line: 438", "src": "    foo\n\tbar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 106: src line: 447", "src": " - foo\n   - bar\n\t - baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 127: src line: 465", "src": "#\tFoo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 136: src line: 471", "src": "*\t*\t*\t\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 145: src line: 488", "src": "\\!\\\"\\#\\$\\%\\&\\'\\(\\)\\*\\+\\,\\-\\.\\/\\:\\;\\<\\=\\>\\?\\@\\[\\\\\\]\\^\\_\\`\\{\\|\\}\\~\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 154: src line: 498", "src": "\\\t\\A\\a\\ \\3\\φ\\«\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 163: src line: 508", "src": "\\*not emphasized*\n\\<br/> not a tag\n\\[not a link](/foo)\n\\`not code`\n1\\. not a list\n\\* not a list\n\\# not a heading\n\\[foo]: /url \"not a reference\"\n\\&ouml; not a character entity\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 188: src line: 533", "src": "\\\\*emphasis*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 197: src line: 542", "src": "foo\\\nbar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 208: src line: 554", "src": "`` \\[\\` ``\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 217: src line: 561", "src": "    \\[\\]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 227: src line: 569", "src": "~~~\n\\[\\]\n~~~\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 239: src line: 579", "src": "<https://example.com?find=\\*>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 248: src line: 586", "src": "<a href=\"/bar\\/)\">\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 257: src line: 596", "src": "[foo](/bar\\* \"ti\\*tle\")\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 266: src line: 603", "src": "[foo]\n\n[foo]: /bar\\* \"ti\\*tle\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 277: src line: 612", "src": "``` foo\\+bar\nfoo\n```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 289: src line: 648", "src": "&nbsp; &amp; &copy; &AElig; &Dcaron;\n&frac34; &HilbertSpace; &DifferentialD;\n&ClockwiseContourIntegral; &ngE;\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 302: src line: 667", "src": "&#35; &#1234; &#992; &#0;\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 311: src line: 680", "src": "&#X22; &#XD06; &#xcab;\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 320: src line: 689", "src": "&nbsp &x; &#; &#x;\n&#87654321;\n&#abcdef0;\n&ThisIsNotDefined; &hi?;\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 335: src line: 706", "src": "&copy\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 344: src line: 716", "src": "&MadeUpEntity;\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 353: src line: 727", "src": "<a href=\"&ouml;&ouml;.html\">\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 362: src line: 734", "src": "[foo](/f&ouml;&ouml; \"f&ouml;&ouml;\")\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 371: src line: 741", "src": "[foo]\n\n[foo]: /f&ouml;&ouml; \"f&ouml;&ouml;\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 382: src line: 750", "src": "``` f&ouml;&ouml;\nfoo\n```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 394: src line: 763", "src": "`f&ouml;&ouml;`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 403: src line: 770", "src": "    f&ouml;f&ouml;\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 413: src line: 782", "src": "&#42;foo&#42;\n*foo*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 424: src line: 790", "src": "&#42; foo\n\n* foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 438: src line: 801", "src": "foo&#10;&#10;bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 449: src line: 809", "src": "&#9;foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 458: src line: 816", "src": "[a](url &quot;tit&quot;)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 467: src line: 839", "src": "- `one\n- two`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 480: src line: 878", "src": "***\n---\n___\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 493: src line: 891", "src": "+++\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 502: src line: 898", "src": "===\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 511: src line: 907", "src": "--\n**\n__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 524: src line: 920", "src": " ***\n  ***\n   ***\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 537: src line: 933", "src": "    ***\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 547: src line: 941", "src": "Foo\n    ***\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 558: src line: 952", "src": "_____________________________________\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 567: src line: 961", "src": " - - -\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 576: src line: 968", "src": " **  * ** * ** * **\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 585: src line: 975", "src": "-     -      -      -\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 594: src line: 984", "src": "- - - -    \n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 603: src line: 993", "src": "_ _ _ _ a\n\na------\n\n---a---\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 618: src line: 1009", "src": " *-*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 627: src line: 1018", "src": "- foo\n***\n- bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 644: src line: 1035", "src": "Foo\n***\nbar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 657: src line: 1052", "src": "Foo\n---\nbar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 669: src line: 1065", "src": "* Foo\n* * *\n* Bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 686: src line: 1082", "src": "- Foo\n- * * *\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 701: src line: 1111", "src": "# foo\n## foo\n### foo\n#### foo\n##### foo\n###### foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 720: src line: 1130", "src": "####### foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 729: src line: 1145", "src": "#5 bolt\n\n#hashtag\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 741: src line: 1157", "src": "\\## foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 750: src line: 1166", "src": "# foo *bar* \\*baz\\*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 759: src line: 1175", "src": "#                  foo                     \n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 768: src line: 1184", "src": " ### foo\n  ## foo\n   # foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 781: src line: 1197", "src": "    # foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 791: src line: 1205", "src": "foo\n    # bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 802: src line: 1216", "src": "## foo ##\n  ###   bar    ###\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 813: src line: 1227", "src": "# foo ##################################\n##### foo ##\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 824: src line: 1238", "src": "### foo ###     \n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 833: src line: 1249", "src": "### foo ### b\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 842: src line: 1258", "src": "# foo#\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 851: src line: 1268", "src": "### foo \\###\n## foo #\\##\n# foo \\#\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 864: src line: 1282", "src": "****\n## foo\n****\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 877: src line: 1293", "src": "Foo bar\n# baz\nBar foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 890: src line: 1306", "src": "## \n#\n### ###\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 903: src line: 1346", "src": "Foo *bar*\n=========\n\nFoo *bar*\n---------\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 917: src line: 1360", "src": "Foo *bar\nbaz*\n====\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 929: src line: 1374", "src": "  Foo *bar\nbaz*\t\n====\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 941: src line: 1386", "src": "Foo\n-------------------------\n\nFoo\n=\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 955: src line: 1401", "src": "   Foo\n---\n\n  Foo\n-----\n\n  Foo\n  ===\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 973: src line: 1419", "src": "    Foo\n    ---\n\n    Foo\n---\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 991: src line: 1438", "src": "Foo\n   ----      \n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1001: src line: 1448", "src": "Foo\n    ---\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1012: src line: 1459", "src": "Foo\n= =\n\nFoo\n--- -\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1028: src line: 1475", "src": "Foo  \n-----\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1038: src line: 1485", "src": "Foo\\\n----\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1048: src line: 1496", "src": "`Foo\n----\n`\n\n<a title=\"a lot\n---\nof dashes\"/>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1066: src line: 1515", "src": "> Foo\n---\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1079: src line: 1526", "src": "> foo\nbar\n===\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1094: src line: 1539", "src": "- Foo\n---\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1107: src line: 1554", "src": "Foo\nBar\n---\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1119: src line: 1567", "src": "---\nFoo\n---\nBar\n---\nBaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1136: src line: 1584", "src": "\n====\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1146: src line: 1596", "src": "---\n---\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1157: src line: 1605", "src": "- foo\n-----\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1170: src line: 1616", "src": "    foo\n---\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1182: src line: 1626", "src": "> foo\n-----\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1195: src line: 1640", "src": "\\> foo\n------\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1205: src line: 1671", "src": "Foo\n\nbar\n---\nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1220: src line: 1687", "src": "Foo\nbar\n\n---\n\nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1237: src line: 1705", "src": "Foo\nbar\n* * *\nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1252: src line: 1720", "src": "Foo\nbar\n\\---\nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1267: src line: 1748", "src": "    a simple\n      indented code block\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1279: src line: 1762", "src": "  - foo\n\n    bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1295: src line: 1776", "src": "1.  foo\n\n    - bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1313: src line: 1796", "src": "    <a/>\n    *hi*\n\n    - one\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1329: src line: 1812", "src": "    chunk1\n\n    chunk2\n  \n \n \n    chunk3\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1351: src line: 1835", "src": "    chunk1\n      \n      chunk2\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1365: src line: 1850", "src": "Foo\n    bar\n\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1377: src line: 1864", "src": "    foo\nbar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1389: src line: 1877", "src": "# Heading\n    foo\nHeading\n------\n    foo\n----\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1409: src line: 1897", "src": "        foo\n    bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1421: src line: 1910", "src": "\n    \n    foo\n    \n\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1435: src line: 1924", "src": "    foo  \n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1445: src line: 1979", "src": "```\n<\n >\n```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1459: src line: 1993", "src": "~~~\n<\n >\n~~~\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1473: src line: 2006", "src": "``\nfoo\n``\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1484: src line: 2017", "src": "```\naaa\n~~~\n```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1498: src line: 2029", "src": "~~~\naaa\n```\n~~~\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1512: src line: 2043", "src": "````\naaa\n```\n``````\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1526: src line: 2055", "src": "~~~~\naaa\n~~~\n~~~~\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1540: src line: 2070", "src": "```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1549: src line: 2077", "src": "`````\n\n```\naaa\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1564: src line: 2090", "src": "> ```\n> aaa\n\nbbb\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1580: src line: 2106", "src": "```\n\n  \n```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1594: src line: 2120", "src": "```\n```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1604: src line: 2132", "src": " ```\n aaa\naaa\n```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1618: src line: 2144", "src": "  ```\naaa\n  aaa\naaa\n  ```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1634: src line: 2158", "src": "   ```\n   aaa\n    aaa\n  aaa\n   ```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1650: src line: 2174", "src": "    ```\n    aaa\n    ```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1664: src line: 2189", "src": "```\naaa\n  ```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1676: src line: 2199", "src": "   ```\naaa\n  ```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1688: src line: 2211", "src": "```\naaa\n    ```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1701: src line: 2225", "src": "``` ```\naaa\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1712: src line: 2234", "src": "~~~~~~\naaa\n~~~ ~~\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1725: src line: 2248", "src": "foo\n```\nbar\n```\nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1741: src line: 2265", "src": "foo\n---\n~~~\nbar\n~~~\n# baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1758: src line: 2287", "src": "```ruby\ndef foo(x)\n  return 3\nend\n```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1774: src line: 2301", "src": "~~~~    ruby startline=3 $%@#$\ndef foo(x)\n  return 3\nend\n~~~~~~~\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1790: src line: 2315", "src": "````;\n````\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1800: src line: 2325", "src": "``` aa ```\nfoo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1811: src line: 2336", "src": "~~~ aa ``` ~~~\nfoo\n~~~\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1823: src line: 2348", "src": "```\n``` aaa\n```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1835: src line: 2427", "src": "<table><tr><td>\n<pre>\n**Hello**,\n\n_world_.\n</pre>\n</td></tr></table>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1855: src line: 2456", "src": "<table>\n  <tr>\n    <td>\n           hi\n    </td>\n  </tr>\n</table>\n\nokay.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1879: src line: 2478", "src": " <div>\n  *hello*\n         <foo><a>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1892: src line: 2491", "src": "</div>\n*foo*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1903: src line: 2502", "src": "<DIV CLASS=\"foo\">\n\n*Markdown*\n\n</DIV>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1918: src line: 2518", "src": "<div id=\"foo\"\n  class=\"bar\">\n</div>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1931: src line: 2529", "src": "<div id=\"foo\" class=\"bar\n  baz\">\n</div>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1944: src line: 2541", "src": "<div>\n*foo*\n\n*bar*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1958: src line: 2557", "src": "<div id=\"foo\"\n*hi*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1969: src line: 2566", "src": "<div class\nfoo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1980: src line: 2578", "src": "<div *???-&&&-<---\n*foo*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 1991: src line: 2590", "src": "<div><a href=\"bar\">*foo*</a></div>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2000: src line: 2597", "src": "<table><tr><td>\nfoo\n</td></tr></table>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2013: src line: 2614", "src": "<div></div>\n``` c\nint x = 33;\n```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2028: src line: 2631", "src": "<a href=\"foo\">\n*bar*\n</a>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2041: src line: 2644", "src": "<Warning>\n*bar*\n</Warning>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2054: src line: 2655", "src": "<i class=\"foo\">\n*bar*\n</i>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2067: src line: 2666", "src": "</ins>\n*bar*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2078: src line: 2681", "src": "<del>\n*foo*\n</del>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2091: src line: 2696", "src": "<del>\n\n*foo*\n\n</del>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2106: src line: 2714", "src": "<del>*foo*</del>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2115: src line: 2730", "src": "<pre language=\"haskell\"><code>\nimport Text.HTML.TagSoup\n\nmain :: IO ()\nmain = print $ parseTags tags\n</code></pre>\nokay\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2136: src line: 2751", "src": "<script type=\"text/javascript\">\n// JavaScript example\n\ndocument.getElementById(\"demo\").innerHTML = \"Hello JavaScript!\";\n</script>\nokay\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2155: src line: 2770", "src": "<textarea>\n\n*foo*\n\n_bar_\n\n</textarea>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2176: src line: 2790", "src": "<style\n  type=\"text/css\">\nh1 {color:red;}\n\np {color:blue;}\n</style>\nokay\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2197: src line: 2813", "src": "<style\n  type=\"text/css\">\n\nfoo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2212: src line: 2826", "src": "> <div>\n> foo\n\nbar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2228: src line: 2840", "src": "- <div>\n- foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2243: src line: 2855", "src": "<style>p{color:red;}</style>\n*foo*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2254: src line: 2864", "src": "<!-- foo -->*bar*\n*baz*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2265: src line: 2876", "src": "<script>\nfoo\n</script>1. *bar*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2278: src line: 2889", "src": "<!-- Foo\n\nbar\n   baz -->\nokay\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2295: src line: 2907", "src": "<?php\n\n  echo '>';\n\n?>\nokay\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2314: src line: 2926", "src": "<!DOCTYPE html>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2323: src line: 2935", "src": "<![CDATA[\nfunction matchwo(a,b)\n{\n  if (a < b && a < 0) then {\n    return 1;\n\n  } else {\n\n    return 0;\n  }\n}\n]]>\nokay\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2356: src line: 2969", "src": "  <!-- foo -->\n\n    <!-- foo -->\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2369: src line: 2980", "src": "  <div>\n\n    <div>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2382: src line: 2994", "src": "Foo\n<div>\nbar\n</div>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2397: src line: 3011", "src": "<div>\nbar\n</div>\n*foo*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2412: src line: 3026", "src": "Foo\n<a href=\"bar\">\nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2425: src line: 3067", "src": "<div>\n\n*Emphasized* text.\n\n</div>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2440: src line: 3080", "src": "<div>\n*Emphasized* text.\n</div>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2453: src line: 3102", "src": "<table>\n\n<tr>\n\n<td>\nHi\n</td>\n\n</tr>\n\n</table>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2478: src line: 3129", "src": "<table>\n\n  <tr>\n\n    <td>\n      Hi\n    </td>\n\n  </tr>\n\n</table>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2504: src line: 3178", "src": "[foo]: /url \"title\"\n\n[foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2515: src line: 3187", "src": "   [foo]: \n      /url  \n           'the title'  \n\n[foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2528: src line: 3198", "src": "[Foo*bar\\]]:my_(url) 'title (with parens)'\n\n[Foo*bar\\]]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2539: src line: 3207", "src": "[Foo bar]:\n<my url>\n'title'\n\n[Foo bar]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2552: src line: 3220", "src": "[foo]: /url '\ntitle\nline1\nline2\n'\n\n[foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2571: src line: 3239", "src": "[foo]: /url 'title\n\nwith blank line'\n\n[foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2586: src line: 3254", "src": "[foo]:\n/url\n\n[foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2598: src line: 3266", "src": "[foo]:\n\n[foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2610: src line: 3278", "src": "[foo]: <>\n\n[foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2621: src line: 3289", "src": "[foo]: <bar>(baz)\n\n[foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2633: src line: 3302", "src": "[foo]: /url\\bar\\*baz \"foo\\\"bar\\baz\"\n\n[foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2644: src line: 3313", "src": "[foo]\n\n[foo]: url\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2655: src line: 3325", "src": "[foo]\n\n[foo]: first\n[foo]: second\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2667: src line: 3338", "src": "[FOO]: /url\n\n[Foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2678: src line: 3347", "src": "[ΑΓΩ]: /φου\n\n[αγω]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2689: src line: 3362", "src": "[foo]: /url\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2697: src line: 3370", "src": "[\nfoo\n]: /url\nbar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2709: src line: 3383", "src": "[foo]: /url \"title\" ok\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2718: src line: 3392", "src": "[foo]: /url\n\"title\" ok\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2728: src line: 3403", "src": "    [foo]: /url \"title\"\n\n[foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2741: src line: 3417", "src": "```\n[foo]: /url\n```\n\n[foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2756: src line: 3432", "src": "Foo\n[bar]: /baz\n\n[bar]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2770: src line: 3447", "src": "# [Foo]\n[foo]: /url\n> bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2784: src line: 3458", "src": "[foo]: /url\nbar\n===\n[foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2797: src line: 3468", "src": "[foo]: /url\n===\n[foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2809: src line: 3481", "src": "[foo]: /foo-url \"foo\"\n[bar]: /bar-url\n  \"bar\"\n[baz]: /baz-url\n\n[foo],\n[bar],\n[baz]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2827: src line: 3502", "src": "[foo]\n\n> [foo]: /url\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2840: src line: 3524", "src": "aaa\n\nbbb\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2852: src line: 3536", "src": "aaa\nbbb\n\nccc\nddd\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2868: src line: 3552", "src": "aaa\n\n\nbbb\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2881: src line: 3565", "src": "  aaa\n bbb\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2892: src line: 3577", "src": "aaa\n             bbb\n                                       ccc\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2905: src line: 3591", "src": "   aaa\nbbb\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2916: src line: 3600", "src": "    aaa\nbbb\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2928: src line: 3614", "src": "aaa     \nbbb     \n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2939: src line: 3631", "src": "  \n\naaa\n  \n\n# aaa\n\n  \n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2956: src line: 3699", "src": "> # Foo\n> bar\n> baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2971: src line: 3714", "src": "># Foo\n>bar\n> baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 2986: src line: 3729", "src": "   > # Foo\n   > bar\n > baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3001: src line: 3744", "src": "    > # Foo\n    > bar\n    > baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3015: src line: 3759", "src": "> # Foo\n> bar\nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3030: src line: 3775", "src": "> bar\nbaz\n> foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3045: src line: 3799", "src": "> foo\n---\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3058: src line: 3819", "src": "> - foo\n- bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3075: src line: 3837", "src": ">     foo\n    bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3090: src line: 3850", "src": "> ```\nfoo\n```\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3105: src line: 3866", "src": "> foo\n    - bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3118: src line: 3890", "src": ">\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3128: src line: 3898", "src": ">\n>  \n> \n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3140: src line: 3910", "src": ">\n> foo\n>  \n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3153: src line: 3923", "src": "> foo\n\n> bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3169: src line: 3945", "src": "> foo\n> bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3182: src line: 3958", "src": "> foo\n>\n> bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3196: src line: 3972", "src": "foo\n> bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3209: src line: 3986", "src": "> aaa\n***\n> bbb\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3226: src line: 4004", "src": "> bar\nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3239: src line: 4015", "src": "> bar\n\nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3253: src line: 4027", "src": "> bar\n>\nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3267: src line: 4043", "src": "> > > foo\nbar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3284: src line: 4058", "src": ">>> foo\n> bar\n>>baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3303: src line: 4080", "src": ">     code\n\n>    not code\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3320: src line: 4134", "src": "A paragraph\nwith two lines.\n\n    indented code\n\n> A block quote.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3340: src line: 4156", "src": "1.  A paragraph\n    with two lines.\n\n        indented code\n\n    > A block quote.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3364: src line: 4189", "src": "- one\n\n two\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3378: src line: 4201", "src": "- one\n\n  two\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3394: src line: 4215", "src": " -    one\n\n     two\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3409: src line: 4228", "src": " -    one\n\n      two\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3425: src line: 4250", "src": "   > > 1.  one\n>>\n>>     two\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3445: src line: 4277", "src": ">>- one\n>>\n  >  > two\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3463: src line: 4296", "src": "-one\n\n2.two\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3475: src line: 4309", "src": "- foo\n\n\n  bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3492: src line: 4326", "src": "1.  foo\n\n    ```\n    bar\n    ```\n\n    baz\n\n    > bam\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3519: src line: 4354", "src": "- Foo\n\n      bar\n\n\n      baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3542: src line: 4376", "src": "123456789. ok\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3553: src line: 4385", "src": "1234567890. not ok\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3562: src line: 4394", "src": "0. ok\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3573: src line: 4403", "src": "003. ok\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3584: src line: 4414", "src": "-1. not ok\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3593: src line: 4437", "src": "- foo\n\n      bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3610: src line: 4454", "src": "  10.  foo\n\n           bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3627: src line: 4473", "src": "    indented code\n\nparagraph\n\n    more code\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3644: src line: 4488", "src": "1.     indented code\n\n   paragraph\n\n       more code\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3665: src line: 4510", "src": "1.      indented code\n\n   paragraph\n\n       more code\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3686: src line: 4537", "src": "   foo\n\nbar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3698: src line: 4547", "src": "-    foo\n\n  bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3712: src line: 4564", "src": "-  foo\n\n   bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3728: src line: 4591", "src": "-\n  foo\n-\n  ```\n  bar\n  ```\n-\n      baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3754: src line: 4617", "src": "-   \n  foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3766: src line: 4631", "src": "-\n\n  foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3780: src line: 4645", "src": "- foo\n-\n- bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3795: src line: 4660", "src": "- foo\n-   \n- bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3810: src line: 4675", "src": "1. foo\n2.\n3. bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3825: src line: 4690", "src": "*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3836: src line: 4700", "src": "foo\n*\n\nfoo\n1.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3852: src line: 4722", "src": " 1.  A paragraph\n     with two lines.\n\n         indented code\n\n     > A block quote.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3876: src line: 4746", "src": "  1.  A paragraph\n      with two lines.\n\n          indented code\n\n      > A block quote.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3900: src line: 4770", "src": "   1.  A paragraph\n       with two lines.\n\n           indented code\n\n       > A block quote.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3924: src line: 4794", "src": "    1.  A paragraph\n        with two lines.\n\n            indented code\n\n        > A block quote.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3944: src line: 4824", "src": "  1.  A paragraph\nwith two lines.\n\n          indented code\n\n      > A block quote.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3968: src line: 4848", "src": "  1.  A paragraph\n    with two lines.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 3981: src line: 4861", "src": "> 1. > Blockquote\ncontinued here.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4000: src line: 4878", "src": "> 1. > Blockquote\n> continued here.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4019: src line: 4906", "src": "- foo\n  - bar\n    - baz\n      - boo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4045: src line: 4932", "src": "- foo\n - bar\n  - baz\n   - boo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4062: src line: 4949", "src": "10) foo\n    - bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4078: src line: 4965", "src": "10) foo\n   - bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4093: src line: 4980", "src": "- - foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4108: src line: 4993", "src": "1. - 2. foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4127: src line: 5012", "src": "- # Foo\n- Bar\n  ---\n  baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4146: src line: 5248", "src": "- foo\n- bar\n+ baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4163: src line: 5263", "src": "1. foo\n2. bar\n3) baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4180: src line: 5282", "src": "Foo\n- bar\n- baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4195: src line: 5359", "src": "The number of windows in my house is\n14.  The number of doors is 6.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4206: src line: 5369", "src": "The number of windows in my house is\n1.  The number of doors is 6.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4219: src line: 5383", "src": "- foo\n\n- bar\n\n\n- baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4243: src line: 5404", "src": "- foo\n  - bar\n    - baz\n\n\n      bim\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4270: src line: 5434", "src": "- foo\n- bar\n\n<!-- -->\n\n- baz\n- bim\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4293: src line: 5455", "src": "-   foo\n\n    notcode\n\n-   foo\n\n<!-- -->\n\n    code\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4321: src line: 5486", "src": "- a\n - b\n  - c\n   - d\n  - e\n - f\n- g\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4344: src line: 5507", "src": "1. a\n\n  2. b\n\n   3. c\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4367: src line: 5531", "src": "- a\n - b\n  - c\n   - d\n    - e\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4386: src line: 5551", "src": "1. a\n\n  2. b\n\n    3. c\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4408: src line: 5574", "src": "- a\n- b\n\n- c\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4430: src line: 5596", "src": "* a\n*\n\n* c\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4450: src line: 5618", "src": "- a\n- b\n\n  c\n- d\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4474: src line: 5640", "src": "- a\n- b\n\n  [ref]: /url\n- d\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4497: src line: 5663", "src": "- a\n- ```\n  b\n\n\n  ```\n- c\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4521: src line: 5689", "src": "- a\n  - b\n\n    c\n- d\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4544: src line: 5713", "src": "* a\n  > b\n  >\n* c\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4563: src line: 5733", "src": "- a\n  > b\n  ```\n  c\n  ```\n- d\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4586: src line: 5756", "src": "- a\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4597: src line: 5765", "src": "- a\n  - b\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4613: src line: 5782", "src": "1. ```\n   foo\n   ```\n\n   bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4632: src line: 5801", "src": "* foo\n  * bar\n\n  baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4652: src line: 5819", "src": "- a\n  - b\n  - c\n\n- d\n  - e\n  - f\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4682: src line: 5853", "src": "`hi`lo`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4691: src line: 5885", "src": "`foo`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4700: src line: 5896", "src": "`` foo ` bar ``\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4709: src line: 5906", "src": "` `` `\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4718: src line: 5914", "src": "`  ``  `\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4727: src line: 5923", "src": "` a`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4736: src line: 5932", "src": "` b `\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4745: src line: 5940", "src": "` `\n`  `\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4756: src line: 5951", "src": "``\nfoo\nbar  \nbaz\n``\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4769: src line: 5961", "src": "``\nfoo \n``\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4780: src line: 5972", "src": "`foo   bar \nbaz`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4790: src line: 5989", "src": "`foo\\`bar`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4799: src line: 6000", "src": "``foo`bar``\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4808: src line: 6006", "src": "` foo `` bar `\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4817: src line: 6018", "src": "*foo`*`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4826: src line: 6027", "src": "[not a `link](/foo`)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4835: src line: 6037", "src": "`<a href=\"`\">`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4844: src line: 6046", "src": "<a href=\"`\">`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4853: src line: 6055", "src": "`<https://foo.bar.`baz>`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4862: src line: 6064", "src": "<https://foo.bar.`baz>`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4871: src line: 6074", "src": "```foo``\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4880: src line: 6081", "src": "`foo\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4889: src line: 6090", "src": "`foo``bar``\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4898: src line: 6307", "src": "*foo bar*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4907: src line: 6317", "src": "a * foo bar*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4916: src line: 6328", "src": "a*\"foo\"*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4925: src line: 6337", "src": "* a *\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4934: src line: 6346", "src": "*$*alpha.\n\n*£*bravo.\n\n*€*charlie.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4949: src line: 6361", "src": "foo*bar*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4958: src line: 6368", "src": "5*6*78\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4967: src line: 6377", "src": "_foo bar_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4976: src line: 6387", "src": "_ foo bar_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4985: src line: 6397", "src": "a_\"foo\"_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 4994: src line: 6406", "src": "foo_bar_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5003: src line: 6413", "src": "5_6_78\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5012: src line: 6420", "src": "пристаням_стремятся_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5021: src line: 6430", "src": "aa_\"bb\"_cc\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5030: src line: 6441", "src": "foo-_(bar)_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5039: src line: 6453", "src": "_foo*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5048: src line: 6463", "src": "*foo bar *\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5057: src line: 6472", "src": "*foo bar\n*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5068: src line: 6485", "src": "*(*foo)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5077: src line: 6495", "src": "*(*foo*)*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5086: src line: 6504", "src": "*foo*bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5095: src line: 6517", "src": "_foo bar _\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5104: src line: 6527", "src": "_(_foo)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5113: src line: 6536", "src": "_(_foo_)_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5122: src line: 6545", "src": "_foo_bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5131: src line: 6552", "src": "_пристаням_стремятся\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5140: src line: 6559", "src": "_foo_bar_baz_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5149: src line: 6570", "src": "_(bar)_.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5158: src line: 6579", "src": "**foo bar**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5167: src line: 6589", "src": "** foo bar**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5176: src line: 6600", "src": "a**\"foo\"**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5185: src line: 6609", "src": "foo**bar**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5194: src line: 6618", "src": "__foo bar__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5203: src line: 6628", "src": "__ foo bar__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5212: src line: 6636", "src": "__\nfoo bar__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5223: src line: 6648", "src": "a__\"foo\"__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5232: src line: 6657", "src": "foo__bar__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5241: src line: 6664", "src": "5__6__78\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5250: src line: 6671", "src": "пристаням__стремятся__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5259: src line: 6678", "src": "__foo, __bar__, baz__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5268: src line: 6689", "src": "foo-__(bar)__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5277: src line: 6702", "src": "**foo bar **\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5286: src line: 6715", "src": "**(**foo)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5295: src line: 6725", "src": "*(**foo**)*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5304: src line: 6732", "src": "**Gomphocarpus (*Gomphocarpus physocarpus*, syn.\n*Asclepias physocarpa*)**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5315: src line: 6741", "src": "**foo \"*bar*\" foo**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5324: src line: 6750", "src": "**foo**bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5333: src line: 6762", "src": "__foo bar __\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5342: src line: 6772", "src": "__(__foo)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5351: src line: 6782", "src": "_(__foo__)_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5360: src line: 6791", "src": "__foo__bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5369: src line: 6798", "src": "__пристаням__стремятся\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5378: src line: 6805", "src": "__foo__bar__baz__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5387: src line: 6816", "src": "__(bar)__.\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5396: src line: 6828", "src": "*foo [bar](/url)*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5405: src line: 6835", "src": "*foo\nbar*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5416: src line: 6847", "src": "_foo __bar__ baz_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5425: src line: 6854", "src": "_foo _bar_ baz_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5434: src line: 6861", "src": "__foo_ bar_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5443: src line: 6868", "src": "*foo *bar**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5452: src line: 6875", "src": "*foo **bar** baz*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5461: src line: 6881", "src": "*foo**bar**baz*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5470: src line: 6905", "src": "*foo**bar*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5479: src line: 6918", "src": "***foo** bar*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5488: src line: 6925", "src": "*foo **bar***\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5497: src line: 6932", "src": "*foo**bar***\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5506: src line: 6943", "src": "foo***bar***baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5515: src line: 6949", "src": "foo******bar*********baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5524: src line: 6958", "src": "*foo **bar *baz* bim** bop*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5533: src line: 6965", "src": "*foo [*bar*](/url)*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5542: src line: 6974", "src": "** is not an empty emphasis\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5551: src line: 6981", "src": "**** is not an empty strong emphasis\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5560: src line: 6994", "src": "**foo [bar](/url)**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5569: src line: 7001", "src": "**foo\nbar**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5580: src line: 7013", "src": "__foo _bar_ baz__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5589: src line: 7020", "src": "__foo __bar__ baz__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5598: src line: 7027", "src": "____foo__ bar__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5607: src line: 7034", "src": "**foo **bar****\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5616: src line: 7041", "src": "**foo *bar* baz**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5625: src line: 7048", "src": "**foo*bar*baz**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5634: src line: 7055", "src": "***foo* bar**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5643: src line: 7062", "src": "**foo *bar***\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5652: src line: 7071", "src": "**foo *bar **baz**\nbim* bop**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5663: src line: 7080", "src": "**foo [*bar*](/url)**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5672: src line: 7089", "src": "__ is not an empty emphasis\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5681: src line: 7096", "src": "____ is not an empty strong emphasis\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5690: src line: 7106", "src": "foo ***\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5699: src line: 7113", "src": "foo *\\**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5708: src line: 7120", "src": "foo *_*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5717: src line: 7127", "src": "foo *****\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5726: src line: 7134", "src": "foo **\\***\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5735: src line: 7141", "src": "foo **_**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5744: src line: 7152", "src": "**foo*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5753: src line: 7159", "src": "*foo**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5762: src line: 7166", "src": "***foo**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5771: src line: 7173", "src": "****foo*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5780: src line: 7180", "src": "**foo***\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5789: src line: 7187", "src": "*foo****\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5798: src line: 7197", "src": "foo ___\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5807: src line: 7204", "src": "foo _\\__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5816: src line: 7211", "src": "foo _*_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5825: src line: 7218", "src": "foo _____\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5834: src line: 7225", "src": "foo __\\___\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5843: src line: 7232", "src": "foo __*__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5852: src line: 7239", "src": "__foo_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5861: src line: 7250", "src": "_foo__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5870: src line: 7257", "src": "___foo__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5879: src line: 7264", "src": "____foo_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5888: src line: 7271", "src": "__foo___\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5897: src line: 7278", "src": "_foo____\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5906: src line: 7288", "src": "**foo**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5915: src line: 7295", "src": "*_foo_*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5924: src line: 7302", "src": "__foo__\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5933: src line: 7309", "src": "_*foo*_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5942: src line: 7319", "src": "****foo****\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5951: src line: 7326", "src": "____foo____\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5960: src line: 7337", "src": "******foo******\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5969: src line: 7346", "src": "***foo***\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5978: src line: 7353", "src": "_____foo_____\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5987: src line: 7362", "src": "*foo _bar* baz_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 5996: src line: 7369", "src": "*foo __bar *baz bim__ bam*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6005: src line: 7378", "src": "**foo **bar baz**\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6014: src line: 7385", "src": "*foo *bar baz*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6023: src line: 7394", "src": "*[bar*](/url)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6032: src line: 7401", "src": "_foo [bar_](/url)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6041: src line: 7408", "src": "*<img src=\"foo\" title=\"*\"/>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6050: src line: 7415", "src": "**<a href=\"**\">\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6059: src line: 7422", "src": "__<a href=\"__\">\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6068: src line: 7429", "src": "*a `*`*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6077: src line: 7436", "src": "_a `_`_\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6086: src line: 7443", "src": "**a<https://foo.bar/?q=**>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6095: src line: 7450", "src": "__a<https://foo.bar/?q=__>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6104: src line: 7538", "src": "[link](/uri \"title\")\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6113: src line: 7548", "src": "[link](/uri)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6122: src line: 7554", "src": "[](./target.md)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6131: src line: 7561", "src": "[link]()\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6140: src line: 7568", "src": "[link](<>)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6149: src line: 7575", "src": "[]()\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6158: src line: 7584", "src": "[link](/my uri)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6167: src line: 7590", "src": "[link](</my uri>)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6176: src line: 7599", "src": "[link](foo\nbar)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6187: src line: 7607", "src": "[link](<foo\nbar>)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6198: src line: 7618", "src": "[a](<b)c>)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6207: src line: 7626", "src": "[link](<foo\\>)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6216: src line: 7635", "src": "[a](<b)c\n[a](<b)c>\n[a](<b>c)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6229: src line: 7647", "src": "[link](\\(foo\\))\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6238: src line: 7656", "src": "[link](foo(and(bar)))\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6247: src line: 7665", "src": "[link](foo(and(bar))\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6256: src line: 7672", "src": "[link](foo\\(and\\(bar\\))\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6265: src line: 7679", "src": "[link](<foo(and(bar)>)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6274: src line: 7689", "src": "[link](foo\\)\\:)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6283: src line: 7698", "src": "[link](#fragment)\n\n[link](https://example.com#fragment)\n\n[link](https://example.com?foo=3#frag)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6298: src line: 7714", "src": "[link](foo\\bar)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6307: src line: 7730", "src": "[link](foo%20b&auml;)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6316: src line: 7741", "src": "[link](\"title\")\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6325: src line: 7750", "src": "[link](/url \"title\")\n[link](/url 'title')\n[link](/url (title))\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6338: src line: 7764", "src": "[link](/url \"title \\\"&quot;\")\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6347: src line: 7775", "src": "[link](/url \"title\")\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6356: src line: 7784", "src": "[link](/url \"title \"and\" title\")\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6365: src line: 7793", "src": "[link](/url 'title \"and\" title')\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6374: src line: 7818", "src": "[link](   /uri\n  \"title\"  )\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6384: src line: 7829", "src": "[link] (/uri)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6393: src line: 7839", "src": "[link [foo [bar]]](/uri)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6402: src line: 7846", "src": "[link] bar](/uri)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6411: src line: 7853", "src": "[link [bar](/uri)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6420: src line: 7860", "src": "[link \\[bar](/uri)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6429: src line: 7869", "src": "[link *foo **bar** `#`*](/uri)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6438: src line: 7876", "src": "[![moon](moon.jpg)](/uri)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6447: src line: 7885", "src": "[foo [bar](/uri)](/uri)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6456: src line: 7892", "src": "[foo *[bar [baz](/uri)](/uri)*](/uri)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6465: src line: 7899", "src": "![[[foo](uri1)](uri2)](uri3)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6474: src line: 7909", "src": "*[foo*](/uri)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6483: src line: 7916", "src": "[foo *bar](baz*)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6492: src line: 7926", "src": "*foo [bar* baz]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6501: src line: 7936", "src": "[foo <bar attr=\"](baz)\">\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6510: src line: 7943", "src": "[foo`](/uri)`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6519: src line: 7950", "src": "[foo<https://example.com/?search=](uri)>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6528: src line: 7988", "src": "[foo][bar]\n\n[bar]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6539: src line: 8003", "src": "[link [foo [bar]]][ref]\n\n[ref]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6550: src line: 8012", "src": "[link \\[bar][ref]\n\n[ref]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6561: src line: 8023", "src": "[link *foo **bar** `#`*][ref]\n\n[ref]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6572: src line: 8032", "src": "[![moon](moon.jpg)][ref]\n\n[ref]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6583: src line: 8043", "src": "[foo [bar](/uri)][ref]\n\n[ref]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6594: src line: 8052", "src": "[foo *bar [baz][ref]*][ref]\n\n[ref]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6605: src line: 8067", "src": "*[foo*][ref]\n\n[ref]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6616: src line: 8076", "src": "[foo *bar][ref]*\n\n[ref]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6627: src line: 8088", "src": "[foo <bar attr=\"][ref]\">\n\n[ref]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6638: src line: 8097", "src": "[foo`][ref]`\n\n[ref]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6649: src line: 8106", "src": "[foo<https://example.com/?search=][ref]>\n\n[ref]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6660: src line: 8117", "src": "[foo][BaR]\n\n[bar]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6671: src line: 8128", "src": "[ẞ]\n\n[SS]: /url\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6682: src line: 8140", "src": "[Foo\n  bar]: /url\n\n[Baz][Foo bar]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6694: src line: 8153", "src": "[foo] [bar]\n\n[bar]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6705: src line: 8162", "src": "[foo]\n[bar]\n\n[bar]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6718: src line: 8203", "src": "[foo]: /url1\n\n[foo]: /url2\n\n[bar][foo]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6731: src line: 8218", "src": "[bar][foo\\!]\n\n[foo!]: /url\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6742: src line: 8230", "src": "[foo][ref[]\n\n[ref[]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6754: src line: 8240", "src": "[foo][ref[bar]]\n\n[ref[bar]]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6766: src line: 8250", "src": "[[[foo]]]\n\n[[[foo]]]: /url\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6778: src line: 8260", "src": "[foo][ref\\[]\n\n[ref\\[]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6789: src line: 8271", "src": "[bar\\\\]: /uri\n\n[bar\\\\]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6800: src line: 8283", "src": "[]\n\n[]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6812: src line: 8293", "src": "[\n ]\n\n[\n ]: /uri\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6828: src line: 8316", "src": "[foo][]\n\n[foo]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6839: src line: 8325", "src": "[*foo* bar][]\n\n[*foo* bar]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6850: src line: 8336", "src": "[Foo][]\n\n[foo]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6861: src line: 8349", "src": "[foo] \n[]\n\n[foo]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6874: src line: 8369", "src": "[foo]\n\n[foo]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6885: src line: 8378", "src": "[*foo* bar]\n\n[*foo* bar]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6896: src line: 8387", "src": "[[*foo* bar]]\n\n[*foo* bar]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6907: src line: 8396", "src": "[[bar [foo]\n\n[foo]: /url\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6918: src line: 8407", "src": "[Foo]\n\n[foo]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6929: src line: 8418", "src": "[foo] bar\n\n[foo]: /url\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6940: src line: 8430", "src": "\\[foo]\n\n[foo]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6951: src line: 8442", "src": "[foo*]: /url\n\n*[foo*]\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6962: src line: 8454", "src": "[foo][bar]\n\n[foo]: /url1\n[bar]: /url2\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6974: src line: 8463", "src": "[foo][]\n\n[foo]: /url1\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6985: src line: 8473", "src": "[foo]()\n\n[foo]: /url1\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 6996: src line: 8481", "src": "[foo](not a link)\n\n[foo]: /url1\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7007: src line: 8492", "src": "[foo][bar][baz]\n\n[baz]: /url\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7018: src line: 8504", "src": "[foo][bar][baz]\n\n[baz]: /url1\n[bar]: /url2\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7030: src line: 8517", "src": "[foo][bar][baz]\n\n[baz]: /url1\n[foo]: /url2\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7042: src line: 8540", "src": "![foo](/url \"title\")\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7051: src line: 8547", "src": "![foo *bar*]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7062: src line: 8556", "src": "![foo ![bar](/url)](/url2)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7071: src line: 8563", "src": "![foo [bar](/url)](/url2)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7080: src line: 8577", "src": "![foo *bar*][]\n\n[foo *bar*]: train.jpg \"train & tracks\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7091: src line: 8586", "src": "![foo *bar*][foobar]\n\n[FOOBAR]: train.jpg \"train & tracks\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7102: src line: 8595", "src": "![foo](train.jpg)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7111: src line: 8602", "src": "My ![foo bar](/path/to/train.jpg  \"title\"   )\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7120: src line: 8609", "src": "![foo](<url>)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7129: src line: 8616", "src": "![](/url)\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7138: src line: 8625", "src": "![foo][bar]\n\n[bar]: /url\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7149: src line: 8634", "src": "![foo][bar]\n\n[BAR]: /url\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7160: src line: 8645", "src": "![foo][]\n\n[foo]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7171: src line: 8654", "src": "![*foo* bar][]\n\n[*foo* bar]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7182: src line: 8665", "src": "![Foo][]\n\n[foo]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7193: src line: 8677", "src": "![foo] \n[]\n\n[foo]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7206: src line: 8690", "src": "![foo]\n\n[foo]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7217: src line: 8699", "src": "![*foo* bar]\n\n[*foo* bar]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7228: src line: 8710", "src": "![[foo]]\n\n[[foo]]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7240: src line: 8722", "src": "![Foo]\n\n[foo]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7251: src line: 8734", "src": "!\\[foo]\n\n[foo]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7262: src line: 8746", "src": "\\![foo]\n\n[foo]: /url \"title\"\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7273: src line: 8779", "src": "<http://foo.bar.baz>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7282: src line: 8786", "src": "<https://foo.bar.baz/test?q=hello&id=22&boolean>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7291: src line: 8793", "src": "<irc://foo.bar:2233/baz>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7300: src line: 8802", "src": "<MAILTO:FOO@BAR.BAZ>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7309: src line: 8814", "src": "<a+b+c:d>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7318: src line: 8821", "src": "<made-up-scheme://foo,bar>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7327: src line: 8828", "src": "<https://../>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7336: src line: 8835", "src": "<localhost:5001/foo>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7345: src line: 8844", "src": "<https://foo.bar/baz bim>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7354: src line: 8853", "src": "<https://example.com/\\[\\>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7363: src line: 8875", "src": "<foo@bar.example.com>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7372: src line: 8882", "src": "<foo+special@Bar.baz-bar0.com>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7381: src line: 8891", "src": "<foo\\+@bar.example.com>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7390: src line: 8900", "src": "<>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7399: src line: 8907", "src": "< https://foo.bar >\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7408: src line: 8914", "src": "<m:abc>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7417: src line: 8921", "src": "<foo.bar.baz>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7426: src line: 8928", "src": "https://example.com\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7435: src line: 8935", "src": "foo@bar.example.com\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7444: src line: 9015", "src": "<a><bab><c2c>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7453: src line: 9024", "src": "<a/><b2/>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7462: src line: 9033", "src": "<a  /><b2\ndata=\"foo\" >\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7473: src line: 9044", "src": "<a foo=\"bar\" bam = 'baz <em>\"</em>'\n_boolean zoop:33=zoop:33 />\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7484: src line: 9055", "src": "Foo <responsive-image src=\"foo.jpg\" />\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7493: src line: 9064", "src": "<33> <__>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7502: src line: 9073", "src": "<a h*#ref=\"hi\">\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7511: src line: 9082", "src": "<a href=\"hi'> <a href=hi'>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7520: src line: 9091", "src": "< a><\nfoo><bar/ >\n<foo bar=baz\nbim!bop />\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7535: src line: 9106", "src": "<a href='bar'title=title>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7544: src line: 9115", "src": "</a></foo >\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7553: src line: 9124", "src": "</a href=\"foo\">\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7562: src line: 9133", "src": "foo <!-- this is a --\ncomment - with hyphens -->\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7573: src line: 9141", "src": "foo <!--> foo -->\n\nfoo <!---> foo -->\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7585: src line: 9153", "src": "foo <?php echo $a; ?>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7594: src line: 9162", "src": "foo <!ELEMENT br EMPTY>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7603: src line: 9171", "src": "foo <![CDATA[>&<]]>\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7612: src line: 9181", "src": "foo <a href=\"&ouml;\">\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7621: src line: 9190", "src": "foo <a href=\"\\*\">\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7630: src line: 9197", "src": "<a href=\"\\\"\">\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7639: src line: 9211", "src": "foo  \nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7650: src line: 9223", "src": "foo\\\nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7661: src line: 9234", "src": "foo       \nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7672: src line: 9245", "src": "foo  \n     bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7683: src line: 9254", "src": "foo\\\n     bar\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7694: src line: 9266", "src": "*foo  \nbar*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7705: src line: 9275", "src": "*foo\\\nbar*\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7716: src line: 9286", "src": "`code  \nspan`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7726: src line: 9294", "src": "`code\\\nspan`\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7736: src line: 9304", "src": "<a href=\"foo  \nbar\">\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7747: src line: 9313", "src": "<a href=\"foo\\\nbar\">\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7758: src line: 9326", "src": "foo\\\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7767: src line: 9333", "src": "foo  \n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7776: src line: 9340", "src": "### foo\\\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7785: src line: 9347", "src": "### foo  \n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7794: src line: 9362", "src": "foo\nbaz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7805: src line: 9374", "src": "foo \n baz\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7816: src line: 9394", "src": "hello $.;'there\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7825: src line: 9401", "src": "Foo χρῆν\n", "preset": "commonmark"}
+{"id": "commonmark/good.txt line 7834: src line: 9410", "src": "Multiple     spaces\n", "preset": "commonmark"}

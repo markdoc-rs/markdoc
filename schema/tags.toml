@@ -1,0 +1,564 @@
+# The built-in tag schema: the crate's public bundle, loaded by
+# `markdoc::ext::bundle::Bundle::builtin()` (see src/ext/bundle.rs for the
+# format and the rules, which this header summarises).
+#
+# Tags
+#   description    one line, shown in editor completion and hover
+#   render         the element name the tag renders as. Omitted, a tag
+#                  renders under its own name and an alias as its canonical
+#                  tag; `false` renders only the children
+#   children       allowed child tag names; omitted means any
+#   self_closing   written `{% x /%}`
+#   inline         true: only inside a paragraph; false: only as a block;
+#                  omitted: either
+#   engine         an opaque label naming what implements the tag (editors
+#                  colour control flow by it)
+#   alias_of       another spelling of the named tag
+#   layer          the extension layer that implements the tag
+#                  (`control_flow`); without that layer it is not declared
+#   builtin        one of upstream's built-in tags (else, if, partial, slot,
+#                  table). Those are never replaced: their entries give only
+#                  a description, an engine label and new attributes (an
+#                  attribute upstream already has takes only a description).
+#                  So `table` has no `render`: one would nest a table in the
+#                  table.
+#
+#   attributes.<name>
+#     type         any of String Number Boolean Object Array; omitted = any
+#     required     error when absent
+#     default      value applied when absent
+#     render       true/false, or a name to emit the attribute under
+#     one_of       closed set of accepted values
+#     pattern      JavaScript regular expression the value must match; with
+#                  one_of, a value may satisfy either
+#     error_level  the level of a value error (default "error")
+#
+# Nodes
+#   [nodes.<type>.attributes.<name>] adds attributes to upstream's node
+#   schema of that type, on the terms of `builtin` above.
+#
+# Unknown keys are a load error, so a typo fails the build rather than
+# being silently ignored.
+[tags.callout]
+description = "Callout block"
+self_closing = false
+inline = false
+[tags.callout.attributes.type]
+type = ["String"]
+required = false
+default = "note"
+description = "Severity: note, info, warning, caution, danger, success, notice"
+one_of = ["note", "info", "warning", "caution", "danger", "success", "notice"]
+[tags.caption]
+description = "Caption for an adjacent figure or table"
+self_closing = false
+inline = false
+[tags.caption.attributes.color]
+type = ["String"]
+required = false
+description = "Colour for the caption text"
+[tags.caption.attributes.position]
+type = ["String"]
+required = false
+description = "Placement relative to the figure/table: above (default) or below"
+one_of = ["above", "below"]
+[tags.chip]
+description = "Inline colour chip / dot"
+self_closing = true
+inline = true
+[tags.chip.attributes.color]
+type = ["String"]
+required = false
+description = 'Chip fill — any CSS colour, e.g. "#ff0000"'
+[tags.chip.attributes.shape]
+type = ["String"]
+required = false
+description = "Chip shape: circle (default) | square"
+one_of = ["circle", "square"]
+[tags.color]
+description = "Inline coloured text span"
+self_closing = false
+inline = true
+[tags.color.attributes.value]
+type = ["String"]
+required = false
+description = "Colour: a #rgb / #rrggbb hex value or a named colour"
+[tags.columns]
+description = "Side-by-side columns"
+self_closing = false
+inline = false
+[tags.columns.attributes.align]
+type = ["String"]
+required = false
+description = "Horizontal alignment of each column's content: left (default) | center | right"
+one_of = ["left", "center", "right"]
+[tags.columns.attributes.background]
+type = ["String"]
+required = false
+description = 'Panel fill behind the columns — any CSS colour, e.g. "#f9f9f9"'
+[tags.columns.attributes.gap]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = "Space between columns, in points (default 16)"
+[tags.columns.attributes.widths]
+type = [
+    "String",
+    "Array",
+]
+required = false
+description = 'Relative column widths, e.g. "2 1" or [2, 1]; equal if omitted'
+[tags.else]
+description = "Branch separator inside `{% if %}`"
+builtin = true
+engine = "conditionals.rs"
+[tags.else.attributes.primary]
+description = "Optional else-if predicate; bare `{% else /%}` is the fallback."
+[tags.float]
+description = "Float an image with content wrapping around it"
+self_closing = false
+inline = false
+[tags.float.attributes.gap]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = "Space between the image and the wrapped content (default 14)"
+[tags.float.attributes.side]
+type = ["String"]
+required = false
+description = "Which side the image floats to: left (default) or right"
+one_of = ["left", "right"]
+[tags.float.attributes.width]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = 'Image width — a fraction ≤ 1 of the column, a length, or a "NN%" string (default 40%)'
+[tags.grid]
+description = "Responsive grid — cells reflow into as many equal columns as fit"
+self_closing = false
+inline = false
+[tags.grid.attributes.align]
+type = ["String"]
+required = false
+description = "Horizontal alignment of each cell's content: left (default) | center | right"
+one_of = ["left", "center", "right"]
+[tags.grid.attributes.background]
+type = ["String"]
+required = false
+description = 'Panel fill behind the grid — any CSS colour, e.g. "#f9f9f9"'
+[tags.grid.attributes.gap]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = "Space between cells, in points (default 16)"
+[tags.grid.attributes.min]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = "Minimum column width in points; the grid fits as many equal columns as the width allows (default 120)"
+[tags.if]
+description = "Conditional rendering tag"
+builtin = true
+engine = "conditionals.rs"
+[tags.if.attributes.primary]
+description = "Predicate to evaluate"
+[tags.input]
+description = "Form input field (HTML input on the web; a print form box in PDF)"
+self_closing = true
+inline = false
+[tags.input.attributes.label]
+type = ["String"]
+required = false
+description = "Human-readable label shown beside the field"
+[tags.input.attributes.max]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = "Maximum value (number / date types)"
+[tags.input.attributes.maxlength]
+type = ["Number"]
+required = false
+description = "Maximum length in characters (text types)"
+[tags.input.attributes.min]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = "Minimum value (number / date types)"
+[tags.input.attributes.minlength]
+type = ["Number"]
+required = false
+description = "Minimum length in characters (text types)"
+[tags.input.attributes.name]
+type = ["String"]
+required = true
+description = "Field identifier"
+[tags.input.attributes.pattern]
+type = ["String"]
+required = false
+description = "Regular expression the value must match"
+[tags.input.attributes.placeholder]
+type = ["String"]
+required = false
+description = "Placeholder hint shown in an empty field"
+[tags.input.attributes.required]
+type = ["Boolean"]
+required = false
+description = "Whether a value must be supplied"
+[tags.input.attributes.type]
+type = ["String"]
+required = false
+description = "Input type: text (default) | number | email | tel | url | date | checkbox"
+one_of = ["text", "number", "email", "tel", "url", "date", "checkbox"]
+[tags.input.attributes.value]
+type = [
+    "String",
+    "Number",
+]
+required = false
+description = "Default / pre-filled value"
+[tags.list]
+description = "List with a custom marker style"
+self_closing = false
+inline = false
+[tags.list.attributes.type]
+type = ["String"]
+required = false
+description = "Marker style: checkmark | dash | none"
+one_of = ["checkmark", "dash", "none"]
+[tags.media]
+description = "Media reference (image, video, audio, 3D model, animation, etc.)"
+self_closing = true
+[tags.media.attributes.alt]
+type = ["String"]
+required = false
+description = "Accessibility / fallback text describing the media"
+[tags.media.attributes.caption]
+type = ["String"]
+required = false
+description = "Visible caption rendered alongside the media"
+[tags.media.attributes.id]
+type = ["String"]
+required = false
+description = "Asset id (alternative to `src`). A publishing pipeline may rewrite it to a concrete `src` before render; locally, markdoc-pdf resolves it to a file named `<id>.<ext>` under the assets root."
+[tags.media.attributes.kind]
+type = ["String"]
+required = false
+description = "Optional type hint: image | vector | animation | video | audio | model"
+one_of = ["image", "vector", "animation", "video", "audio", "model"]
+[tags.media.attributes.side]
+type = ["String"]
+required = false
+description = "When placed inside a `{% float %}`, the side to float this image to: left or right"
+one_of = ["left", "right"]
+[tags.media.attributes.size]
+type = ["String"]
+required = false
+description = "Display size preset: small (45%) | medium (75%) | large (100%, default) of the available width"
+one_of = ["small", "medium", "large", "table", "icon"]
+pattern = '^\d+(\.\d+)?(px|%|pt|em|rem)$'
+[tags.media.attributes.src]
+type = ["String"]
+required = false
+description = "Media URI (alternative to `id`). May carry transformation params interpreted by the asset service."
+[tags.media.attributes.title]
+type = ["String"]
+required = false
+description = 'Advisory title (the HTML `title` / tooltip); markdown `![alt](url "title")` sets it. Renderers may use it as a caption / alt fallback.'
+[tags.media.attributes.width]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = 'Explicit width for a floated image (`{% float %}`) — a fraction ≤ 1 of the column, a length, or a "NN%" string. For general image sizing use `size`.'
+[tags.pagebreak]
+description = "Force a PDF page break; no-op in non-paginated renderers"
+self_closing = true
+inline = false
+[tags.partial]
+description = "Include a partial file"
+builtin = true
+engine = "partials.rs"
+[tags.partial.attributes.file]
+description = "Path to partial file"
+[tags.qr]
+description = "QR code generated from a value"
+self_closing = true
+inline = false
+[tags.qr.attributes.align]
+type = ["String"]
+required = false
+description = "Horizontal placement: left (default) | center | right"
+one_of = ["left", "center", "right"]
+[tags.qr.attributes.background]
+type = ["String"]
+required = false
+description = "Field (background) colour, any CSS colour (default white)"
+[tags.qr.attributes.color]
+type = ["String"]
+required = false
+description = "Module (foreground) colour, any CSS colour (default black)"
+[tags.qr.attributes.ecl]
+type = ["String"]
+required = false
+description = "Error-correction level: low | medium (default) | quartile | high"
+one_of = ["low", "medium", "quartile", "high"]
+[tags.qr.attributes.quiet_zone]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = "Margin around the code, in modules (default 4)"
+[tags.qr.attributes.size]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = "Rendered side length in points (default 72)"
+[tags.qr.attributes.value]
+type = [
+    "String",
+    "Number",
+]
+required = true
+description = "The data to encode — a URL, document number, or any text"
+[tags.swatch]
+description = "Colour swatch / bar — solid or linear-gradient fill"
+self_closing = true
+inline = false
+[tags.swatch.attributes.color]
+type = ["String"]
+required = false
+description = 'Solid fill — any CSS colour, e.g. "#ff0000"'
+[tags.swatch.attributes.gradient]
+type = ["String"]
+required = false
+description = 'Linear gradient fill: "[Ndeg,] stop, stop, …" — each stop a CSS colour (or transparent) with an optional NN% position; wins over color'
+[tags.swatch.attributes.height]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = "Bar height in points (default 6)"
+[tags.swatch.attributes.radius]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = "Corner radius in points (default 2)"
+[tags.table]
+description = "Table (list-syntax or pipe-table styling wrapper)"
+builtin = true
+[tags.table.attributes.border_color]
+type = ["String"]
+required = false
+description = "Table border colour (CSS colour)"
+[tags.table.attributes.borders]
+type = ["String"]
+required = false
+description = "grid | horizontal | none"
+one_of = ["grid", "horizontal", "none"]
+[tags.table.attributes.cell_padding]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = "Per-table cell padding in points"
+[tags.table.attributes.column_weights]
+type = ["String"]
+required = false
+description = 'Space/comma-separated relative column widths, e.g. "1 2" or "3 1"'
+[tags.table.attributes.edge_color]
+type = ["String"]
+required = false
+description = "Outer edge colour (CSS colour)"
+[tags.table.attributes.fillable]
+type = [
+    "Boolean",
+    "String",
+]
+required = false
+description = "Render the table's blank cells as fields that can be filled in and printed"
+[tags.table.attributes.header_background]
+type = ["String"]
+required = false
+description = "Header row fill colour (CSS colour)"
+[tags.table.attributes.header_column]
+type = [
+    "Boolean",
+    "String",
+]
+required = false
+description = "When true, treat column 0 as row headers"
+[tags.table.attributes.stripe]
+type = ["String"]
+required = false
+description = 'Zebra stripe colour, or "none" to disable'
+[tags.tag]
+description = "Named anchor declaration"
+self_closing = true
+engine = "crossrefs.rs"
+[tags.tag.attributes.primary]
+type = ["String"]
+required = false
+description = "Anchor id: `{% tag \"id\" /%}`"
+[tags.tag.attributes.numbered]
+required = false
+description = 'Set to "false" to leave the heading the anchor sits in out of the numbering (markdoc-pdf)'
+[tags.tag.attributes.id]
+type = ["String"]
+required = false
+description = "Anchor id"
+[tags.tag.attributes.tag]
+type = ["String"]
+required = false
+description = "Anchor id (alternate spelling)"
+[tags.tagref]
+description = "Named anchor reference"
+self_closing = true
+engine = "crossrefs.rs"
+[tags.tagref.attributes.primary]
+type = ["String"]
+required = false
+description = "Target anchor id: `{% tagref \"id\" /%}`"
+[tags.tagref.attributes.doc]
+type = ["String"]
+required = false
+description = "Cross-document target — id of the document that owns the anchor. A publishing platform rewrites these into resolved links before publish; renderers that see one in raw source treat it as an unresolved placeholder."
+[tags.tagref.attributes.id]
+type = ["String"]
+required = false
+description = "Target anchor id"
+[tags.tagref.attributes.tag]
+type = ["String"]
+required = false
+description = "Target anchor id (alternate spelling)"
+[tags.tagref.attributes.text]
+type = ["String"]
+required = false
+description = "Visible link text. When omitted, the target section heading is used."
+[tags.img]
+description = "Image reference (alias of `media`)"
+alias_of = "media"
+[tags.c]
+description = "Inline coloured text span (alias of `color`)"
+alias_of = "color"
+[tags.image]
+description = "Image reference (alias of `media`)"
+alias_of = "media"
+[tags.notice]
+description = "Callout block (alias of `callout`)"
+alias_of = "callout"
+
+[tags.switch]
+description = "Select one of several bodies by matching a value"
+self_closing = false
+inline = false
+children = ["case"]
+engine = "conditionals.rs"
+layer = "control_flow"
+
+[tags.switch.attributes.primary]
+required = true
+description = "The value to match against each case"
+
+[tags.case]
+description = "One branch of a `{% switch %}`; no value makes it the default"
+self_closing = false
+inline = false
+engine = "conditionals.rs"
+layer = "control_flow"
+
+[tags.case.attributes.primary]
+required = false
+description = "The value this branch matches; omitted matches anything"
+
+[tags.for]
+description = "Repeat the body once per element of an array"
+self_closing = false
+inline = false
+engine = "conditionals.rs"
+layer = "control_flow"
+
+[tags.for.attributes.primary]
+required = true
+type = ["Array"]
+description = "The array to repeat the body over"
+
+[tags.for.attributes.as]
+type = ["String"]
+required = false
+description = 'Name for the element, read in the body as `$<name>` (default "item")'
+
+[tags.for.attributes.index]
+type = ["String"]
+required = false
+description = 'Name for the 0-based position, read as `$<name>` (default "index")'
+
+# The `table` tag copies its attributes onto the table node it makes, so the
+# node declares the same styling attributes.
+[nodes.table.attributes.border_color]
+type = ["String"]
+required = false
+description = "Table border colour (CSS colour)"
+[nodes.table.attributes.borders]
+type = ["String"]
+required = false
+description = "grid | horizontal | none"
+one_of = ["grid", "horizontal", "none"]
+[nodes.table.attributes.cell_padding]
+type = [
+    "Number",
+    "String",
+]
+required = false
+description = "Per-table cell padding in points"
+[nodes.table.attributes.column_weights]
+type = ["String"]
+required = false
+description = 'Space/comma-separated relative column widths, e.g. "1 2" or "3 1"'
+[nodes.table.attributes.edge_color]
+type = ["String"]
+required = false
+description = "Outer edge colour (CSS colour)"
+[nodes.table.attributes.fillable]
+type = [
+    "Boolean",
+    "String",
+]
+required = false
+description = "Render the table's blank cells as fields that can be filled in and printed"
+[nodes.table.attributes.header_background]
+type = ["String"]
+required = false
+description = "Header row fill colour (CSS colour)"
+[nodes.table.attributes.header_column]
+type = [
+    "Boolean",
+    "String",
+]
+required = false
+description = "When true, treat column 0 as row headers"
+[nodes.table.attributes.stripe]
+type = ["String"]
+required = false
+description = 'Zebra stripe colour, or "none" to disable'

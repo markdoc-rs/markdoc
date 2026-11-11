@@ -1,0 +1,5 @@
+{"id": "tokenizer-plugins-frontmatter#0 MarkdownIt frontmatter plugin > parsing frontmatter", "code": "---\ntest: true\n---\n# Test", "allowIndentation": false, "allowComments": false}
+{"id": "tokenizer-plugins-frontmatter#1 MarkdownIt frontmatter plugin > parsing frontmatter only", "code": "---\ntest: true\nfoo: bar\n---", "allowIndentation": false, "allowComments": false}
+{"id": "tokenizer-plugins-frontmatter#2 MarkdownIt frontmatter plugin > spaces at end", "code": "---   \ntest: true\n---   \n# Test", "allowIndentation": false, "allowComments": false}
+{"id": "tokenizer-plugins-frontmatter#3 MarkdownIt frontmatter plugin > missing closing", "code": "---\ntest: true\n# Test", "allowIndentation": false, "allowComments": false}
+{"id": "tokenizer-plugins-frontmatter#4 MarkdownIt frontmatter plugin > missing opening", "code": "test: true\n---\n# Test", "allowIndentation": false, "allowComments": false}

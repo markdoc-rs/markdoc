@@ -1,0 +1,11 @@
+{"id": "renderers-react-react#0 React dynamic renderer > rendering a null node", "code": "", "renderTree": {"name": "h1", "children": ["test", null]}}
+{"id": "renderers-react-react#1 React dynamic renderer > rendering a tag", "code": "", "renderTree": {"name": "h1", "children": ["test"]}}
+{"id": "renderers-react-react#2 React dynamic renderer > rendering string and number child nodes", "code": "", "renderTree": {"name": "h1", "children": ["test ", 1]}}
+{"id": "renderers-react-react#3 React dynamic renderer > rendering nested tags", "code": "", "renderTree": {"name": "div", "children": [{"name": "p", "children": ["test"]}]}}
+{"id": "renderers-react-react#4 React dynamic renderer > rendering parallel tags", "code": "", "renderTree": [{"name": "p", "children": ["foo"]}, {"name": "p", "children": ["bar"]}]}
+{"id": "renderers-react-react#5 React dynamic renderer > rendering an external component", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "Foo", "attributes": {}, "children": ["test"]}, "components": {"Foo": "bar"}}
+{"id": "renderers-react-react#6 React dynamic renderer > attributes > with an id attribute", "code": "", "renderTree": {"name": "h1", "attributes": {"id": "foo"}, "children": ["test"]}}
+{"id": "renderers-react-react#7 React dynamic renderer > attributes > with a class attribute", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {"class": "foo bar"}, "children": ["test"]}}
+{"id": "renderers-react-react#8 React dynamic renderer > attributes > with a number attribute value", "code": "", "renderTree": {"name": "h1", "attributes": {"data-foo": 42}, "children": ["test"]}}
+{"id": "renderers-react-react#9 React dynamic renderer > rendering built-in nodes > rendering a fenced code block", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "pre", "attributes": {"class": "code code-ruby"}, "children": ["test"]}}
+{"id": "renderers-react-react#10 React static renderer > rendering an external component", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "Foo", "attributes": {}, "children": ["test"]}}

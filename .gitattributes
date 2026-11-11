@@ -1,0 +1,13 @@
+# The vendored upstream files are compared byte for byte, by sha256 (see
+# tests/marktest/UPSTREAM.md), so git must never convert their line endings:
+# a Windows checkout with core.autocrlf would change the bytes and fail.
+tests/marktest/tests.yaml     -text linguist-vendored
+tests/marktest/index.ts       -text linguist-vendored
+tests/marktest/react.ts       -text linguist-vendored
+tests/marktest/react-shim.ts  -text linguist-vendored
+tests/marktest/LICENSE        -text linguist-vendored
+
+# This crate's own files beside them: a script, and the table that script and
+# tests/conformance.rs both parse, held to LF so either can read them.
+tests/marktest/verify-vendored.sh  text eol=lf
+tests/marktest/UPSTREAM.md         text eol=lf

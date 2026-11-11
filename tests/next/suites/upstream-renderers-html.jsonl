@@ -1,0 +1,11 @@
+{"id": "renderers-html#0 HTML renderer > rendering a tag", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {}, "children": ["test"]}}
+{"id": "renderers-html#1 HTML renderer > rendering string child nodes", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {}, "children": ["test ", "1"]}}
+{"id": "renderers-html#2 HTML renderer > rendering nested tags", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "div", "attributes": {}, "children": [{"$$mdtype": "Tag", "name": "p", "attributes": {}, "children": ["test"]}]}}
+{"id": "renderers-html#3 HTML renderer > rendering parallel tags", "code": "", "renderTree": [{"$$mdtype": "Tag", "name": "p", "attributes": {}, "children": ["foo"]}, {"$$mdtype": "Tag", "name": "p", "attributes": {}, "children": ["bar"]}]}
+{"id": "renderers-html#4 HTML renderer > rendering a tag with an invalid child", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "div", "attributes": {}, "children": ["test", {"foo": "bar"}]}}
+{"id": "renderers-html#5 HTML renderer > rendering a void element", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "hr", "attributes": {}, "children": []}}
+{"id": "renderers-html#6 HTML renderer > rendering a tag with numeric children", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "p", "attributes": {}, "children": [1]}}
+{"id": "renderers-html#7 HTML renderer > lowercase attributes", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "td", "attributes": {"colSpan": 2, "rowSpan": 3}, "children": ["Data"]}}
+{"id": "renderers-html#8 HTML renderer > attributes > with basic value", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "foo", "attributes": {"bar": "baz"}, "children": []}}
+{"id": "renderers-html#9 HTML renderer > attributes > with an id attribute", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {"id": "foo", "test": "bar"}, "children": ["test"]}}
+{"id": "renderers-html#10 HTML renderer > attributes > with a number attribute value", "code": "", "renderTree": {"$$mdtype": "Tag", "name": "h1", "attributes": {"data-foo": 42}, "children": ["test"]}}

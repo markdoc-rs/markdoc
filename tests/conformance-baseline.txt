@@ -1,0 +1,127 @@
+# Upstream Markdoc's conformance corpus, case by case: what this crate passes,
+# and for every case it fails, why.
+#
+# The corpus is spec/marktest/tests.yaml from markdoc/markdoc, vendored
+# unmodified in marktest/ (see marktest/UPSTREAM.md), graded by the rule
+# upstream's own runner applies (marktest/index.ts). tests/conformance.rs
+# fails when this file and the parser disagree, in either direction: a `pass`
+# that now fails is a regression, a `fail` that now passes is an improvement
+# to record with
+#
+#     MARKDOC_CONFORMANCE_BLESS=1 cargo test --test conformance
+#
+# A regression is never blessed. If one is deliberate, change its line to
+# `fail` by hand and write the reason under it.
+#
+# A reason starts `divergence:` when the difference is a decision this crate
+# made, and `gap:` when nobody decided it. The bracketed word at the end
+# names the root cause the case shares with others.
+
+corpus 9440a1d45670d367090d66446c5e387028ea9236 549762cc080c9723c0d2495290de60ede053a0cfe7f46686b385bd1c1cd70b7b
+totals green 105 fail 0 total 105
+
+pass   1  Heading with an ID
+pass   2  Ordered list
+pass   3  Ordered list with start
+pass   4  Heading with a class
+pass   5  Heading with multiple classes
+pass   6  Tag with hash and array
+pass   7  Empty hash with comma fails
+pass   8  Empty array with comma fails
+pass   9  Array without commas should fail
+pass  10  Hash with trailing comma
+pass  11  Array with trailing comma
+pass  12  Self-closing tag
+pass  13  Undefined tag
+pass  14  Self-closing tag
+pass  15  Content with inline code text
+pass  16  Fenced code block with an annotation
+pass  17  Frontmatter
+pass  18  Inline variable
+pass  19  Inline tag
+pass  20  Standalone function
+pass  21  Function as a tag attribute
+pass  22  Simple conditional
+pass  23  Simple conditional with non-existent variable
+pass  24  Conditional with else clause
+pass  25  Conditional with multiple else clauses
+pass  26  Conditional with equals
+pass  27  Conditional with equals and an and function
+pass  28  Conditional with equals and an or function
+pass  29  Conditional that fails
+pass  30  Conditional with equals and an and function that fails
+pass  31  Conditional with equals and an undefined variable
+pass  32  False condition with a not statement
+pass  33  True condition with a not statement
+pass  34  False condition with a not statement and other booleans
+pass  35  True condition with a not statement and other booleans
+pass  36  Condition with multiple variables
+pass  37  Using the default function
+pass  38  Rendering HTML content
+pass  39  Rendering HTML with an array attribute
+pass  40  Rendering HTML with a class name
+pass  41  Ignoring tags in fenced code blocks
+pass  42  Using a backtick in a fenced code block string attribute
+pass  43  Conditional and variable in code example
+pass  44  Conditional and variable in code example with indentation
+pass  45  Conditional and variable in code example
+pass  46  Tag after a comment in a code example
+pass  47  Multiple sequential tags in a code example
+pass  48  Conditional and variable in the same line in a code example
+pass  49  Arbitrary tag in a code example
+pass  50  Nested variable inside of a tag in a code example
+pass  51  Handling for softbreaks
+pass  52  Nested variable access with a string
+pass  53  Disabled setext heading
+pass  54  Advanced table format
+pass  55  Advanced table without header
+pass  56  Advanced table with conditional row
+pass  57  Advanced table with multiple conditional rows
+pass  58  Advanced table with if and else
+pass  59  Advanced table without header
+pass  60  Advanced table with inner content
+pass  61  GFM table syntax surrounded by a table tag
+pass  62  Advanced table with conditional inside cell
+pass  63  Table with invalid content in body
+pass  64  Table with invalid conditional content in body
+pass  65  Closing tag with trailing whitespace
+pass  66  Escaped string in an attribute
+pass  67  2D Array with new line before closing bracket
+pass  68  2D Array with new line and comma before closing bracket
+pass  69  2D Array single line
+pass  70  Empty array attribute value
+pass  71  Empty hash attribute value
+pass  72  Spaces inside of curly braces
+pass  73  Image
+pass  74  Hardbreak expressed with spaces
+pass  75  Hardbreak expressed with backslash
+pass  76  Softbreak
+pass  77  Partial
+pass  78  Multiple partials
+pass  79  Partial with a variable
+pass  80  Untruthy things are false
+pass  81  Truthy things are not false
+pass  82  Strikethroughs
+pass  83  Indented paragraph in a tag
+pass  84  Indented fence in a tag
+pass  85  Oddly indented paragraph in a tag
+pass  86  Indented paragraph in a tag
+pass  87  Indented paragraph in a tag
+pass  88  String hash key
+pass  89  Illegal string hash key
+pass  90  Ignoring comments
+pass  91  Escaped quotes in tag strings
+pass  92  Escaped quotes in tag strings with html renderer
+pass  93  Escaped newline in tag strings
+pass  94  Basic slot
+pass  95  Tag with multiple slots and additional content
+pass  96  User slot tag when slots are disabled
+pass  97  Handling slots that are missing a name
+pass  98  Handling slots with invalid name
+pass  99  Validating required slot
+pass 100  Handling invalid slot
+pass 101  Handling overlapping slot and attribute
+pass 102  Hnadling slot that doesn't render
+pass 103  Slot with a variable
+pass 104  Multiline block tags
+pass 105  Multiline block tags with closing on line with content

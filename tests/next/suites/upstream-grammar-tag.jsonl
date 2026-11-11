@@ -1,0 +1,88 @@
+{"id": "grammar-tag#0 Markdoc tag parser > tag parsing > with a simple opening tag", "code": "{% foo %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#1 Markdoc tag parser > tag parsing > with a simple opening tag", "code": "a {% foo %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#2 Markdoc tag parser > tag parsing > with an opening tag that has attributes", "code": "{% foo foo=1 bar=true %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#3 Markdoc tag parser > tag parsing > with an opening tag that has attributes", "code": "a {% foo foo=1 bar=true %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#4 Markdoc tag parser > tag parsing > with a self-closing tag", "code": "{% foo / %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#5 Markdoc tag parser > tag parsing > with a self-closing tag", "code": "a {% foo / %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#6 Markdoc tag parser > tag parsing > with a self-closing tag that has attributes", "code": "{% foo foo=1 bar=true / %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#7 Markdoc tag parser > tag parsing > with a self-closing tag that has attributes", "code": "a {% foo foo=1 bar=true / %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#8 Markdoc tag parser > tag parsing > with a closing tag", "code": "{% /foo %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#9 Markdoc tag parser > tag parsing > with a closing tag", "code": "a {% /foo %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#10 Markdoc tag parser > tag parsing > with an invalid closing tag", "code": "{% /foo/ %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#11 Markdoc tag parser > tag parsing > with an invalid closing tag", "code": "a {% /foo/ %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#12 Markdoc tag parser > tag parsing > with an invalid closing tag that has attributes", "code": "{% /foo test=1 %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#13 Markdoc tag parser > tag parsing > with an invalid closing tag that has attributes", "code": "a {% /foo test=1 %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#14 Markdoc tag parser > variable parsing > with a simple variable", "code": "{% $foo %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#15 Markdoc tag parser > variable parsing > with a simple variable", "code": "a {% $foo %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#16 Markdoc tag parser > variable parsing > with multiple levels of depth", "code": "{% $foo.bar.baz %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#17 Markdoc tag parser > variable parsing > with multiple levels of depth", "code": "a {% $foo.bar.baz %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#18 Markdoc tag parser > variable parsing > with an array index", "code": "{% $foo[1] %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#19 Markdoc tag parser > variable parsing > with an array index", "code": "a {% $foo[1] %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#20 Markdoc tag parser > variable parsing > with multiple array indexes", "code": "{% $foo[1][2] %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#21 Markdoc tag parser > variable parsing > with multiple array indexes", "code": "a {% $foo[1][2] %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#22 Markdoc tag parser > variable parsing > with array indexes and properties", "code": "{% $foo[1].bar.baz[2].test %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#23 Markdoc tag parser > variable parsing > with array indexes and properties", "code": "a {% $foo[1].bar.baz[2].test %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#24 Markdoc tag parser > variable parsing > with an invalid array index", "code": "{% $foo[asdf] %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#25 Markdoc tag parser > variable parsing > with an invalid array index", "code": "a {% $foo[asdf] %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#26 Markdoc tag parser > variable parsing > with an invalid namespace", "code": "{% $.foo:bar.baz %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#27 Markdoc tag parser > variable parsing > with an invalid namespace", "code": "a {% $.foo:bar.baz %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#28 Markdoc tag parser > parsing attributes > parsing annotation with a single attribute", "code": "{% test=1 %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#29 Markdoc tag parser > parsing attributes > parsing annotation with a single attribute", "code": "a {% test=1 %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#30 Markdoc tag parser > parsing attributes > with an id", "code": "{% #test %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#31 Markdoc tag parser > parsing attributes > with an id", "code": "a {% #test %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#32 Markdoc tag parser > parsing attributes > with hyphens", "code": "{% #test-1 .foo-bar %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#33 Markdoc tag parser > parsing attributes > with hyphens", "code": "a {% #test-1 .foo-bar %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#34 Markdoc tag parser > parsing attributes > with chained classes", "code": "{% .foo .bar %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#35 Markdoc tag parser > parsing attributes > with chained classes", "code": "a {% .foo .bar %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#36 Markdoc tag parser > parsing attributes > with chained id and classes", "code": "{% #test-1 .foo .bar %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#37 Markdoc tag parser > parsing attributes > with chained id and classes", "code": "a {% #test-1 .foo .bar %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#38 Markdoc tag parser > parsing attributes > with an invalid id", "code": "{% #foo@bar.baz@test %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#39 Markdoc tag parser > parsing attributes > with an invalid id", "code": "a {% #foo@bar.baz@test %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#40 Markdoc tag parser > parsing attributes > with key/value pairs", "code": "{% foo=\"bar\" baz=3 test=true %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#41 Markdoc tag parser > parsing attributes > with key/value pairs", "code": "a {% foo=\"bar\" baz=3 test=true %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#42 Markdoc tag parser > parsing attributes > with shortcuts and key/value pairs", "code": "{% #foo .bar test=\"asdf\" %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#43 Markdoc tag parser > parsing attributes > with shortcuts and key/value pairs", "code": "a {% #foo .bar test=\"asdf\" %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#44 Markdoc tag parser > parsing attributes > with boolean key/value pairs", "code": "{% test=true foo=false bar=true %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#45 Markdoc tag parser > parsing attributes > with boolean key/value pairs", "code": "a {% test=true foo=false bar=true %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#46 Markdoc tag parser > parsing attributes > with null key/value pair", "code": "{% foo=null %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#47 Markdoc tag parser > parsing attributes > with null key/value pair", "code": "a {% foo=null %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#48 Markdoc tag parser > parsing attributes > with variables as values > with a simple variable", "code": "{% test=$foo %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#49 Markdoc tag parser > parsing attributes > with variables as values > with a simple variable", "code": "a {% test=$foo %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#50 Markdoc tag parser > parsing attributes > with variables as values > with multiple levels of depth", "code": "{% test=$foo.bar.baz %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#51 Markdoc tag parser > parsing attributes > with variables as values > with multiple levels of depth", "code": "a {% test=$foo.bar.baz %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#52 Markdoc tag parser > parsing attributes > with variables as values > with an array index", "code": "{% test=$foo[1] %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#53 Markdoc tag parser > parsing attributes > with variables as values > with an array index", "code": "a {% test=$foo[1] %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#54 Markdoc tag parser > parsing attributes > with variables as values > with multiple array indexes", "code": "{% test=$foo[1][2] %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#55 Markdoc tag parser > parsing attributes > with variables as values > with multiple array indexes", "code": "a {% test=$foo[1][2] %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#56 Markdoc tag parser > parsing attributes > with variables as values > with array indexes and properties", "code": "{% test=$foo[1].bar.baz[2].test %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#57 Markdoc tag parser > parsing attributes > with variables as values > with array indexes and properties", "code": "a {% test=$foo[1].bar.baz[2].test %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#58 Markdoc tag parser > parsing attributes > with variables as values > with an invalid array index", "code": "{% test=$foo[asdf] %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#59 Markdoc tag parser > parsing attributes > with variables as values > with an invalid array index", "code": "a {% test=$foo[asdf] %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#60 Markdoc tag parser > parsing attributes > with complex values > with a simple hash literal value", "code": "{% foo={bar: true} %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#61 Markdoc tag parser > parsing attributes > with complex values > with a simple hash literal value", "code": "a {% foo={bar: true} %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#62 Markdoc tag parser > parsing attributes > with complex values > with a nested hash literal value", "code": "{% foo={bar: true, baz: {test: \"this is a test\"}} %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#63 Markdoc tag parser > parsing attributes > with complex values > with a nested hash literal value", "code": "a {% foo={bar: true, baz: {test: \"this is a test\"}} %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#64 Markdoc tag parser > parsing attributes > with complex values > with a nested hash literal value", "code": "{% foo={bar:true,baz:{test:\"this is a test\"}} %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#65 Markdoc tag parser > parsing attributes > with complex values > with a nested hash literal value", "code": "a {% foo={bar:true,baz:{test:\"this is a test\"}} %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#66 Markdoc tag parser > parsing attributes > with complex values > with a hash literal that has string keys", "code": "{% foo={bar: true, \"baz\": 1} %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#67 Markdoc tag parser > parsing attributes > with complex values > with a hash literal that has string keys", "code": "a {% foo={bar: true, \"baz\": 1} %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#68 Markdoc tag parser > parsing attributes > with complex values > with multiple hash literal values", "code": "{% foo={bar: true} baz={test: \"testing\"} %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#69 Markdoc tag parser > parsing attributes > with complex values > with multiple hash literal values", "code": "a {% foo={bar: true} baz={test: \"testing\"} %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#70 Markdoc tag parser > parsing attributes > with complex values > with an array literal value", "code": "{% foo=[1, 2, 3] %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#71 Markdoc tag parser > parsing attributes > with complex values > with an array literal value", "code": "a {% foo=[1, 2, 3] %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#72 Markdoc tag parser > parsing attributes > with complex values > with an array literal value", "code": "{% foo=[1,2,3] %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#73 Markdoc tag parser > parsing attributes > with complex values > with an array literal value", "code": "a {% foo=[1,2,3] %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#74 Markdoc tag parser > parsing attributes > with complex values > with nested array literal values", "code": "{% foo=[1, 2, [\"test\", true, null]] %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#75 Markdoc tag parser > parsing attributes > with complex values > with nested array literal values", "code": "a {% foo=[1, 2, [\"test\", true, null]] %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#76 Markdoc tag parser > parsing attributes > with complex values > with nested array literal values", "code": "{% foo=[1,2,[\"test\",true,null]] %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#77 Markdoc tag parser > parsing attributes > with complex values > with nested array literal values", "code": "a {% foo=[1,2,[\"test\",true,null]] %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#78 Markdoc tag parser > parsing attributes > with complex values > with multiple nested array literal values", "code": "{% foo=[1, 2, [\"test\", true, null]] bar=[\"baz\"] %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#79 Markdoc tag parser > parsing attributes > with complex values > with multiple nested array literal values", "code": "a {% foo=[1, 2, [\"test\", true, null]] bar=[\"baz\"] %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#80 Markdoc tag parser > parsing attributes > with complex values > with array and object literals", "code": "{% foo=[1, 2, {bar: \"baz\", test: [1, 2, 3]}] %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#81 Markdoc tag parser > parsing attributes > with complex values > with array and object literals", "code": "a {% foo=[1, 2, {bar: \"baz\", test: [1, 2, 3]}] %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#82 Markdoc tag parser > parsing attributes > with an invalid value", "code": "{% foo=bar %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#83 Markdoc tag parser > parsing attributes > with an invalid value", "code": "a {% foo=bar %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#84 Markdoc tag parser > parsing attributes > with an invalid value", "code": "{% foo=a1 %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#85 Markdoc tag parser > parsing attributes > with an invalid value", "code": "a {% foo=a1 %} b\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#86 Markdoc tag parser > parsing attributes > with an invalid value", "code": "{% foo=1a %}\n", "allowIndentation": false, "allowComments": false}
+{"id": "grammar-tag#87 Markdoc tag parser > parsing attributes > with an invalid value", "code": "a {% foo=1a %} b\n", "allowIndentation": false, "allowComments": false}

@@ -39,6 +39,13 @@ jobs:
       - name: cargo clippy
         run: cargo clippy --all-targets -- -D warnings
 
+      # Before the tests, so an edit to the corpus that also edits the hash
+      # the conformance test checks it against fails here, by name.
+      - name: The vendored conformance corpus is upstream's, byte for byte
+        run: tests/marktest/verify-vendored.sh
+
+      # Includes tests/conformance.rs: upstream Markdoc's own corpus, held as
+      # a ratchet against tests/conformance-baseline.txt.
       - name: cargo test
         run: cargo test --all-targets
 

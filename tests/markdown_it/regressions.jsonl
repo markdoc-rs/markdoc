@@ -1,0 +1,97 @@
+{"id": "mutant-astral-last", "src": "𠀀**_**", "why": "kills a seeded porting slip: scanDelims: an astral character before a run is one code point (U+20000, a letter), not U+FFFD (minimised by fuzz.py under html)"}
+{"id": "mutant-autolink-email64", "src": "<a@bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbc>", "why": "kills a seeded porting slip: autolink: an e-mail domain label has at most 63 characters (minimised by fuzz.py under markdoc-ai)"}
+{"id": "mutant-bq-tab", "src": " >\t\t ", "why": "kills a seeded porting slip: blockquote: a tab after '>' is a partial tab by its column ((bsCount + initial) % 4 == 3) (minimised by fuzz.py under default)"}
+{"id": "mutant-entity-hex7", "src": "&#x0000041;", "why": "kills a seeded porting slip: entity: a hexadecimal character reference has at most 6 digits (minimised by fuzz.py under default)"}
+{"id": "mutant-escape-nl-space", "src": "\\\n\t-", "why": "kills a seeded porting slip: escape: after a backslash hard break, tabs as well as spaces of the next line are skipped (minimised by fuzz.py under default)"}
+{"id": "mutant-fence-short", "src": "~~~\n~~", "why": "kills a seeded porting slip: fence: a closing fence is at least as long as the opening one (minimised by fuzz.py under default)"}
+{"id": "mutant-flank-punct", "src": "§_*_", "why": "kills a seeded porting slip: scanDelims: a run after punctuation can open even when right-flanking (isLastPunctChar) (minimised by fuzz.py under default)"}
+{"id": "mutant-heading-close", "src": "#\t#", "why": "kills a seeded porting slip: heading: a closing '#' sequence counts after a tab as after a space (minimised by fuzz.py under default)"}
+{"id": "mutant-html-track", "src": "<track", "why": "kills a seeded porting slip: html_block: 'track' is one of the block tag names (minimised by fuzz.py under html)"}
+{"id": "mutant-linkdest-31", "src": "[]((((((((((((((((((((((((((((((((()))))))))))))))))))))))))))))))))", "why": "kills a seeded porting slip: parseLinkDestination: parentheses may nest 32 levels deep (minimised by fuzz.py under inline)"}
+{"id": "mutant-list-indent", "src": ">\n    >>\t*\t–\n>     #", "why": "kills a seeded porting slip: list: up to 4 columns after the marker are the item's indent (indentAfterMarker > 4) (minimised by fuzz.py under default)"}
+{"id": "mutant-refnorm-nolower", "src": "[ẞ]:'", "why": "kills a seeded porting slip: normalizeReference: lower case, then upper case, so the label [ẞ] is SS (minimised by fuzz.py under default)"}
+{"id": "mutant-smartq-punct", "src": "\"\">", "why": "kills a seeded porting slip: smartquotes: a quote after punctuation can close only before whitespace or punctuation (minimised by fuzz.py under typographer)"}
+{"id": "mutant-strike-odd", "src": "ß~~~", "why": "kills a seeded porting slip: strikethrough: an odd run of three '~' leaves one '~' as text (minimised by fuzz.py under default)"}
+{"id": "mutant-table-cols", "src": ";|\n-|-", "why": "kills a seeded porting slip: table: the delimiter row has exactly as many columns as the header row (minimised by fuzz.py under default)"}
+{"id": "edge-q1", "src": "> foo\n2. bar\n", "why": "hand-written probe from the port's investigation"}
+{"id": "edge-q2", "src": "> foo\n- bar\n", "why": "hand-written probe from the port's investigation"}
+{"id": "edge-q3", "src": "> foo\n<!-- c -->\n", "why": "hand-written probe from the port's investigation"}
+{"id": "edge-q4", "src": "> foo\n| a | b |\n|---|---|\n", "why": "hand-written probe from the port's investigation"}
+{"id": "edge-q5", "src": "para\n2. two\n", "why": "hand-written probe from the port's investigation"}
+{"id": "edge-q6", "src": "* a\n> b\n", "why": "hand-written probe from the port's investigation"}
+{"id": "edge-q7", "src": "[a\n{% x /%}\n]: /u\n\n[a\n{% x /%}\n]\n", "why": "hand-written probe from the port's investigation"}
+{"id": "links-al1", "src": "<http://xn--exmple-cua.com/%C3%A4>\n", "why": "hand-written probe from the port's investigation"}
+{"id": "links-al2", "src": "[x](http://Example.COM/a)\n", "why": "hand-written probe from the port's investigation"}
+{"id": "changelog-C01-symbol-punct", "src": "*€*charlie\n", "why": "hand-written probe from the port's investigation"}
+{"id": "changelog-C02-nbsp-trailing-para", "src": "foo \n", "why": "hand-written probe from the port's investigation"}
+{"id": "changelog-C03-ideographic-space-heading", "src": "# Title　\n", "why": "hand-written probe from the port's investigation"}
+{"id": "changelog-C04-entity-no-semicolon-in-dest", "src": "[a](/x?a=1&copy=2)\n", "why": "hand-written probe from the port's investigation"}
+{"id": "changelog-C05-backslash-spaces-break", "src": "foo\\  \nbar\n", "why": "hand-written probe from the port's investigation"}
+{"id": "changelog-C06-backslash-before-space-in-dest", "src": "[a](<foo\\ bar>)\n", "why": "hand-written probe from the port's investigation"}
+{"id": "changelog-C07-code-span-after-unclosed-label", "src": "[a `b]` c\n", "why": "hand-written probe from the port's investigation"}
+{"id": "changelog-C08-ipv6-autolink", "src": "<http://[::1]:8080/x>\n", "why": "hand-written probe from the port's investigation"}
+{"id": "changelog-C09-ipv6-link", "src": "[x](http://[2001:db8::1]/)\n", "why": "hand-written probe from the port's investigation"}
+{"id": "changelog-C10-tab-in-list", "src": "-\tfoo\n\n\tbar\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P01-indent-para-in-tag", "src": "{% foo %}\n    Indented four spaces\n{% /foo %}\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P02-indent-fence-in-tag", "src": "{% foo %}\n        ```js\n        x()\n        ```\n{% /foo %}\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P03-indent-list-after-blank", "src": "{% foo %}\n\n      * a\n      * b\n{% /foo %}\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P04-setext-disabled", "src": "Testing\n-------\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P05-code-disabled", "src": "    four-space indented text\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P06-html-block-off", "src": "<div>\n*hi*\n</div>\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P07-html-inline-off", "src": "a <span>*x*</span> b\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P08-comment-block", "src": "a\n<!-- note -->\nb\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P09-comment-inline", "src": "text <!-- c --> more\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P10-table-ended-by-tag", "src": "{% if $x %}\n| a | b |\n|---|---|\n| 1 | 2 |\n{% /if %}\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P11-tag-in-code-span", "src": "Use `{% foo %}` literally\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P12-tag-in-fence", "src": "```js\nx({% $v %})\n```\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P13-inline-annotation", "src": "Paragraph text {% .note %}\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P14-heading-annotation", "src": "## Heading {% #anchor .cls %}\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P15-escaped-tag", "src": "\\{% foo %} stays text\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P16-tag-interrupts-para", "src": "text\n{% foo /%}\nmore\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P17-tag-ends-blockquote", "src": "> quote\n{% foo /%}\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P18-tag-after-reference", "src": "[a]: /url\n{% foo /%}\n\n[a]\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P19-emphasis-in-attr", "src": "{% foo a=\"*x*\" /%} and *y*\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P20-backtick-in-attr", "src": "`x {% foo a=\"`\" /%} y`\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P21-lazy-tag-after-item", "src": "- item\n{% foo /%}\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P22-symbol-flanking", "src": "*€*charlie and **©**x\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P23-tight-list", "src": "- a\n- b\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P24-image-alt-raw", "src": "![*alt* `c` text](/x.png \"t\")\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P25-link-normalise", "src": "[x](<http://exämple.com/ä b?q=1&r=ü>)\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P26-single-tilde", "src": "~one~ and ~~two~~\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P27-wide-list-marker", "src": "-     five spaces after marker\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P28-ordered-start", "src": "3. a\n4. b\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P29-entities", "src": "&copy; &NotAnEntity; &#0; &#x1F600;\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P30-tag-in-table-cell", "src": "| {% $x %} | b |\n|---|---|\n| c | d |\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P31-code-span-spaces", "src": "`  ` and ` a `\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P32-backslash-space-break", "src": "foo\\ \nbar\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P33-tag-in-link-text", "src": "[see {% $name %}](/url)\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P34-tag-in-link-dest", "src": "[x]({% $url %})\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P35-multiline-tag", "src": "{% foo\n   a=1\n   b=2 %}\nbody\n{% /foo %}\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P36-smart-punct", "src": "\"quoted\" -- dash... (c)\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P37-footnote", "src": "Text[^1]\n\n[^1]: Note\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P38-tasklist", "src": "- [ ] todo\n- [x] done\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P39-heading-attrs", "src": "# Title {#id .cls}\n", "why": "hand-written probe from the port's investigation"}
+{"id": "probes-P40-table-no-leading-pipe-body", "src": "a | b\n--|--\n1 | 2\nplain line\n", "why": "hand-written probe from the port's investigation"}
+{"id": "options-quotes-null", "src": "\"a\" 'b' don't \"c 'd' e\"\n", "options": {"typographer": true, "quotes": null}, "why": "quotes null: JS throws (TypeError) when smartquotes replaces a pair, not before"}
+{"id": "options-quotes-null-apostrophe", "src": "don't\n", "options": {"typographer": true, "quotes": null}, "why": "quotes null: an apostrophe alone does not read quotes, so nothing throws"}
+{"id": "options-quotes-object", "src": "\"a\" 'b' don't \"c 'd' e\"\n", "options": {"typographer": true, "quotes": {"0": "«", "1": [1, [2, null]], "2": null, "3": {"a": 1}}}, "why": "quotes as an object: quotes[i] reads its property \"i\", stringified by +"}
+{"id": "options-quotes-number", "src": "\"a\" 'b' don't \"c 'd' e\"\n", "options": {"typographer": true, "quotes": 5}, "why": "quotes as a number: every quotes[i] is undefined"}
+{"id": "options-quotes-short-array", "src": "\"a\" 'b' don't \"c 'd' e\"\n", "options": {"typographer": true, "quotes": ["«", null]}, "why": "quotes array too short, with a null element: undefined and null become text"}
+{"id": "options-maxnesting-string", "src": "> > > - - a *b [c](d) **e**\n> > > > f\n\n[[[[x]]]] *a **b _c_***\n", "options": {"maxNesting": "2"}, "why": "maxNesting \"2\": compared with state.level as a JS number (NaN: block nesting unlimited, inline rules off)"}
+{"id": "options-maxnesting-null", "src": "> > > - - a *b [c](d) **e**\n> > > > f\n\n[[[[x]]]] *a **b _c_***\n", "options": {"maxNesting": null}, "why": "maxNesting null: compared with state.level as a JS number (NaN: block nesting unlimited, inline rules off)"}
+{"id": "options-maxnesting-true", "src": "> > > - - a *b [c](d) **e**\n> > > > f\n\n[[[[x]]]] *a **b _c_***\n", "options": {"maxNesting": true}, "why": "maxNesting true: compared with state.level as a JS number (NaN: block nesting unlimited, inline rules off)"}
+{"id": "options-maxnesting-nan", "src": "> > > - - a *b [c](d) **e**\n> > > > f\n\n[[[[x]]]] *a **b _c_***\n", "options": {"maxNesting": "abc"}, "why": "maxNesting \"abc\": compared with state.level as a JS number (NaN: block nesting unlimited, inline rules off)"}
+{"id": "options-maxnesting-array", "src": "> > > - - a *b [c](d) **e**\n> > > > f\n\n[[[[x]]]] *a **b _c_***\n", "options": {"maxNesting": [3]}, "why": "maxNesting [3]: compared with state.level as a JS number (NaN: block nesting unlimited, inline rules off)"}
+{"id": "options-maxnesting-object", "src": "> > > - - a *b [c](d) **e**\n> > > > f\n\n[[[[x]]]] *a **b _c_***\n", "options": {"maxNesting": {}}, "why": "maxNesting {}: compared with state.level as a JS number (NaN: block nesting unlimited, inline rules off)"}
+{"id": "options-maxnesting-hex", "src": "> > > - - a *b [c](d) **e**\n> > > > f\n\n[[[[x]]]] *a **b _c_***\n", "options": {"maxNesting": " 0x1 "}, "why": "maxNesting \" 0x1 \": compared with state.level as a JS number (NaN: block nesting unlimited, inline rules off)"}
+{"id": "options-maxnesting-float", "src": "> > > - - a *b [c](d) **e**\n> > > > f\n\n[[[[x]]]] *a **b _c_***\n", "options": {"maxNesting": 2.5}, "why": "maxNesting 2.5: compared with state.level as a JS number (NaN: block nesting unlimited, inline rules off)"}
+{"id": "options-maxnesting-zero", "src": "> > > - - a *b [c](d) **e**\n> > > > f\n\n[[[[x]]]] *a **b _c_***\n", "options": {"maxNesting": 0}, "why": "maxNesting 0: compared with state.level as a JS number (NaN: block nesting unlimited, inline rules off)"}
+{"id": "options-maxnesting-negative", "src": "> > > - - a *b [c](d) **e**\n> > > > f\n\n[[[[x]]]] *a **b _c_***\n", "options": {"maxNesting": -1}, "why": "maxNesting -1: compared with state.level as a JS number (NaN: block nesting unlimited, inline rules off)"}
+{"id": "limits-blockquote-101", "src": ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> a *b*\n", "why": "maxNesting 100 (20 in commonmark/zero): nesting stops, the rest of the document is skipped"}
+{"id": "limits-list-60", "src": "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - a\n", "why": "nested lists on one line past maxNesting"}
+{"id": "limits-link-brackets-120", "src": "[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[a]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]](/u)\n", "why": "link labels nested past maxNesting (inline level)"}
+{"id": "limits-emphasis-run-200", "src": "********************************************************************************************************************************************************************************************************a********************************************************************************************************************************************************************************************************\n", "why": "a 200-long run of * on both sides"}
+{"id": "limits-backtick-run-100", "src": "````````````````````````````````````````````````````````````````````````````````````````````````````a```````````````````````````````````````````````````````````````````````````````````````````````````` ` ` `\n", "why": "a 100-long backtick run, closed, then unclosed ones"}
+{"id": "limits-autolink-scheme-32-33", "src": "<aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:x> <aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa:x>\n", "why": "an autolink scheme has 2 to 32 characters"}
+{"id": "limits-list-marker-9-10-digits", "src": "123456789. a\n\n1234567890. b\n", "why": "an ordered list marker has at most 9 digits"}
+{"id": "limits-entity-digits", "src": "&#1234567; &#12345678; &#x10FFFF; &#x110000; &#x1234567;\n", "why": "decimal references have at most 7 digits, hexadecimal 6"}

@@ -1,0 +1,444 @@
+{"id": "audit tag-block constructor 0", "src": "{% constructor %}\ntext\n{% /constructor %}\n"}
+{"id": "audit tag-inline constructor 1", "src": "a {% constructor %}b{% /constructor %} c\n"}
+{"id": "audit tag-self constructor 2", "src": "{% constructor /%}\n"}
+{"id": "audit tag-attr constructor 3", "src": "{% constructor a=1 class=\"c\" id=\"i\" /%}\n"}
+{"id": "audit tag-own constructor 4", "src": "{% constructor a=1 /%}\n", "config": {"tags": {"constructor": {"render": "b", "attributes": {"a": {}}}}}}
+{"id": "audit tag-other constructor 5", "src": "{% constructor /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit tag-null constructor 6", "src": "{% constructor /%}\n", "config": {"tags": {"constructor": null}}}
+{"id": "audit function constructor 7", "src": "{% constructor() %} {% constructor(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr constructor 8", "src": "{% x a=constructor() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param constructor 9", "src": "{% x a=f(constructor: 1) /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns constructor 10", "src": "{% x a=constructor() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "constructor"}}}}}
+{"id": "audit function constructor 11", "src": "{% constructor() %} {% constructor(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr constructor 12", "src": "{% x a=constructor() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param constructor 13", "src": "{% x a=f(constructor: 1) /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns constructor 14", "src": "{% x a=constructor() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "constructor"}}}}}
+{"id": "audit variable constructor 15", "src": "{% $constructor %} {% $constructor.name %}\n", "config": {"variables": {"v": 1}}}
+{"id": "audit variable-none constructor 16", "src": "{% $constructor %} {% $constructor.name %}\n"}
+{"id": "audit variable-attr constructor 17", "src": "{% x a=$constructor /%}\n", "config": {"variables": {"v": 1}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit variable-own constructor 18", "src": "{% $constructor %}\n", "config": {"variables": {"constructor": "own"}}}
+{"id": "audit variable-path constructor 19", "src": "{% $v.constructor %} {% $a.constructor %} {% $s.constructor %}\n", "config": {"variables": {"v": {"k": 1}, "a": [1], "s": "s"}}}
+{"id": "audit partial constructor 20", "src": "{% partial file=\"constructor\" /%}\n", "config": {"partials": {"p": "P"}}}
+{"id": "audit partial-none constructor 21", "src": "{% partial file=\"constructor\" /%}\n"}
+{"id": "audit attribute constructor 22", "src": "{% x constructor=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit attribute-global constructor 23", "src": "{% x constructor=1 /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit attribute-declared constructor 24", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"constructor": {}}}}}}
+{"id": "audit attribute-declared-type constructor 25", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"constructor": {"type": "String", "default": "d"}}}}}}
+{"id": "audit attribute-render constructor 26", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"render": "constructor"}}}}}}
+{"id": "audit slot constructor 27", "src": "{% x %}\n{% slot \"constructor\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"a": {}}}}}, "slots": true}
+{"id": "audit slot-noschema constructor 28", "src": "{% x %}\n{% slot \"constructor\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x"}}}, "slots": true}
+{"id": "audit slot-declared constructor 29", "src": "{% x %}\nbody\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"constructor": {"render": true}}}}}, "slots": true}
+{"id": "audit type-name constructor 30", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": "constructor"}}}}}}
+{"id": "audit type-name-list constructor 31", "src": "{% x a=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": ["constructor", "Number"]}}}}}}
+{"id": "audit type-revived constructor 32", "src": "{% x a=1 b=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": {"$type": "constructor"}}, "b": {}}}}}}
+{"id": "audit matches-revived constructor 33", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": {"$type": "constructor"}}}}}}}
+{"id": "audit matches-list-revived constructor 34", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": [{"$type": "constructor"}, 2]}}}}}}
+{"id": "audit default-revived constructor 35", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"default": {"$type": "constructor"}}}}}}}
+{"id": "audit variable-revived constructor 36", "src": "{% $t %} {% x a=$t /%} {% debug($t) %} {% $t.name %}\n", "config": {"variables": {"t": {"$type": "constructor"}}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit tag-block __defineGetter__ 39", "src": "{% __defineGetter__ %}\ntext\n{% /__defineGetter__ %}\n"}
+{"id": "audit tag-inline __defineGetter__ 40", "src": "a {% __defineGetter__ %}b{% /__defineGetter__ %} c\n"}
+{"id": "audit tag-self __defineGetter__ 41", "src": "{% __defineGetter__ /%}\n"}
+{"id": "audit tag-attr __defineGetter__ 42", "src": "{% __defineGetter__ a=1 class=\"c\" id=\"i\" /%}\n"}
+{"id": "audit tag-own __defineGetter__ 43", "src": "{% __defineGetter__ a=1 /%}\n", "config": {"tags": {"__defineGetter__": {"render": "b", "attributes": {"a": {}}}}}}
+{"id": "audit tag-other __defineGetter__ 44", "src": "{% __defineGetter__ /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit tag-null __defineGetter__ 45", "src": "{% __defineGetter__ /%}\n", "config": {"tags": {"__defineGetter__": null}}}
+{"id": "audit function __defineGetter__ 46", "src": "{% __defineGetter__() %} {% __defineGetter__(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr __defineGetter__ 47", "src": "{% x a=__defineGetter__() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param __defineGetter__ 48", "src": "{% x a=f(__defineGetter__: 1) /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns __defineGetter__ 49", "src": "{% x a=__defineGetter__() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "__defineGetter__"}}}}}
+{"id": "audit function __defineGetter__ 50", "src": "{% __defineGetter__() %} {% __defineGetter__(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr __defineGetter__ 51", "src": "{% x a=__defineGetter__() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param __defineGetter__ 52", "src": "{% x a=f(__defineGetter__: 1) /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns __defineGetter__ 53", "src": "{% x a=__defineGetter__() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "__defineGetter__"}}}}}
+{"id": "audit variable __defineGetter__ 54", "src": "{% $__defineGetter__ %} {% $__defineGetter__.name %}\n", "config": {"variables": {"v": 1}}}
+{"id": "audit variable-none __defineGetter__ 55", "src": "{% $__defineGetter__ %} {% $__defineGetter__.name %}\n"}
+{"id": "audit variable-attr __defineGetter__ 56", "src": "{% x a=$__defineGetter__ /%}\n", "config": {"variables": {"v": 1}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit variable-own __defineGetter__ 57", "src": "{% $__defineGetter__ %}\n", "config": {"variables": {"__defineGetter__": "own"}}}
+{"id": "audit variable-path __defineGetter__ 58", "src": "{% $v.__defineGetter__ %} {% $a.__defineGetter__ %} {% $s.__defineGetter__ %}\n", "config": {"variables": {"v": {"k": 1}, "a": [1], "s": "s"}}}
+{"id": "audit partial __defineGetter__ 59", "src": "{% partial file=\"__defineGetter__\" /%}\n", "config": {"partials": {"p": "P"}}}
+{"id": "audit partial-none __defineGetter__ 60", "src": "{% partial file=\"__defineGetter__\" /%}\n"}
+{"id": "audit attribute __defineGetter__ 61", "src": "{% x __defineGetter__=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit attribute-global __defineGetter__ 62", "src": "{% x __defineGetter__=1 /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit attribute-declared __defineGetter__ 63", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"__defineGetter__": {}}}}}}
+{"id": "audit attribute-declared-type __defineGetter__ 64", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"__defineGetter__": {"type": "String", "default": "d"}}}}}}
+{"id": "audit attribute-render __defineGetter__ 65", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"render": "__defineGetter__"}}}}}}
+{"id": "audit slot __defineGetter__ 66", "src": "{% x %}\n{% slot \"__defineGetter__\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"a": {}}}}}, "slots": true}
+{"id": "audit slot-noschema __defineGetter__ 67", "src": "{% x %}\n{% slot \"__defineGetter__\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x"}}}, "slots": true}
+{"id": "audit slot-declared __defineGetter__ 68", "src": "{% x %}\nbody\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"__defineGetter__": {"render": true}}}}}, "slots": true}
+{"id": "audit type-name __defineGetter__ 69", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": "__defineGetter__"}}}}}}
+{"id": "audit type-name-list __defineGetter__ 70", "src": "{% x a=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": ["__defineGetter__", "Number"]}}}}}}
+{"id": "audit type-revived __defineGetter__ 71", "src": "{% x a=1 b=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": {"$type": "__defineGetter__"}}, "b": {}}}}}}
+{"id": "audit matches-revived __defineGetter__ 72", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": {"$type": "__defineGetter__"}}}}}}}
+{"id": "audit matches-list-revived __defineGetter__ 73", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": [{"$type": "__defineGetter__"}, 2]}}}}}}
+{"id": "audit default-revived __defineGetter__ 74", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"default": {"$type": "__defineGetter__"}}}}}}}
+{"id": "audit variable-revived __defineGetter__ 75", "src": "{% $t %} {% x a=$t /%} {% debug($t) %} {% $t.name %}\n", "config": {"variables": {"t": {"$type": "__defineGetter__"}}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit tag-block __defineSetter__ 78", "src": "{% __defineSetter__ %}\ntext\n{% /__defineSetter__ %}\n"}
+{"id": "audit tag-inline __defineSetter__ 79", "src": "a {% __defineSetter__ %}b{% /__defineSetter__ %} c\n"}
+{"id": "audit tag-self __defineSetter__ 80", "src": "{% __defineSetter__ /%}\n"}
+{"id": "audit tag-attr __defineSetter__ 81", "src": "{% __defineSetter__ a=1 class=\"c\" id=\"i\" /%}\n"}
+{"id": "audit tag-own __defineSetter__ 82", "src": "{% __defineSetter__ a=1 /%}\n", "config": {"tags": {"__defineSetter__": {"render": "b", "attributes": {"a": {}}}}}}
+{"id": "audit tag-other __defineSetter__ 83", "src": "{% __defineSetter__ /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit tag-null __defineSetter__ 84", "src": "{% __defineSetter__ /%}\n", "config": {"tags": {"__defineSetter__": null}}}
+{"id": "audit function __defineSetter__ 85", "src": "{% __defineSetter__() %} {% __defineSetter__(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr __defineSetter__ 86", "src": "{% x a=__defineSetter__() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param __defineSetter__ 87", "src": "{% x a=f(__defineSetter__: 1) /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns __defineSetter__ 88", "src": "{% x a=__defineSetter__() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "__defineSetter__"}}}}}
+{"id": "audit function __defineSetter__ 89", "src": "{% __defineSetter__() %} {% __defineSetter__(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr __defineSetter__ 90", "src": "{% x a=__defineSetter__() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param __defineSetter__ 91", "src": "{% x a=f(__defineSetter__: 1) /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns __defineSetter__ 92", "src": "{% x a=__defineSetter__() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "__defineSetter__"}}}}}
+{"id": "audit variable __defineSetter__ 93", "src": "{% $__defineSetter__ %} {% $__defineSetter__.name %}\n", "config": {"variables": {"v": 1}}}
+{"id": "audit variable-none __defineSetter__ 94", "src": "{% $__defineSetter__ %} {% $__defineSetter__.name %}\n"}
+{"id": "audit variable-attr __defineSetter__ 95", "src": "{% x a=$__defineSetter__ /%}\n", "config": {"variables": {"v": 1}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit variable-own __defineSetter__ 96", "src": "{% $__defineSetter__ %}\n", "config": {"variables": {"__defineSetter__": "own"}}}
+{"id": "audit variable-path __defineSetter__ 97", "src": "{% $v.__defineSetter__ %} {% $a.__defineSetter__ %} {% $s.__defineSetter__ %}\n", "config": {"variables": {"v": {"k": 1}, "a": [1], "s": "s"}}}
+{"id": "audit partial __defineSetter__ 98", "src": "{% partial file=\"__defineSetter__\" /%}\n", "config": {"partials": {"p": "P"}}}
+{"id": "audit partial-none __defineSetter__ 99", "src": "{% partial file=\"__defineSetter__\" /%}\n"}
+{"id": "audit attribute __defineSetter__ 100", "src": "{% x __defineSetter__=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit attribute-global __defineSetter__ 101", "src": "{% x __defineSetter__=1 /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit attribute-declared __defineSetter__ 102", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"__defineSetter__": {}}}}}}
+{"id": "audit attribute-declared-type __defineSetter__ 103", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"__defineSetter__": {"type": "String", "default": "d"}}}}}}
+{"id": "audit attribute-render __defineSetter__ 104", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"render": "__defineSetter__"}}}}}}
+{"id": "audit slot __defineSetter__ 105", "src": "{% x %}\n{% slot \"__defineSetter__\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"a": {}}}}}, "slots": true}
+{"id": "audit slot-noschema __defineSetter__ 106", "src": "{% x %}\n{% slot \"__defineSetter__\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x"}}}, "slots": true}
+{"id": "audit slot-declared __defineSetter__ 107", "src": "{% x %}\nbody\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"__defineSetter__": {"render": true}}}}}, "slots": true}
+{"id": "audit type-name __defineSetter__ 108", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": "__defineSetter__"}}}}}}
+{"id": "audit type-name-list __defineSetter__ 109", "src": "{% x a=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": ["__defineSetter__", "Number"]}}}}}}
+{"id": "audit type-revived __defineSetter__ 110", "src": "{% x a=1 b=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": {"$type": "__defineSetter__"}}, "b": {}}}}}}
+{"id": "audit matches-revived __defineSetter__ 111", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": {"$type": "__defineSetter__"}}}}}}}
+{"id": "audit matches-list-revived __defineSetter__ 112", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": [{"$type": "__defineSetter__"}, 2]}}}}}}
+{"id": "audit default-revived __defineSetter__ 113", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"default": {"$type": "__defineSetter__"}}}}}}}
+{"id": "audit variable-revived __defineSetter__ 114", "src": "{% $t %} {% x a=$t /%} {% debug($t) %} {% $t.name %}\n", "config": {"variables": {"t": {"$type": "__defineSetter__"}}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit tag-block hasOwnProperty 117", "src": "{% hasOwnProperty %}\ntext\n{% /hasOwnProperty %}\n"}
+{"id": "audit tag-inline hasOwnProperty 118", "src": "a {% hasOwnProperty %}b{% /hasOwnProperty %} c\n"}
+{"id": "audit tag-self hasOwnProperty 119", "src": "{% hasOwnProperty /%}\n"}
+{"id": "audit tag-attr hasOwnProperty 120", "src": "{% hasOwnProperty a=1 class=\"c\" id=\"i\" /%}\n"}
+{"id": "audit tag-own hasOwnProperty 121", "src": "{% hasOwnProperty a=1 /%}\n", "config": {"tags": {"hasOwnProperty": {"render": "b", "attributes": {"a": {}}}}}}
+{"id": "audit tag-other hasOwnProperty 122", "src": "{% hasOwnProperty /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit tag-null hasOwnProperty 123", "src": "{% hasOwnProperty /%}\n", "config": {"tags": {"hasOwnProperty": null}}}
+{"id": "audit function hasOwnProperty 124", "src": "{% hasOwnProperty() %} {% hasOwnProperty(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr hasOwnProperty 125", "src": "{% x a=hasOwnProperty() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param hasOwnProperty 126", "src": "{% x a=f(hasOwnProperty: 1) /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns hasOwnProperty 127", "src": "{% x a=hasOwnProperty() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "hasOwnProperty"}}}}}
+{"id": "audit function hasOwnProperty 128", "src": "{% hasOwnProperty() %} {% hasOwnProperty(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr hasOwnProperty 129", "src": "{% x a=hasOwnProperty() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param hasOwnProperty 130", "src": "{% x a=f(hasOwnProperty: 1) /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns hasOwnProperty 131", "src": "{% x a=hasOwnProperty() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "hasOwnProperty"}}}}}
+{"id": "audit variable hasOwnProperty 132", "src": "{% $hasOwnProperty %} {% $hasOwnProperty.name %}\n", "config": {"variables": {"v": 1}}}
+{"id": "audit variable-none hasOwnProperty 133", "src": "{% $hasOwnProperty %} {% $hasOwnProperty.name %}\n"}
+{"id": "audit variable-attr hasOwnProperty 134", "src": "{% x a=$hasOwnProperty /%}\n", "config": {"variables": {"v": 1}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit variable-own hasOwnProperty 135", "src": "{% $hasOwnProperty %}\n", "config": {"variables": {"hasOwnProperty": "own"}}}
+{"id": "audit variable-path hasOwnProperty 136", "src": "{% $v.hasOwnProperty %} {% $a.hasOwnProperty %} {% $s.hasOwnProperty %}\n", "config": {"variables": {"v": {"k": 1}, "a": [1], "s": "s"}}}
+{"id": "audit partial hasOwnProperty 137", "src": "{% partial file=\"hasOwnProperty\" /%}\n", "config": {"partials": {"p": "P"}}}
+{"id": "audit partial-none hasOwnProperty 138", "src": "{% partial file=\"hasOwnProperty\" /%}\n"}
+{"id": "audit attribute hasOwnProperty 139", "src": "{% x hasOwnProperty=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit attribute-global hasOwnProperty 140", "src": "{% x hasOwnProperty=1 /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit attribute-declared hasOwnProperty 141", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"hasOwnProperty": {}}}}}}
+{"id": "audit attribute-declared-type hasOwnProperty 142", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"hasOwnProperty": {"type": "String", "default": "d"}}}}}}
+{"id": "audit attribute-render hasOwnProperty 143", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"render": "hasOwnProperty"}}}}}}
+{"id": "audit slot hasOwnProperty 144", "src": "{% x %}\n{% slot \"hasOwnProperty\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"a": {}}}}}, "slots": true}
+{"id": "audit slot-noschema hasOwnProperty 145", "src": "{% x %}\n{% slot \"hasOwnProperty\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x"}}}, "slots": true}
+{"id": "audit slot-declared hasOwnProperty 146", "src": "{% x %}\nbody\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"hasOwnProperty": {"render": true}}}}}, "slots": true}
+{"id": "audit type-name hasOwnProperty 147", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": "hasOwnProperty"}}}}}}
+{"id": "audit type-name-list hasOwnProperty 148", "src": "{% x a=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": ["hasOwnProperty", "Number"]}}}}}}
+{"id": "audit type-revived hasOwnProperty 149", "src": "{% x a=1 b=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": {"$type": "hasOwnProperty"}}, "b": {}}}}}}
+{"id": "audit matches-revived hasOwnProperty 150", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": {"$type": "hasOwnProperty"}}}}}}}
+{"id": "audit matches-list-revived hasOwnProperty 151", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": [{"$type": "hasOwnProperty"}, 2]}}}}}}
+{"id": "audit default-revived hasOwnProperty 152", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"default": {"$type": "hasOwnProperty"}}}}}}}
+{"id": "audit variable-revived hasOwnProperty 153", "src": "{% $t %} {% x a=$t /%} {% debug($t) %} {% $t.name %}\n", "config": {"variables": {"t": {"$type": "hasOwnProperty"}}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit tag-block __lookupGetter__ 156", "src": "{% __lookupGetter__ %}\ntext\n{% /__lookupGetter__ %}\n"}
+{"id": "audit tag-inline __lookupGetter__ 157", "src": "a {% __lookupGetter__ %}b{% /__lookupGetter__ %} c\n"}
+{"id": "audit tag-self __lookupGetter__ 158", "src": "{% __lookupGetter__ /%}\n"}
+{"id": "audit tag-attr __lookupGetter__ 159", "src": "{% __lookupGetter__ a=1 class=\"c\" id=\"i\" /%}\n"}
+{"id": "audit tag-own __lookupGetter__ 160", "src": "{% __lookupGetter__ a=1 /%}\n", "config": {"tags": {"__lookupGetter__": {"render": "b", "attributes": {"a": {}}}}}}
+{"id": "audit tag-other __lookupGetter__ 161", "src": "{% __lookupGetter__ /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit tag-null __lookupGetter__ 162", "src": "{% __lookupGetter__ /%}\n", "config": {"tags": {"__lookupGetter__": null}}}
+{"id": "audit function __lookupGetter__ 163", "src": "{% __lookupGetter__() %} {% __lookupGetter__(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr __lookupGetter__ 164", "src": "{% x a=__lookupGetter__() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param __lookupGetter__ 165", "src": "{% x a=f(__lookupGetter__: 1) /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns __lookupGetter__ 166", "src": "{% x a=__lookupGetter__() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "__lookupGetter__"}}}}}
+{"id": "audit function __lookupGetter__ 167", "src": "{% __lookupGetter__() %} {% __lookupGetter__(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr __lookupGetter__ 168", "src": "{% x a=__lookupGetter__() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param __lookupGetter__ 169", "src": "{% x a=f(__lookupGetter__: 1) /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns __lookupGetter__ 170", "src": "{% x a=__lookupGetter__() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "__lookupGetter__"}}}}}
+{"id": "audit variable __lookupGetter__ 171", "src": "{% $__lookupGetter__ %} {% $__lookupGetter__.name %}\n", "config": {"variables": {"v": 1}}}
+{"id": "audit variable-none __lookupGetter__ 172", "src": "{% $__lookupGetter__ %} {% $__lookupGetter__.name %}\n"}
+{"id": "audit variable-attr __lookupGetter__ 173", "src": "{% x a=$__lookupGetter__ /%}\n", "config": {"variables": {"v": 1}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit variable-own __lookupGetter__ 174", "src": "{% $__lookupGetter__ %}\n", "config": {"variables": {"__lookupGetter__": "own"}}}
+{"id": "audit variable-path __lookupGetter__ 175", "src": "{% $v.__lookupGetter__ %} {% $a.__lookupGetter__ %} {% $s.__lookupGetter__ %}\n", "config": {"variables": {"v": {"k": 1}, "a": [1], "s": "s"}}}
+{"id": "audit partial __lookupGetter__ 176", "src": "{% partial file=\"__lookupGetter__\" /%}\n", "config": {"partials": {"p": "P"}}}
+{"id": "audit partial-none __lookupGetter__ 177", "src": "{% partial file=\"__lookupGetter__\" /%}\n"}
+{"id": "audit attribute __lookupGetter__ 178", "src": "{% x __lookupGetter__=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit attribute-global __lookupGetter__ 179", "src": "{% x __lookupGetter__=1 /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit attribute-declared __lookupGetter__ 180", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"__lookupGetter__": {}}}}}}
+{"id": "audit attribute-declared-type __lookupGetter__ 181", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"__lookupGetter__": {"type": "String", "default": "d"}}}}}}
+{"id": "audit attribute-render __lookupGetter__ 182", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"render": "__lookupGetter__"}}}}}}
+{"id": "audit slot __lookupGetter__ 183", "src": "{% x %}\n{% slot \"__lookupGetter__\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"a": {}}}}}, "slots": true}
+{"id": "audit slot-noschema __lookupGetter__ 184", "src": "{% x %}\n{% slot \"__lookupGetter__\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x"}}}, "slots": true}
+{"id": "audit slot-declared __lookupGetter__ 185", "src": "{% x %}\nbody\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"__lookupGetter__": {"render": true}}}}}, "slots": true}
+{"id": "audit type-name __lookupGetter__ 186", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": "__lookupGetter__"}}}}}}
+{"id": "audit type-name-list __lookupGetter__ 187", "src": "{% x a=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": ["__lookupGetter__", "Number"]}}}}}}
+{"id": "audit type-revived __lookupGetter__ 188", "src": "{% x a=1 b=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": {"$type": "__lookupGetter__"}}, "b": {}}}}}}
+{"id": "audit matches-revived __lookupGetter__ 189", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": {"$type": "__lookupGetter__"}}}}}}}
+{"id": "audit matches-list-revived __lookupGetter__ 190", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": [{"$type": "__lookupGetter__"}, 2]}}}}}}
+{"id": "audit default-revived __lookupGetter__ 191", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"default": {"$type": "__lookupGetter__"}}}}}}}
+{"id": "audit variable-revived __lookupGetter__ 192", "src": "{% $t %} {% x a=$t /%} {% debug($t) %} {% $t.name %}\n", "config": {"variables": {"t": {"$type": "__lookupGetter__"}}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit tag-block __lookupSetter__ 195", "src": "{% __lookupSetter__ %}\ntext\n{% /__lookupSetter__ %}\n"}
+{"id": "audit tag-inline __lookupSetter__ 196", "src": "a {% __lookupSetter__ %}b{% /__lookupSetter__ %} c\n"}
+{"id": "audit tag-self __lookupSetter__ 197", "src": "{% __lookupSetter__ /%}\n"}
+{"id": "audit tag-attr __lookupSetter__ 198", "src": "{% __lookupSetter__ a=1 class=\"c\" id=\"i\" /%}\n"}
+{"id": "audit tag-own __lookupSetter__ 199", "src": "{% __lookupSetter__ a=1 /%}\n", "config": {"tags": {"__lookupSetter__": {"render": "b", "attributes": {"a": {}}}}}}
+{"id": "audit tag-other __lookupSetter__ 200", "src": "{% __lookupSetter__ /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit tag-null __lookupSetter__ 201", "src": "{% __lookupSetter__ /%}\n", "config": {"tags": {"__lookupSetter__": null}}}
+{"id": "audit function __lookupSetter__ 202", "src": "{% __lookupSetter__() %} {% __lookupSetter__(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr __lookupSetter__ 203", "src": "{% x a=__lookupSetter__() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param __lookupSetter__ 204", "src": "{% x a=f(__lookupSetter__: 1) /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns __lookupSetter__ 205", "src": "{% x a=__lookupSetter__() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "__lookupSetter__"}}}}}
+{"id": "audit function __lookupSetter__ 206", "src": "{% __lookupSetter__() %} {% __lookupSetter__(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr __lookupSetter__ 207", "src": "{% x a=__lookupSetter__() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param __lookupSetter__ 208", "src": "{% x a=f(__lookupSetter__: 1) /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns __lookupSetter__ 209", "src": "{% x a=__lookupSetter__() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "__lookupSetter__"}}}}}
+{"id": "audit variable __lookupSetter__ 210", "src": "{% $__lookupSetter__ %} {% $__lookupSetter__.name %}\n", "config": {"variables": {"v": 1}}}
+{"id": "audit variable-none __lookupSetter__ 211", "src": "{% $__lookupSetter__ %} {% $__lookupSetter__.name %}\n"}
+{"id": "audit variable-attr __lookupSetter__ 212", "src": "{% x a=$__lookupSetter__ /%}\n", "config": {"variables": {"v": 1}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit variable-own __lookupSetter__ 213", "src": "{% $__lookupSetter__ %}\n", "config": {"variables": {"__lookupSetter__": "own"}}}
+{"id": "audit variable-path __lookupSetter__ 214", "src": "{% $v.__lookupSetter__ %} {% $a.__lookupSetter__ %} {% $s.__lookupSetter__ %}\n", "config": {"variables": {"v": {"k": 1}, "a": [1], "s": "s"}}}
+{"id": "audit partial __lookupSetter__ 215", "src": "{% partial file=\"__lookupSetter__\" /%}\n", "config": {"partials": {"p": "P"}}}
+{"id": "audit partial-none __lookupSetter__ 216", "src": "{% partial file=\"__lookupSetter__\" /%}\n"}
+{"id": "audit attribute __lookupSetter__ 217", "src": "{% x __lookupSetter__=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit attribute-global __lookupSetter__ 218", "src": "{% x __lookupSetter__=1 /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit attribute-declared __lookupSetter__ 219", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"__lookupSetter__": {}}}}}}
+{"id": "audit attribute-declared-type __lookupSetter__ 220", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"__lookupSetter__": {"type": "String", "default": "d"}}}}}}
+{"id": "audit attribute-render __lookupSetter__ 221", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"render": "__lookupSetter__"}}}}}}
+{"id": "audit slot __lookupSetter__ 222", "src": "{% x %}\n{% slot \"__lookupSetter__\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"a": {}}}}}, "slots": true}
+{"id": "audit slot-noschema __lookupSetter__ 223", "src": "{% x %}\n{% slot \"__lookupSetter__\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x"}}}, "slots": true}
+{"id": "audit slot-declared __lookupSetter__ 224", "src": "{% x %}\nbody\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"__lookupSetter__": {"render": true}}}}}, "slots": true}
+{"id": "audit type-name __lookupSetter__ 225", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": "__lookupSetter__"}}}}}}
+{"id": "audit type-name-list __lookupSetter__ 226", "src": "{% x a=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": ["__lookupSetter__", "Number"]}}}}}}
+{"id": "audit type-revived __lookupSetter__ 227", "src": "{% x a=1 b=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": {"$type": "__lookupSetter__"}}, "b": {}}}}}}
+{"id": "audit matches-revived __lookupSetter__ 228", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": {"$type": "__lookupSetter__"}}}}}}}
+{"id": "audit matches-list-revived __lookupSetter__ 229", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": [{"$type": "__lookupSetter__"}, 2]}}}}}}
+{"id": "audit default-revived __lookupSetter__ 230", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"default": {"$type": "__lookupSetter__"}}}}}}}
+{"id": "audit variable-revived __lookupSetter__ 231", "src": "{% $t %} {% x a=$t /%} {% debug($t) %} {% $t.name %}\n", "config": {"variables": {"t": {"$type": "__lookupSetter__"}}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit tag-block isPrototypeOf 234", "src": "{% isPrototypeOf %}\ntext\n{% /isPrototypeOf %}\n"}
+{"id": "audit tag-inline isPrototypeOf 235", "src": "a {% isPrototypeOf %}b{% /isPrototypeOf %} c\n"}
+{"id": "audit tag-self isPrototypeOf 236", "src": "{% isPrototypeOf /%}\n"}
+{"id": "audit tag-attr isPrototypeOf 237", "src": "{% isPrototypeOf a=1 class=\"c\" id=\"i\" /%}\n"}
+{"id": "audit tag-own isPrototypeOf 238", "src": "{% isPrototypeOf a=1 /%}\n", "config": {"tags": {"isPrototypeOf": {"render": "b", "attributes": {"a": {}}}}}}
+{"id": "audit tag-other isPrototypeOf 239", "src": "{% isPrototypeOf /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit tag-null isPrototypeOf 240", "src": "{% isPrototypeOf /%}\n", "config": {"tags": {"isPrototypeOf": null}}}
+{"id": "audit function isPrototypeOf 241", "src": "{% isPrototypeOf() %} {% isPrototypeOf(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr isPrototypeOf 242", "src": "{% x a=isPrototypeOf() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param isPrototypeOf 243", "src": "{% x a=f(isPrototypeOf: 1) /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns isPrototypeOf 244", "src": "{% x a=isPrototypeOf() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "isPrototypeOf"}}}}}
+{"id": "audit function isPrototypeOf 245", "src": "{% isPrototypeOf() %} {% isPrototypeOf(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr isPrototypeOf 246", "src": "{% x a=isPrototypeOf() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param isPrototypeOf 247", "src": "{% x a=f(isPrototypeOf: 1) /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns isPrototypeOf 248", "src": "{% x a=isPrototypeOf() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "isPrototypeOf"}}}}}
+{"id": "audit variable isPrototypeOf 249", "src": "{% $isPrototypeOf %} {% $isPrototypeOf.name %}\n", "config": {"variables": {"v": 1}}}
+{"id": "audit variable-none isPrototypeOf 250", "src": "{% $isPrototypeOf %} {% $isPrototypeOf.name %}\n"}
+{"id": "audit variable-attr isPrototypeOf 251", "src": "{% x a=$isPrototypeOf /%}\n", "config": {"variables": {"v": 1}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit variable-own isPrototypeOf 252", "src": "{% $isPrototypeOf %}\n", "config": {"variables": {"isPrototypeOf": "own"}}}
+{"id": "audit variable-path isPrototypeOf 253", "src": "{% $v.isPrototypeOf %} {% $a.isPrototypeOf %} {% $s.isPrototypeOf %}\n", "config": {"variables": {"v": {"k": 1}, "a": [1], "s": "s"}}}
+{"id": "audit partial isPrototypeOf 254", "src": "{% partial file=\"isPrototypeOf\" /%}\n", "config": {"partials": {"p": "P"}}}
+{"id": "audit partial-none isPrototypeOf 255", "src": "{% partial file=\"isPrototypeOf\" /%}\n"}
+{"id": "audit attribute isPrototypeOf 256", "src": "{% x isPrototypeOf=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit attribute-global isPrototypeOf 257", "src": "{% x isPrototypeOf=1 /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit attribute-declared isPrototypeOf 258", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"isPrototypeOf": {}}}}}}
+{"id": "audit attribute-declared-type isPrototypeOf 259", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"isPrototypeOf": {"type": "String", "default": "d"}}}}}}
+{"id": "audit attribute-render isPrototypeOf 260", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"render": "isPrototypeOf"}}}}}}
+{"id": "audit slot isPrototypeOf 261", "src": "{% x %}\n{% slot \"isPrototypeOf\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"a": {}}}}}, "slots": true}
+{"id": "audit slot-noschema isPrototypeOf 262", "src": "{% x %}\n{% slot \"isPrototypeOf\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x"}}}, "slots": true}
+{"id": "audit slot-declared isPrototypeOf 263", "src": "{% x %}\nbody\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"isPrototypeOf": {"render": true}}}}}, "slots": true}
+{"id": "audit type-name isPrototypeOf 264", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": "isPrototypeOf"}}}}}}
+{"id": "audit type-name-list isPrototypeOf 265", "src": "{% x a=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": ["isPrototypeOf", "Number"]}}}}}}
+{"id": "audit type-revived isPrototypeOf 266", "src": "{% x a=1 b=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": {"$type": "isPrototypeOf"}}, "b": {}}}}}}
+{"id": "audit matches-revived isPrototypeOf 267", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": {"$type": "isPrototypeOf"}}}}}}}
+{"id": "audit matches-list-revived isPrototypeOf 268", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": [{"$type": "isPrototypeOf"}, 2]}}}}}}
+{"id": "audit default-revived isPrototypeOf 269", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"default": {"$type": "isPrototypeOf"}}}}}}}
+{"id": "audit variable-revived isPrototypeOf 270", "src": "{% $t %} {% x a=$t /%} {% debug($t) %} {% $t.name %}\n", "config": {"variables": {"t": {"$type": "isPrototypeOf"}}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit tag-block propertyIsEnumerable 273", "src": "{% propertyIsEnumerable %}\ntext\n{% /propertyIsEnumerable %}\n"}
+{"id": "audit tag-inline propertyIsEnumerable 274", "src": "a {% propertyIsEnumerable %}b{% /propertyIsEnumerable %} c\n"}
+{"id": "audit tag-self propertyIsEnumerable 275", "src": "{% propertyIsEnumerable /%}\n"}
+{"id": "audit tag-attr propertyIsEnumerable 276", "src": "{% propertyIsEnumerable a=1 class=\"c\" id=\"i\" /%}\n"}
+{"id": "audit tag-own propertyIsEnumerable 277", "src": "{% propertyIsEnumerable a=1 /%}\n", "config": {"tags": {"propertyIsEnumerable": {"render": "b", "attributes": {"a": {}}}}}}
+{"id": "audit tag-other propertyIsEnumerable 278", "src": "{% propertyIsEnumerable /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit tag-null propertyIsEnumerable 279", "src": "{% propertyIsEnumerable /%}\n", "config": {"tags": {"propertyIsEnumerable": null}}}
+{"id": "audit function propertyIsEnumerable 280", "src": "{% propertyIsEnumerable() %} {% propertyIsEnumerable(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr propertyIsEnumerable 281", "src": "{% x a=propertyIsEnumerable() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param propertyIsEnumerable 282", "src": "{% x a=f(propertyIsEnumerable: 1) /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns propertyIsEnumerable 283", "src": "{% x a=propertyIsEnumerable() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "propertyIsEnumerable"}}}}}
+{"id": "audit function propertyIsEnumerable 284", "src": "{% propertyIsEnumerable() %} {% propertyIsEnumerable(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr propertyIsEnumerable 285", "src": "{% x a=propertyIsEnumerable() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param propertyIsEnumerable 286", "src": "{% x a=f(propertyIsEnumerable: 1) /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns propertyIsEnumerable 287", "src": "{% x a=propertyIsEnumerable() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "propertyIsEnumerable"}}}}}
+{"id": "audit variable propertyIsEnumerable 288", "src": "{% $propertyIsEnumerable %} {% $propertyIsEnumerable.name %}\n", "config": {"variables": {"v": 1}}}
+{"id": "audit variable-none propertyIsEnumerable 289", "src": "{% $propertyIsEnumerable %} {% $propertyIsEnumerable.name %}\n"}
+{"id": "audit variable-attr propertyIsEnumerable 290", "src": "{% x a=$propertyIsEnumerable /%}\n", "config": {"variables": {"v": 1}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit variable-own propertyIsEnumerable 291", "src": "{% $propertyIsEnumerable %}\n", "config": {"variables": {"propertyIsEnumerable": "own"}}}
+{"id": "audit variable-path propertyIsEnumerable 292", "src": "{% $v.propertyIsEnumerable %} {% $a.propertyIsEnumerable %} {% $s.propertyIsEnumerable %}\n", "config": {"variables": {"v": {"k": 1}, "a": [1], "s": "s"}}}
+{"id": "audit partial propertyIsEnumerable 293", "src": "{% partial file=\"propertyIsEnumerable\" /%}\n", "config": {"partials": {"p": "P"}}}
+{"id": "audit partial-none propertyIsEnumerable 294", "src": "{% partial file=\"propertyIsEnumerable\" /%}\n"}
+{"id": "audit attribute propertyIsEnumerable 295", "src": "{% x propertyIsEnumerable=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit attribute-global propertyIsEnumerable 296", "src": "{% x propertyIsEnumerable=1 /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit attribute-declared propertyIsEnumerable 297", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"propertyIsEnumerable": {}}}}}}
+{"id": "audit attribute-declared-type propertyIsEnumerable 298", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"propertyIsEnumerable": {"type": "String", "default": "d"}}}}}}
+{"id": "audit attribute-render propertyIsEnumerable 299", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"render": "propertyIsEnumerable"}}}}}}
+{"id": "audit slot propertyIsEnumerable 300", "src": "{% x %}\n{% slot \"propertyIsEnumerable\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"a": {}}}}}, "slots": true}
+{"id": "audit slot-noschema propertyIsEnumerable 301", "src": "{% x %}\n{% slot \"propertyIsEnumerable\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x"}}}, "slots": true}
+{"id": "audit slot-declared propertyIsEnumerable 302", "src": "{% x %}\nbody\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"propertyIsEnumerable": {"render": true}}}}}, "slots": true}
+{"id": "audit type-name propertyIsEnumerable 303", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": "propertyIsEnumerable"}}}}}}
+{"id": "audit type-name-list propertyIsEnumerable 304", "src": "{% x a=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": ["propertyIsEnumerable", "Number"]}}}}}}
+{"id": "audit type-revived propertyIsEnumerable 305", "src": "{% x a=1 b=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": {"$type": "propertyIsEnumerable"}}, "b": {}}}}}}
+{"id": "audit matches-revived propertyIsEnumerable 306", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": {"$type": "propertyIsEnumerable"}}}}}}}
+{"id": "audit matches-list-revived propertyIsEnumerable 307", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": [{"$type": "propertyIsEnumerable"}, 2]}}}}}}
+{"id": "audit default-revived propertyIsEnumerable 308", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"default": {"$type": "propertyIsEnumerable"}}}}}}}
+{"id": "audit variable-revived propertyIsEnumerable 309", "src": "{% $t %} {% x a=$t /%} {% debug($t) %} {% $t.name %}\n", "config": {"variables": {"t": {"$type": "propertyIsEnumerable"}}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit tag-block toString 312", "src": "{% toString %}\ntext\n{% /toString %}\n"}
+{"id": "audit tag-inline toString 313", "src": "a {% toString %}b{% /toString %} c\n"}
+{"id": "audit tag-self toString 314", "src": "{% toString /%}\n"}
+{"id": "audit tag-attr toString 315", "src": "{% toString a=1 class=\"c\" id=\"i\" /%}\n"}
+{"id": "audit tag-own toString 316", "src": "{% toString a=1 /%}\n", "config": {"tags": {"toString": {"render": "b", "attributes": {"a": {}}}}}}
+{"id": "audit tag-other toString 317", "src": "{% toString /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit tag-null toString 318", "src": "{% toString /%}\n", "config": {"tags": {"toString": null}}}
+{"id": "audit function toString 319", "src": "{% toString() %} {% toString(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr toString 320", "src": "{% x a=toString() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param toString 321", "src": "{% x a=f(toString: 1) /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns toString 322", "src": "{% x a=toString() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "toString"}}}}}
+{"id": "audit function toString 323", "src": "{% toString() %} {% toString(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr toString 324", "src": "{% x a=toString() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param toString 325", "src": "{% x a=f(toString: 1) /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns toString 326", "src": "{% x a=toString() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "toString"}}}}}
+{"id": "audit variable toString 327", "src": "{% $toString %} {% $toString.name %}\n", "config": {"variables": {"v": 1}}}
+{"id": "audit variable-none toString 328", "src": "{% $toString %} {% $toString.name %}\n"}
+{"id": "audit variable-attr toString 329", "src": "{% x a=$toString /%}\n", "config": {"variables": {"v": 1}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit variable-own toString 330", "src": "{% $toString %}\n", "config": {"variables": {"toString": "own"}}}
+{"id": "audit variable-path toString 331", "src": "{% $v.toString %} {% $a.toString %} {% $s.toString %}\n", "config": {"variables": {"v": {"k": 1}, "a": [1], "s": "s"}}}
+{"id": "audit partial toString 332", "src": "{% partial file=\"toString\" /%}\n", "config": {"partials": {"p": "P"}}}
+{"id": "audit partial-none toString 333", "src": "{% partial file=\"toString\" /%}\n"}
+{"id": "audit attribute toString 334", "src": "{% x toString=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit attribute-global toString 335", "src": "{% x toString=1 /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit attribute-declared toString 336", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"toString": {}}}}}}
+{"id": "audit attribute-declared-type toString 337", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"toString": {"type": "String", "default": "d"}}}}}}
+{"id": "audit attribute-render toString 338", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"render": "toString"}}}}}}
+{"id": "audit slot toString 339", "src": "{% x %}\n{% slot \"toString\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"a": {}}}}}, "slots": true}
+{"id": "audit slot-noschema toString 340", "src": "{% x %}\n{% slot \"toString\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x"}}}, "slots": true}
+{"id": "audit slot-declared toString 341", "src": "{% x %}\nbody\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"toString": {"render": true}}}}}, "slots": true}
+{"id": "audit type-name toString 342", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": "toString"}}}}}}
+{"id": "audit type-name-list toString 343", "src": "{% x a=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": ["toString", "Number"]}}}}}}
+{"id": "audit type-revived toString 344", "src": "{% x a=1 b=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": {"$type": "toString"}}, "b": {}}}}}}
+{"id": "audit matches-revived toString 345", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": {"$type": "toString"}}}}}}}
+{"id": "audit matches-list-revived toString 346", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": [{"$type": "toString"}, 2]}}}}}}
+{"id": "audit default-revived toString 347", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"default": {"$type": "toString"}}}}}}}
+{"id": "audit variable-revived toString 348", "src": "{% $t %} {% x a=$t /%} {% debug($t) %} {% $t.name %}\n", "config": {"variables": {"t": {"$type": "toString"}}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit tag-block valueOf 351", "src": "{% valueOf %}\ntext\n{% /valueOf %}\n"}
+{"id": "audit tag-inline valueOf 352", "src": "a {% valueOf %}b{% /valueOf %} c\n"}
+{"id": "audit tag-self valueOf 353", "src": "{% valueOf /%}\n"}
+{"id": "audit tag-attr valueOf 354", "src": "{% valueOf a=1 class=\"c\" id=\"i\" /%}\n"}
+{"id": "audit tag-own valueOf 355", "src": "{% valueOf a=1 /%}\n", "config": {"tags": {"valueOf": {"render": "b", "attributes": {"a": {}}}}}}
+{"id": "audit tag-other valueOf 356", "src": "{% valueOf /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit tag-null valueOf 357", "src": "{% valueOf /%}\n", "config": {"tags": {"valueOf": null}}}
+{"id": "audit function valueOf 358", "src": "{% valueOf() %} {% valueOf(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr valueOf 359", "src": "{% x a=valueOf() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param valueOf 360", "src": "{% x a=f(valueOf: 1) /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns valueOf 361", "src": "{% x a=valueOf() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "valueOf"}}}}}
+{"id": "audit function valueOf 362", "src": "{% valueOf() %} {% valueOf(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr valueOf 363", "src": "{% x a=valueOf() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param valueOf 364", "src": "{% x a=f(valueOf: 1) /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns valueOf 365", "src": "{% x a=valueOf() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "valueOf"}}}}}
+{"id": "audit variable valueOf 366", "src": "{% $valueOf %} {% $valueOf.name %}\n", "config": {"variables": {"v": 1}}}
+{"id": "audit variable-none valueOf 367", "src": "{% $valueOf %} {% $valueOf.name %}\n"}
+{"id": "audit variable-attr valueOf 368", "src": "{% x a=$valueOf /%}\n", "config": {"variables": {"v": 1}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit variable-own valueOf 369", "src": "{% $valueOf %}\n", "config": {"variables": {"valueOf": "own"}}}
+{"id": "audit variable-path valueOf 370", "src": "{% $v.valueOf %} {% $a.valueOf %} {% $s.valueOf %}\n", "config": {"variables": {"v": {"k": 1}, "a": [1], "s": "s"}}}
+{"id": "audit partial valueOf 371", "src": "{% partial file=\"valueOf\" /%}\n", "config": {"partials": {"p": "P"}}}
+{"id": "audit partial-none valueOf 372", "src": "{% partial file=\"valueOf\" /%}\n"}
+{"id": "audit attribute valueOf 373", "src": "{% x valueOf=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit attribute-global valueOf 374", "src": "{% x valueOf=1 /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit attribute-declared valueOf 375", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"valueOf": {}}}}}}
+{"id": "audit attribute-declared-type valueOf 376", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"valueOf": {"type": "String", "default": "d"}}}}}}
+{"id": "audit attribute-render valueOf 377", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"render": "valueOf"}}}}}}
+{"id": "audit slot valueOf 378", "src": "{% x %}\n{% slot \"valueOf\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"a": {}}}}}, "slots": true}
+{"id": "audit slot-noschema valueOf 379", "src": "{% x %}\n{% slot \"valueOf\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x"}}}, "slots": true}
+{"id": "audit slot-declared valueOf 380", "src": "{% x %}\nbody\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"valueOf": {"render": true}}}}}, "slots": true}
+{"id": "audit type-name valueOf 381", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": "valueOf"}}}}}}
+{"id": "audit type-name-list valueOf 382", "src": "{% x a=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": ["valueOf", "Number"]}}}}}}
+{"id": "audit type-revived valueOf 383", "src": "{% x a=1 b=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": {"$type": "valueOf"}}, "b": {}}}}}}
+{"id": "audit matches-revived valueOf 384", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": {"$type": "valueOf"}}}}}}}
+{"id": "audit matches-list-revived valueOf 385", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": [{"$type": "valueOf"}, 2]}}}}}}
+{"id": "audit default-revived valueOf 386", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"default": {"$type": "valueOf"}}}}}}}
+{"id": "audit variable-revived valueOf 387", "src": "{% $t %} {% x a=$t /%} {% debug($t) %} {% $t.name %}\n", "config": {"variables": {"t": {"$type": "valueOf"}}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit tag-block __proto__ 390", "src": "{% __proto__ %}\ntext\n{% /__proto__ %}\n"}
+{"id": "audit tag-inline __proto__ 391", "src": "a {% __proto__ %}b{% /__proto__ %} c\n"}
+{"id": "audit tag-self __proto__ 392", "src": "{% __proto__ /%}\n"}
+{"id": "audit tag-attr __proto__ 393", "src": "{% __proto__ a=1 class=\"c\" id=\"i\" /%}\n"}
+{"id": "audit tag-own __proto__ 394", "src": "{% __proto__ a=1 /%}\n", "config": {"tags": {"__proto__": {"render": "b", "attributes": {"a": {}}}}}}
+{"id": "audit tag-other __proto__ 395", "src": "{% __proto__ /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit tag-null __proto__ 396", "src": "{% __proto__ /%}\n", "config": {"tags": {"__proto__": null}}}
+{"id": "audit function __proto__ 397", "src": "{% __proto__() %} {% __proto__(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr __proto__ 398", "src": "{% x a=__proto__() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param __proto__ 399", "src": "{% x a=f(__proto__: 1) /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns __proto__ 400", "src": "{% x a=__proto__() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "__proto__"}}}}}
+{"id": "audit function __proto__ 401", "src": "{% __proto__() %} {% __proto__(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr __proto__ 402", "src": "{% x a=__proto__() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param __proto__ 403", "src": "{% x a=f(__proto__: 1) /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns __proto__ 404", "src": "{% x a=__proto__() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "__proto__"}}}}}
+{"id": "audit variable __proto__ 405", "src": "{% $__proto__ %} {% $__proto__.name %}\n", "config": {"variables": {"v": 1}}}
+{"id": "audit variable-none __proto__ 406", "src": "{% $__proto__ %} {% $__proto__.name %}\n"}
+{"id": "audit variable-attr __proto__ 407", "src": "{% x a=$__proto__ /%}\n", "config": {"variables": {"v": 1}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit variable-own __proto__ 408", "src": "{% $__proto__ %}\n", "config": {"variables": {"__proto__": "own"}}}
+{"id": "audit variable-path __proto__ 409", "src": "{% $v.__proto__ %} {% $a.__proto__ %} {% $s.__proto__ %}\n", "config": {"variables": {"v": {"k": 1}, "a": [1], "s": "s"}}}
+{"id": "audit partial __proto__ 410", "src": "{% partial file=\"__proto__\" /%}\n", "config": {"partials": {"p": "P"}}}
+{"id": "audit partial-none __proto__ 411", "src": "{% partial file=\"__proto__\" /%}\n"}
+{"id": "audit attribute __proto__ 412", "src": "{% x __proto__=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit attribute-global __proto__ 413", "src": "{% x __proto__=1 /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit attribute-declared __proto__ 414", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"__proto__": {}}}}}}
+{"id": "audit attribute-declared-type __proto__ 415", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"__proto__": {"type": "String", "default": "d"}}}}}}
+{"id": "audit attribute-render __proto__ 416", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"render": "__proto__"}}}}}}
+{"id": "audit slot __proto__ 417", "src": "{% x %}\n{% slot \"__proto__\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"a": {}}}}}, "slots": true}
+{"id": "audit slot-noschema __proto__ 418", "src": "{% x %}\n{% slot \"__proto__\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x"}}}, "slots": true}
+{"id": "audit slot-declared __proto__ 419", "src": "{% x %}\nbody\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"__proto__": {"render": true}}}}}, "slots": true}
+{"id": "audit type-name __proto__ 420", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": "__proto__"}}}}}}
+{"id": "audit type-name-list __proto__ 421", "src": "{% x a=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": ["__proto__", "Number"]}}}}}}
+{"id": "audit type-revived __proto__ 422", "src": "{% x a=1 b=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": {"$type": "__proto__"}}, "b": {}}}}}}
+{"id": "audit matches-revived __proto__ 423", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": {"$type": "__proto__"}}}}}}}
+{"id": "audit matches-list-revived __proto__ 424", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": [{"$type": "__proto__"}, 2]}}}}}}
+{"id": "audit default-revived __proto__ 425", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"default": {"$type": "__proto__"}}}}}}}
+{"id": "audit variable-revived __proto__ 426", "src": "{% $t %} {% x a=$t /%} {% debug($t) %} {% $t.name %}\n", "config": {"variables": {"t": {"$type": "__proto__"}}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit tag-block toLocaleString 429", "src": "{% toLocaleString %}\ntext\n{% /toLocaleString %}\n"}
+{"id": "audit tag-inline toLocaleString 430", "src": "a {% toLocaleString %}b{% /toLocaleString %} c\n"}
+{"id": "audit tag-self toLocaleString 431", "src": "{% toLocaleString /%}\n"}
+{"id": "audit tag-attr toLocaleString 432", "src": "{% toLocaleString a=1 class=\"c\" id=\"i\" /%}\n"}
+{"id": "audit tag-own toLocaleString 433", "src": "{% toLocaleString a=1 /%}\n", "config": {"tags": {"toLocaleString": {"render": "b", "attributes": {"a": {}}}}}}
+{"id": "audit tag-other toLocaleString 434", "src": "{% toLocaleString /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit tag-null toLocaleString 435", "src": "{% toLocaleString /%}\n", "config": {"tags": {"toLocaleString": null}}}
+{"id": "audit function toLocaleString 436", "src": "{% toLocaleString() %} {% toLocaleString(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr toLocaleString 437", "src": "{% x a=toLocaleString() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param toLocaleString 438", "src": "{% x a=f(toLocaleString: 1) /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns toLocaleString 439", "src": "{% x a=toLocaleString() /%}\n", "config": {"validation": {"validateFunctions": false}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "toLocaleString"}}}}}
+{"id": "audit function toLocaleString 440", "src": "{% toLocaleString() %} {% toLocaleString(1, k: 2) %}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-attr toLocaleString 441", "src": "{% x a=toLocaleString() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}}}
+{"id": "audit function-param toLocaleString 442", "src": "{% x a=f(toLocaleString: 1) /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"f": {"parameters": {"0": {"type": "Number"}}, "returns": "String"}}}}
+{"id": "audit function-returns toLocaleString 443", "src": "{% x a=toLocaleString() /%}\n", "config": {"validation": {"validateFunctions": true}, "tags": {"x": {"render": "x", "attributes": {"a": {"type": "String"}}}}, "functions": {"g": {"returns": {"$type": "toLocaleString"}}}}}
+{"id": "audit variable toLocaleString 444", "src": "{% $toLocaleString %} {% $toLocaleString.name %}\n", "config": {"variables": {"v": 1}}}
+{"id": "audit variable-none toLocaleString 445", "src": "{% $toLocaleString %} {% $toLocaleString.name %}\n"}
+{"id": "audit variable-attr toLocaleString 446", "src": "{% x a=$toLocaleString /%}\n", "config": {"variables": {"v": 1}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit variable-own toLocaleString 447", "src": "{% $toLocaleString %}\n", "config": {"variables": {"toLocaleString": "own"}}}
+{"id": "audit variable-path toLocaleString 448", "src": "{% $v.toLocaleString %} {% $a.toLocaleString %} {% $s.toLocaleString %}\n", "config": {"variables": {"v": {"k": 1}, "a": [1], "s": "s"}}}
+{"id": "audit partial toLocaleString 449", "src": "{% partial file=\"toLocaleString\" /%}\n", "config": {"partials": {"p": "P"}}}
+{"id": "audit partial-none toLocaleString 450", "src": "{% partial file=\"toLocaleString\" /%}\n"}
+{"id": "audit attribute toLocaleString 451", "src": "{% x toLocaleString=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
+{"id": "audit attribute-global toLocaleString 452", "src": "{% x toLocaleString=1 /%}\n", "config": {"tags": {"x": {"render": "x"}}}}
+{"id": "audit attribute-declared toLocaleString 453", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"toLocaleString": {}}}}}}
+{"id": "audit attribute-declared-type toLocaleString 454", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"toLocaleString": {"type": "String", "default": "d"}}}}}}
+{"id": "audit attribute-render toLocaleString 455", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"render": "toLocaleString"}}}}}}
+{"id": "audit slot toLocaleString 456", "src": "{% x %}\n{% slot \"toLocaleString\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"a": {}}}}}, "slots": true}
+{"id": "audit slot-noschema toLocaleString 457", "src": "{% x %}\n{% slot \"toLocaleString\" %}\ns\n{% /slot %}\n{% /x %}\n", "config": {"tags": {"x": {"render": "x"}}}, "slots": true}
+{"id": "audit slot-declared toLocaleString 458", "src": "{% x %}\nbody\n{% /x %}\n", "config": {"tags": {"x": {"render": "x", "slots": {"toLocaleString": {"render": true}}}}}, "slots": true}
+{"id": "audit type-name toLocaleString 459", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": "toLocaleString"}}}}}}
+{"id": "audit type-name-list toLocaleString 460", "src": "{% x a=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": ["toLocaleString", "Number"]}}}}}}
+{"id": "audit type-revived toLocaleString 461", "src": "{% x a=1 b=\"s\" /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"type": {"$type": "toLocaleString"}}, "b": {}}}}}}
+{"id": "audit matches-revived toLocaleString 462", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": {"$type": "toLocaleString"}}}}}}}
+{"id": "audit matches-list-revived toLocaleString 463", "src": "{% x a=1 /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"matches": [{"$type": "toLocaleString"}, 2]}}}}}}
+{"id": "audit default-revived toLocaleString 464", "src": "{% x /%}\n", "config": {"tags": {"x": {"render": "x", "attributes": {"a": {"default": {"$type": "toLocaleString"}}}}}}}
+{"id": "audit variable-revived toLocaleString 465", "src": "{% $t %} {% x a=$t /%} {% debug($t) %} {% $t.name %}\n", "config": {"variables": {"t": {"$type": "toLocaleString"}}, "tags": {"x": {"render": "x", "attributes": {"a": {}}}}}}
