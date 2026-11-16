@@ -1,0 +1,145 @@
+# Release for markdoc — https://github.com/markdoc-rs/markdoc
+#
+# ## How a release happens
+#
+# Cargo.toml's version is the release. A push to main that changes
+# Cargo.toml runs this workflow, and when no tag names that version yet it
+# checks the commit, publishes the crate to crates.io, and then creates the
+# GitHub release, and the tag with it, on that commit. A version a tag
+# already names does nothing; one older than the newest tag fails the run
+# (.github/scripts/release_version.py says why). "Run workflow" does the
+# same on demand, to retry a release that failed. A version with a
+# pre-release part, 0.3.0-rc.1, makes a pre-release, so `releases/latest`
+# stays on the last full release.
+#
+# crates.io takes the crate through trusted publishing, so no token is
+# stored here: the crate's settings on crates.io name this repository and
+# release.yml, and can name the `release` environment the publish job runs
+# in, as allowed to publish it.
+#
+# ## No binaries, and no attestation
+#
+# markdoc is a library. There is nothing to build per platform and
+# nothing to download, so the release is the tag, the notes and the crate
+# on crates.io. The sibling repositories that ship a binary attest it; here
+# there is no artifact for an attestation to be about.
+name: Release
+
+on:
+  push:
+    branches: [main]
+    paths: [Cargo.toml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One release at a time: two runs deciding at once could both find the
+# version untagged.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  # ────────────────────────────────────────────────────────────────────
+  # Whether this push is a release, and of which version. Everything below
+  # runs only when it is.
+  # ────────────────────────────────────────────────────────────────────
+  version:
+    name: Version
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      release: ${{ steps.version.outputs.release }}
+      prerelease: ${{ steps.version.outputs.prerelease }}
+    steps:
+      - name: Only main releases
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "::error::${GITHUB_REF} is not main, and only main is released." >&2
+          exit 1
+
+      - uses: actions/checkout@v5
+        with:
+          path: markdoc
+
+      - name: Cargo.toml's version, and whether a tag names it yet
+        id: version
+        run: python3 -I markdoc/.github/scripts/release_version.py markdoc
+
+  # ────────────────────────────────────────────────────────────────────
+  # Nothing is published until this passes. Same check.sh ci.yml runs, so
+  # a release cannot hold a build the ordinary gate would have rejected.
+  # ────────────────────────────────────────────────────────────────────
+  check:
+    name: Check
+    needs: version
+    if: needs.version.outputs.release == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          path: markdoc
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: markdoc
+
+      - name: check.sh
+        run: bash markdoc/.github/scripts/check.sh markdoc
+
+  publish:
+    name: Publish
+    needs: [version, check]
+    runs-on: ubuntu-latest
+    # As crates.io's trusted publishing guide recommends: an environment
+    # the trusted publisher can name, and that the repository's settings
+    # can limit to main or put behind a reviewer.
+    environment: release
+    permissions:
+      contents: write # the release, and the tag it creates
+      id-token: write # crates.io trusted publishing
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          path: markdoc
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      # A run that published the crate and then failed can be re-run
+      # without publishing it twice, which crates.io would refuse.
+      - name: Is this version on crates.io?
+        id: crates-io
+        run: python3 -I markdoc/.github/scripts/release_version.py --on-crates-io markdoc
+
+      # A token for this job only, issued against the trusted publisher
+      # set up in the crate's settings on crates.io, and revoked after.
+      - name: Authenticate to crates.io
+        id: auth
+        if: steps.crates-io.outputs.published == 'false'
+        uses: rust-lang/crates-io-auth-action@v1
+
+      # `--locked`: Cargo.lock is committed, and check.sh has already proved it
+      # agrees with Cargo.toml.
+      #
+      # The vendored `regress` is published separately as `markdoc-regress`
+      # (see the note on the dependency in Cargo.toml); a version bump there
+      # has to reach crates.io before the release that depends on it.
+      - name: Publish to crates.io
+        if: steps.crates-io.outputs.published == 'false'
+        working-directory: markdoc
+        env:
+          CARGO_REGISTRY_TOKEN: ${{ steps.auth.outputs.token }}
+        run: cargo publish --locked
+
+      - name: Create the release, and its tag
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ needs.version.outputs.version }}
+          target_commitish: ${{ github.sha }}
+          generate_release_notes: true
+          prerelease: ${{ needs.version.outputs.prerelease }}

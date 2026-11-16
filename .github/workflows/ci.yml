@@ -1,55 +1,41 @@
-# CI for markdoc
+# CI for markdoc — https://github.com/markdoc-rs/markdoc
 #
-# Pure-Rust library crate, no FFI, no path dependencies. Runs fmt,
-# clippy and tests on Linux — no need for a multi-OS matrix since
-# nothing platform-specific is exercised.
-
+# Pure-Rust library crate, no FFI. Linux only: nothing platform-specific is
+# exercised, and the conformance corpus is byte-compared, not rendered.
+#
+# The gate itself is in `.github/scripts/check.sh`, not here, so release.yml
+# runs exactly the same set before it publishes anything. A second list of
+# steps drifts, and the half that drifts is always the one nobody watches.
 name: CI
 
 on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
 
 env:
   CARGO_TERM_COLOR: always
   RUST_BACKTRACE: short
 
 jobs:
-  test:
-    name: Test
+  check:
+    name: Check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+        with:
+          path: markdoc
 
-      - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@stable
+      - uses: dtolnay/rust-toolchain@stable
         with:
           components: rustfmt, clippy
 
-      - name: Cargo cache
-        uses: Swatinem/rust-cache@v2
+      - uses: Swatinem/rust-cache@v2
         with:
+          workspaces: markdoc
           save-if: ${{ github.ref == 'refs/heads/main' }}
 
-      - name: cargo fmt --check
-        run: cargo fmt --all --check
-
-      - name: cargo clippy
-        run: cargo clippy --all-targets -- -D warnings
-
-      # Before the tests, so an edit to the corpus that also edits the hash
-      # the conformance test checks it against fails here, by name.
-      - name: The vendored conformance corpus is upstream's, byte for byte
-        run: tests/marktest/verify-vendored.sh
-
-      # Includes tests/conformance.rs: upstream Markdoc's own corpus, held as
-      # a ratchet against tests/conformance-baseline.txt.
-      - name: cargo test
-        run: cargo test --all-targets
-
-      - name: cargo doc
-        env:
-          RUSTDOCFLAGS: -D warnings
-        run: cargo doc --no-deps
+      # fmt, the lockfile, clippy, the vendored corpus, the tests, the
+      # doctests, rustdoc and a release build.
+      - name: check.sh
+        run: bash markdoc/.github/scripts/check.sh markdoc

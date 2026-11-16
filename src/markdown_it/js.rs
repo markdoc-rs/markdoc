@@ -265,15 +265,126 @@ fn map_case(s: &[u16], f: fn(&str) -> String) -> Vec<u16> {
 
 /// `s.toLowerCase()`: full Unicode mapping (U+0130 becomes two code units) with the
 /// Final_Sigma rule, as V8/ICU do in the root locale. Rust's std implements the same
-/// mapping; its Unicode version (17) matches node 22's ICU, and every code point plus the
-/// sigma contexts were compared against node (see tests).
+/// mapping from its own Unicode tables: 17 (node 22's ICU) in Rust 1.99, 18 from 1.100;
+/// this answers as Unicode 17 does on either (`NEW_IN_UNICODE_18`). Every code point plus
+/// the sigma contexts were compared against node (see tests).
 pub fn to_lower_case(s: &[u16]) -> Vec<u16> {
-    map_case(s, str::to_lowercase)
+    map_case(s, to_lowercase_17)
 }
 
-/// `s.toUpperCase()`: full Unicode mapping (`ß` becomes `SS`, U+1E9E stays), root locale.
+/// `s.toUpperCase()`: full Unicode mapping (`ß` becomes `SS`, U+1E9E stays), root locale,
+/// in Unicode 17 as [`to_lower_case`] is.
 pub fn to_upper_case(s: &[u16]) -> Vec<u16> {
-    map_case(s, str::to_uppercase)
+    map_case(s, to_uppercase_17)
+}
+
+/// The code points std's Unicode 18 tables (Rust 1.100 on) give case behaviour Unicode 17
+/// does not: new case pairs (U+A7DD with U+0277, U+AB6C with U+AB4B, ...), new cased
+/// letters, and new case-ignorable marks, which move Final_Sigma. In Unicode 17 each is
+/// unassigned, so it maps to itself and is neither cased nor case-ignorable. Found by
+/// comparing, for every scalar value, `to_lowercase`, `to_uppercase` and the Final_Sigma
+/// contexts "AΣc", "AΣcB" and "cΣ" under Rust 1.99.1 and a Unicode 18 nightly: these 199
+/// differ, as do the four in [`UPPERCASED_IN_UNICODE_18`], and nothing else does. A std
+/// that moves again fails `case_mapping_of_every_code_point_matches_node`.
+const NEW_IN_UNICODE_18: &[(u32, u32)] = &[
+    (0x0558, 0x0558),
+    (0x058B, 0x058C),
+    (0x05C8, 0x05C9),
+    (0x0B53, 0x0B54),
+    (0x1ADE, 0x1ADF),
+    (0x1AEC, 0x1AF0),
+    (0x208F, 0x208F),
+    (0x209D, 0x209F),
+    (0xA7DD, 0xA7DD),
+    (0xA7E2, 0xA7E2),
+    (0xAB6C, 0xAB6D),
+    (0x107BB, 0x107BF),
+    (0x10EC9, 0x10ECF),
+    (0x10EF0, 0x10EF9),
+    (0x11DF0, 0x11DF0),
+    (0x1D127, 0x1D128),
+    (0x1D25B, 0x1D25C),
+    (0x1D6A6, 0x1D6A6),
+    (0x1DF1F, 0x1DF24),
+    (0x1DF2B, 0x1DF7F),
+    (0x1DF90, 0x1DF96),
+    (0x1DFCD, 0x1DFFF),
+];
+
+/// Lowercase letters of Unicode 17 that Unicode 18 gives an uppercase (U+0277 gets U+A7DD,
+/// U+027C U+A7E2, U+AB4B U+AB6C, U+AB4C U+AB6D). In 17 each is its own uppercase; its
+/// lowercase and its casedness are the same in both.
+const UPPERCASED_IN_UNICODE_18: [char; 4] = ['\u{0277}', '\u{027C}', '\u{AB4B}', '\u{AB4C}'];
+
+/// A stand-in for [`NEW_IN_UNICODE_18`] while std lowercases: a noncharacter, which in every
+/// Unicode version maps to itself and is neither cased nor case-ignorable, as those code
+/// points are in Unicode 17.
+const STAND_IN: char = '\u{FDD0}';
+
+fn new_in_unicode_18(c: char) -> bool {
+    let c = u32::from(c);
+    c >= NEW_IN_UNICODE_18[0].0
+        && NEW_IN_UNICODE_18
+            .binary_search_by(|&(first, last)| {
+                if last < c {
+                    std::cmp::Ordering::Less
+                } else if first > c {
+                    std::cmp::Ordering::Greater
+                } else {
+                    std::cmp::Ordering::Equal
+                }
+            })
+            .is_ok()
+}
+
+/// `str::to_lowercase` as Unicode 17 has it, Final_Sigma included.
+fn to_lowercase_17(s: &str) -> String {
+    if !s.chars().any(new_in_unicode_18) {
+        return s.to_lowercase();
+    }
+    let mut masked = String::with_capacity(s.len());
+    let mut stood_for = Vec::new();
+    for c in s.chars() {
+        if new_in_unicode_18(c) {
+            stood_for.push(c);
+            masked.push(STAND_IN);
+        } else {
+            if c == STAND_IN {
+                stood_for.push(c);
+            }
+            masked.push(c);
+        }
+    }
+    // Each STAND_IN lowercases to one STAND_IN, and nothing else lowercases to a
+    // noncharacter, so the n-th in the result is the n-th of the masked input.
+    let mut stood_for = stood_for.into_iter();
+    masked
+        .to_lowercase()
+        .chars()
+        .map(|c| match c {
+            STAND_IN => stood_for
+                .next()
+                .expect("each stand-in lowercases to itself"),
+            c => c,
+        })
+        .collect()
+}
+
+/// `str::to_uppercase` as Unicode 17 has it (no context: each character on its own).
+fn to_uppercase_17(s: &str) -> String {
+    let own_uppercase = |c: char| new_in_unicode_18(c) || UPPERCASED_IN_UNICODE_18.contains(&c);
+    if !s.chars().any(own_uppercase) {
+        return s.to_uppercase();
+    }
+    let mut out = String::with_capacity(s.len());
+    for c in s.chars() {
+        if own_uppercase(c) {
+            out.push(c);
+        } else {
+            out.extend(c.to_uppercase());
+        }
+    }
+    out
 }
 
 /// `String(x)` for a number (ECMAScript Number::toString with radix 10): the shortest
@@ -619,6 +730,25 @@ mod tests {
             h2 = fnv(h2, &to_lower_case(&ctx(&[], &[0x3A3])));
         }
         assert_eq!((h1, h2), (0x693e_37c0, 0x5e29_9768));
+    }
+
+    #[test]
+    fn unicode_18_additions_map_as_unicode_17() {
+        // Unicode 17, node 22's: what std's Unicode 18 tables changed (NEW_IN_UNICODE_18,
+        // UPPERCASED_IN_UNICODE_18), whichever std this is built with.
+        let lower = |s: &str| to_string(&to_lower_case(&to_utf16(s)));
+        let upper = |s: &str| to_string(&to_upper_case(&to_utf16(s)));
+        assert_eq!(upper("\u{0277}"), "\u{0277}"); // Unicode 18: U+A7DD
+        assert_eq!(lower("\u{A7DD}"), "\u{A7DD}"); // Unicode 18: U+0277
+        // Unassigned in 17, so neither a case-ignorable mark the sigma looks past nor a
+        // cased letter that keeps it from ending the word.
+        assert_eq!(lower("AΣ\u{1DFCD}B"), "aς\u{1DFCD}b");
+        assert_eq!(lower("\u{1DF1F}Σ"), "\u{1DF1F}σ");
+        // The stand-in keeps its place where the input has one of its own.
+        assert_eq!(
+            lower("\u{A7DD}\u{FDD0}\u{A7E2}Σ"),
+            "\u{A7DD}\u{FDD0}\u{A7E2}σ"
+        );
     }
 
     #[test]
